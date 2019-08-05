@@ -1,20 +1,29 @@
 package config;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class DBConfig {
-    private String driverClassName = "com.mysql.jdbc.Driver";
-    private String url = "jdbc:mysql://49.236.137.225:3306/exchange_wallet?useUnicode=true&characterEncoding=utf8";
-
-    private String username = "root";
-    private String password = "P@ssw0rd";
+@PropertySource(value = "classpath:application.properties")
+public class DBConfig implements TransactionManagementConfigurer {
+    @Value("${spring.datasource.driver-class-name}")
+    private String driverClassName;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
 
     @Bean
     public DataSource dataSource() {
@@ -24,6 +33,16 @@ public class DBConfig {
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         return dataSource;
+    }
 
+    @Override
+    public PlatformTransactionManager annotationDrivenTransactionManager() {
+        return transactionManger();
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManger() {
+        return new DataSourceTransactionManager(dataSource());
     }
 }
+
