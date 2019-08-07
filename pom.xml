@@ -130,6 +130,11 @@
             <artifactId>jackson-datatype-jdk8</artifactId>
             <version>${jackson2.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
 
     </dependencies>
     <build>
