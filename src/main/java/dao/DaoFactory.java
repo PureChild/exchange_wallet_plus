@@ -14,4 +14,8 @@ public class DaoFactory {
     public TestDao testDao() {
         return new TestDao(dataSource);
     }
+
+    public ReservationDao getReservationDao(){
+        return new ReservationDao(dataSource);
+    }
 }

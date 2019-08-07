@@ -15,7 +15,7 @@ public class LoginService {
     public String[] adminLoginCheck(String admId, String admPassword) {
         String returnPage, returnMsg;
         if(this.admId.equals(admId) && this.admPassword.equals(admPassword)){
-            returnPage = "adminLoginTest";
+            returnPage = "redirect:/admin/reservation/history";
             returnMsg = "";
         } else {
             returnPage = "adminLogin";
