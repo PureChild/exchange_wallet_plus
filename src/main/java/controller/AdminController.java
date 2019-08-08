@@ -31,7 +31,7 @@ public class AdminController {
     }
 
     @GetMapping("/reservation/{reservationInfoNum}")
-    public String getReservationInfoByNum(ModelMap model, @PathVariable("reservationInfoNum") int num){
+    public String getReservationInfoByNum(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
         String nation = reservationService.convertNationCodeToName(reservationInfo.getNationCode());
 
@@ -41,7 +41,7 @@ public class AdminController {
     }
 
     @GetMapping("/update/reservation/{reservationInfoNum}")
-    public String getUpdateReservationInfoPage(ModelMap model, @PathVariable("reservationInfoNum") int num){
+    public String getUpdateReservationInfoPage(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
 
         model.put("reservationInfo", reservationInfo);
@@ -62,7 +62,7 @@ public class AdminController {
     }
 
     @GetMapping("/delete/reservation/{reservationInfoNum}")
-    public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") int num){
+    public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         reservationService.deleteReservationInfo(num);
 
         return "redirect:/admin/reservation/history";

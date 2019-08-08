@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigInteger;
 import java.util.List;
 
 @Service
@@ -24,7 +25,7 @@ public class ReservationService {
         return daoFactory.getReservationDao().selectAllReservationInfos();
     }
 
-    public ReservationInfo getReservationInfoByNum(int reservationInfoNum) {
+    public ReservationInfo getReservationInfoByNum(BigInteger reservationInfoNum) {
         return daoFactory.getReservationDao().selectReservationInfoByNum(reservationInfoNum);
     }
 
@@ -32,7 +33,7 @@ public class ReservationService {
         daoFactory.getReservationDao().updateReservationInfo(reservationInfo);
     }
 
-    public void deleteReservationInfo(int reservationInfoNum) {
+    public void deleteReservationInfo(BigInteger reservationInfoNum) {
         daoFactory.getReservationDao().deleteReservationInfo(reservationInfoNum);
     }
 

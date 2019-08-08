@@ -26,8 +26,8 @@ public class ReservationDao {
         return reservationInfos;
     }
 
-    public ReservationInfo selectReservationInfoByNum(int reservationInfoNum) {
-        Map<String, Integer> param = Collections.singletonMap("num", reservationInfoNum);
+    public ReservationInfo selectReservationInfoByNum(BigInteger reservationInfoNum) {
+        Map<String, BigInteger> param = Collections.singletonMap("num", reservationInfoNum);
         ReservationInfo reservationInfo = jdbc.queryForObject("SELECT * FROM reservation_info WHERE num = :num", param, rowMapper);
         return reservationInfo;
     }
@@ -41,8 +41,8 @@ public class ReservationDao {
         jdbc.update("UPDATE reservation_info SET nation_code = :nationCode, price = :price WHERE num = :num", param);
     }
 
-    public void deleteReservationInfo(int reservationInfoNum) {
-        Map<String, Integer> param = Collections.singletonMap("num", reservationInfoNum);
+    public void deleteReservationInfo(BigInteger reservationInfoNum) {
+        Map<String, BigInteger> param = Collections.singletonMap("num", reservationInfoNum);
         jdbc.update("DELETE FROM reservation_info WHERE num = :num", param);
     }
 
