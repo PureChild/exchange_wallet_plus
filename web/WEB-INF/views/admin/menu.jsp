@@ -14,7 +14,7 @@
             <a href="/admin/reservation/history">신청 내역</a>
         </li>
         <li>
-            <a href="#">환전 코드 조회</a>
+            <a href="/admin/lookup">환전 코드 조회</a>
         </li>
     </ul>
 </body>
