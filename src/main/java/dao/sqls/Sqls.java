@@ -8,4 +8,12 @@ public class Sqls {
     public static final String UPDATE_RESERVATION_PROGRESS = "UPDATE reservation_info SET progress = progress + 1 WHERE num = :num";
 
     public static final String DELETE_RESERVATION_INFO = "DELETE FROM reservation_info WHERE num = :num";
+
+    public static final String INSERT_CONFIRM_EXCHANGE_INFO = "INSERT INTO confirmed_exchange_info(reservation_num, exchange_date, exchange_code) "
+                                                                    + "VALUES(:reservationNum, :exchangeDate, :exchangeCode) ";
+    public static final String SELECT_RESERVATION_INFO_BY_CODE = "SELECT ri.applicant, ri.nation_code, ri.price "
+                                                                            + " FROM reservation_info AS ri "
+                                                                            + " JOIN confirmed_exchange_info AS cei "
+                                                                            + " ON ri.num = cei.reservation_num "
+                                                                            + " AND cei.exchange_code = :exchangeCode";
 }

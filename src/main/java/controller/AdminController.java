@@ -78,4 +78,11 @@ public class AdminController {
 
         return "redirect:/admin/reservation/history";
     }
+
+    @GetMapping("/lookup/{exchangeCode}")
+    public String getLookupPage(ModelMap model, @PathVariable("exchangeCode") String exchangeCode){
+        model.put("result", reservationService.getReservationInfoByExchangeCode(exchangeCode));
+
+        return "admin/lookup";
+    }
 }

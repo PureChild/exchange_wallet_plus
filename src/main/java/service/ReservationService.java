@@ -62,4 +62,16 @@ public class ReservationService {
         // progress 컬럼 업데이트
         daoFactory.getReservationDao().updateReservationProgress(exchangeInfo.getReservationNum());
     }
+
+    public Object getReservationInfoByExchangeCode(String exchangeCode) {
+        ReservationInfo reservationInfo = daoFactory.getReservationDao().selectReservationInfoByExchangeCode(exchangeCode);
+
+        System.out.println("서비스에서 " + reservationInfo);
+
+        Object result = reservationInfo;
+        if(result == null){
+            result = "해당 정보가 존재하지 않습니다.";
+        }
+        return result;
+    }
 }

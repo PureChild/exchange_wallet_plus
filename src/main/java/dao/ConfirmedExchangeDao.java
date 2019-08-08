@@ -1,13 +1,18 @@
 package dao;
 
 import dto.ConfirmedExchangeInfo;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
+import java.math.BigInteger;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
+import static dao.sqls.Sqls.*;
 
 public class ConfirmedExchangeDao {
     private NamedParameterJdbcTemplate jdbc;
@@ -23,6 +28,6 @@ public class ConfirmedExchangeDao {
         param.put("exchangeDate", exchangeInfo.getExchangeDate());
         param.put("exchangeCode", exchangeInfo.getExchangeCode());
 
-        jdbc.update("INSERT INTO confirmed_exchange_info(reservation_num, exchange_date, exchange_code) VALUES(:reservationNum, :exchangeDate, :exchangeCode) ", param);
+        jdbc.update(INSERT_CONFIRM_EXCHANGE_INFO, param);
     }
 }

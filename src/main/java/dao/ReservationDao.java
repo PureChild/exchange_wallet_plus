@@ -1,6 +1,7 @@
 package dao;
 
 import dto.ReservationInfo;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -50,5 +51,18 @@ public class ReservationDao {
     public void updateReservationProgress(BigInteger reservationNum) {
         Map<String, BigInteger> param = Collections.singletonMap("num", reservationNum);
         jdbc.update(UPDATE_RESERVATION_PROGRESS, param);
+    }
+
+    public ReservationInfo selectReservationInfoByExchangeCode(String exchangeCode) {
+        Map<String, String> param = Collections.singletonMap("exchangeCode", exchangeCode);
+        ReservationInfo reservationInfo = null;
+        try {
+            reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_CODE, param, rowMapper);
+
+            System.out.println("다오에서 " + reservationInfo);
+        } catch (EmptyResultDataAccessException e) {
+
+        }
+        return reservationInfo;
     }
 }
