@@ -3,7 +3,6 @@ package dao;
 import dto.ReservationInfo;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
@@ -13,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static dao.sqls.Sqls.*;
+
 public class ReservationDao {
     private NamedParameterJdbcTemplate jdbc;
     private RowMapper<ReservationInfo> rowMapper = BeanPropertyRowMapper.newInstance(ReservationInfo.class);
@@ -21,14 +22,14 @@ public class ReservationDao {
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<ReservationInfo> selectAllReservationInfos() {
-        List<ReservationInfo> reservationInfos = jdbc.query("SELECT * FROM reservation_info", rowMapper);
+    public List<ReservationInfo> selectReservationInfos() {
+        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BEFORE_CONFIRM, rowMapper);
         return reservationInfos;
     }
 
     public ReservationInfo selectReservationInfoByNum(BigInteger reservationInfoNum) {
         Map<String, BigInteger> param = Collections.singletonMap("num", reservationInfoNum);
-        ReservationInfo reservationInfo = jdbc.queryForObject("SELECT * FROM reservation_info WHERE num = :num", param, rowMapper);
+        ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_NUM, param, rowMapper);
         return reservationInfo;
     }
 
@@ -38,16 +39,16 @@ public class ReservationDao {
         param.put("nationCode", reservationInfo.getNationCode());
         param.put("price", reservationInfo.getPrice());
 
-        jdbc.update("UPDATE reservation_info SET nation_code = :nationCode, price = :price WHERE num = :num", param);
+        jdbc.update(UPDATE_RESERVATION_INFO, param);
     }
 
     public void deleteReservationInfo(BigInteger reservationInfoNum) {
         Map<String, BigInteger> param = Collections.singletonMap("num", reservationInfoNum);
-        jdbc.update("DELETE FROM reservation_info WHERE num = :num", param);
+        jdbc.update(DELETE_RESERVATION_INFO, param);
     }
 
     public void updateReservationProgress(BigInteger reservationNum) {
         Map<String, BigInteger> param = Collections.singletonMap("num", reservationNum);
-        jdbc.update("UPDATE reservation_info SET progress = progress + 1 WHERE num = :num", param);
+        jdbc.update(UPDATE_RESERVATION_PROGRESS, param);
     }
 }

@@ -21,8 +21,8 @@ public class ReservationService {
     private Environment environment;
 
 
-    public List<ReservationInfo> getAllReservationInfos() {
-        return daoFactory.getReservationDao().selectAllReservationInfos();
+    public List<ReservationInfo> getReservationInfos() {
+        return daoFactory.getReservationDao().selectReservationInfos();
     }
 
     public ReservationInfo getReservationInfoByNum(BigInteger reservationInfoNum) {

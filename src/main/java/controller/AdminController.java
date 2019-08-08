@@ -23,8 +23,8 @@ public class AdminController {
     ReservationService reservationService;
 
     @GetMapping("/reservation/history")
-    public String getAllReservationInfos(ModelMap model){
-        List<ReservationInfo> reservationInfoList = reservationService.getAllReservationInfos();
+    public String getReservationInfos(ModelMap model){
+        List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos();
 
         model.put("reservationList", reservationInfoList);
         return "adminHistory";
