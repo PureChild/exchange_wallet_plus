@@ -1,5 +1,6 @@
 package dao;
 
+import dto.ConfirmedExchangeInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -17,5 +18,9 @@ public class DaoFactory {
 
     public ReservationDao getReservationDao(){
         return new ReservationDao(dataSource);
+    }
+
+    public ConfirmedExchangeDao getConfirmedExchangeDao() {
+        return  new ConfirmedExchangeDao(dataSource);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
+import java.math.BigInteger;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -43,5 +44,10 @@ public class ReservationDao {
     public void deleteReservationInfo(int reservationInfoNum) {
         Map<String, Integer> param = Collections.singletonMap("num", reservationInfoNum);
         jdbc.update("DELETE FROM reservation_info WHERE num = :num", param);
+    }
+
+    public void updateReservationProgress(BigInteger reservationNum) {
+        Map<String, BigInteger> param = Collections.singletonMap("num", reservationNum);
+        jdbc.update("UPDATE reservation_info SET progress = progress + 1 WHERE num = :num", param);
     }
 }

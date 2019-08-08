@@ -1,5 +1,6 @@
 package controller;
 
+import dto.ConfirmedExchangeInfo;
 import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import service.ReservationService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
+import java.sql.Date;
 import java.util.List;
 
 @RequestMapping("/admin")
@@ -62,6 +64,17 @@ public class AdminController {
     @GetMapping("/delete/reservation/{reservationInfoNum}")
     public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") int num){
         reservationService.deleteReservationInfo(num);
+
+        return "redirect:/admin/reservation/history";
+    }
+
+    @PostMapping("/confirm/exchange/{reservationInfoNum}")
+    public String setExchangeDate(HttpServletRequest request, @PathVariable("reservationInfoNum") BigInteger num){
+        ConfirmedExchangeInfo exchangeInfo = new ConfirmedExchangeInfo();
+        exchangeInfo.setExchangeDate(Date.valueOf(request.getParameter("exchangeDate")));
+        exchangeInfo.setReservationNum(num);
+
+        reservationService.confirmExchangeReservation(exchangeInfo);
 
         return "redirect:/admin/reservation/history";
     }
