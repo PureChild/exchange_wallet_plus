@@ -48,13 +48,14 @@ public class AdminController {
     @PostMapping("/update/reservation")
     public String updateReservationInfo(HttpServletRequest request){
         ReservationInfo reservationInfo = new ReservationInfo();
-        reservationInfo.setNum(new BigInteger(request.getParameter("reservationNum")));
+        BigInteger reservationNum = new BigInteger(request.getParameter("reservationNum"));
+        reservationInfo.setNum(reservationNum);
         reservationInfo.setNationCode(request.getParameter("nationCode"));
         reservationInfo.setPrice(Integer.valueOf(request.getParameter("price")));
 
         reservationService.updateReservationInfo(reservationInfo);
 
-        return "redirect:/admin/reservation/history";
+        return "redirect:/admin/reservation/" + reservationNum;
     }
 
     @GetMapping("/delete/reservation/{reservationInfoNum}")

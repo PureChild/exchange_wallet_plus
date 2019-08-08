@@ -10,6 +10,7 @@
     <title>신청 내역</title>
 </head>
 <body>
+    <img src="/image/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
     <form>
         국가 : ${ reservationInfo.nationCode }<br>
         금액 : ${ reservationInfo.price }<br>
