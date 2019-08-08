@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import service.ReservationService;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -32,8 +31,10 @@ public class AdminController {
     @GetMapping("/reservation/{reservationInfoNum}")
     public String getReservationInfoByNum(ModelMap model, @PathVariable("reservationInfoNum") int num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
+        String nation = reservationService.convertNationCodeToName(reservationInfo.getNationCode());
 
         model.put("reservationInfo", reservationInfo);
+        model.put("nation", nation);
         return "adminReservationInfo";
     }
 
