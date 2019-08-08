@@ -32,7 +32,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
     public void addViewControllers(final ViewControllerRegistry registry) {
         System.out.println("call addViewControllers");
         registry.addViewController("/").setViewName("home");
-        registry.addViewController("/admin/login").setViewName("adminLogin");
+        registry.addViewController("/admin/login").setViewName("admin/login");
     }
 
     @Bean

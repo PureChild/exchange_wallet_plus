@@ -27,7 +27,7 @@ public class AdminController {
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos();
 
         model.put("reservationList", reservationInfoList);
-        return "adminHistory";
+        return "admin/reservationHistory";
     }
 
     @GetMapping("/reservation/{reservationInfoNum}")
@@ -37,7 +37,7 @@ public class AdminController {
 
         model.put("reservationInfo", reservationInfo);
         model.put("nation", nation);
-        return "adminReservationInfo";
+        return "admin/reservationInfo";
     }
 
     @GetMapping("/update/reservation/{reservationInfoNum}")
@@ -45,7 +45,7 @@ public class AdminController {
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
 
         model.put("reservationInfo", reservationInfo);
-        return "adminUpdateReservationInfo";
+        return "admin/updateReservationInfo";
     }
 
     @PostMapping("/update/reservation")

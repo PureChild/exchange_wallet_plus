@@ -9,6 +9,9 @@
     <title>관리자 로그인</title>
 </head>
 <body>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
+
     <p>${msg}</p>
     <form action="/admin/loginConfirm" method="post">
         <input type="text" name="admId"/>

@@ -9,10 +9,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-    <title>신청 내역</title>
+    <title>신청 정보</title>
     <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
 </head>
 <body>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
+
     <img src="/image/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
     <form>
         국가 : ${ nation }

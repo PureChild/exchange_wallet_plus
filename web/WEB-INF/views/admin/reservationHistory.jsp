@@ -11,6 +11,9 @@
     <title>신청 내역</title>
 </head>
 <body>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
+
     <table>
         <thead>
             <tr>

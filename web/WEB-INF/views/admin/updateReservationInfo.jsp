@@ -9,7 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-    <title>신청 내역</title>
+    <title>신청 정보 수정</title>
     <script
             src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -18,6 +18,9 @@
     <script id="api-nation" data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>" data-nation="${ reservationInfo.nationCode }" src="/js/nation.js"></script>
 </head>
 <body>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
+
     <img id="nation-flag" src="/image/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
     <form>
         <input type="hidden" name="reservationNum" value="${ reservationInfo.num }"><br/>
