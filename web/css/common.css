@@ -1,3 +1,12 @@
-nav, main {
-    display: inline-block;
+/* css for PC */
+@media screen and (min-width: 769px) {
+    body {
+        display: flex;
+    }
+}
+/* css for Mobile */
+@media screen and (max-width: 768px) {
+    body {
+        display: block;
+    }
 }
