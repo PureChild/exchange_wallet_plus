@@ -18,7 +18,7 @@ public class LoginService {
             returnPage = "redirect:/admin/reservation/history";
             returnMsg = "";
         } else {
-            returnPage = "admin/login";
+            returnPage = "redirect:/admin/login";
             returnMsg = "관리자 아이디와 비밀번호를 확인해주세요";
         }
         return new String[]{returnPage, returnMsg};

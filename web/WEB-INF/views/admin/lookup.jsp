@@ -8,10 +8,7 @@
 <html>
 <head>
     <title>환전 코드 조회</title>
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/lookup.js"></script>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
