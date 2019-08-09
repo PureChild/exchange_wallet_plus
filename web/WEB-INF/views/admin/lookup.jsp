@@ -10,6 +10,8 @@
     <title>환전 코드 조회</title>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/lookup.js"></script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
@@ -17,27 +19,38 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <form id="lookupForm" method="get">
+        <form id="lookupForm" class="lookup-form" method="get">
             <p>환전 코드를 입력해주세요</p>
-            <input type="text" id="exchangeCode"/>
-        </form>
+            <input type="text" class="form-control" id="exchangeCode"/>
 
-        <%-- jstl 데이터 타입 확인 중!! --%>
-        <c:if test="${not empty result}">
-            <c:choose>
-                <c:when test="${result.getClass().simpleName == 'ReservationInfo'}">
-                    <input type="hidden" id="reservationNum" value="${result.num}">
-                    신청인 : ${result.applicant}
-                    국가 : ${nation}
-                    금액 : ${result.price}
-                    <input type="button" id="btnExchange" value="환전 완료"/>
-                </c:when>
-                <c:otherwise>
-                    해당 결과가 존재하지 않습니다.
-                    <a href="/admin/reservation/history">목록으로</a>
-                </c:otherwise>
-            </c:choose>
-        </c:if>
+            <%-- jstl 데이터 타입 확인 중!! --%>
+            <c:if test="${not empty result}">
+                <c:choose>
+                    <c:when test="${result.getClass().simpleName == 'ReservationInfo'}">
+                        <input type="hidden" id="reservationNum" value="${result.num}">
+                        <table class="table table-sm ta-center">
+                            <tr>
+                                <td>신청인</td>
+                                <td>${result.applicant}</td>
+                            </tr>
+                            <tr>
+                                <td>국가</td>
+                                <td>${nation}</td>
+                            </tr>
+                            <tr>
+                                <td>금액</td>
+                                <td>${result.price}</td>
+                            </tr>
+                        </table>
+                        <input type="button" id="btnExchange" class="btn btn-hana" value="환전 완료"/>
+                    </c:when>
+                    <c:otherwise>
+                        <p class="text-warning">해당 결과가 존재하지 않습니다.</p>
+                        <a href="/admin/reservation/history" class="btn btn-hana">목록으로</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
+        </form>
     </main>
 </body>
 </html>
