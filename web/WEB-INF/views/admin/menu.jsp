@@ -9,13 +9,15 @@
     <title>메뉴</title>
 </head>
 <body>
-    <ul>
-        <li>
-            <a href="/admin/reservation/history">신청 내역</a>
-        </li>
-        <li>
-            <a href="/admin/lookup">환전 코드 조회</a>
-        </li>
-    </ul>
+    <nav>
+        <ul>
+            <li>
+                <a href="/admin/reservation/history">신청 내역</a>
+            </li>
+            <li>
+                <a href="/admin/lookup">환전 코드 조회</a>
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>

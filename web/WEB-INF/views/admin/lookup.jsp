@@ -13,31 +13,34 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
     <script src="/js/lookup.js"></script>
+    <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
     <%-- 메뉴바 include --%>
     <jsp:include page="menu.jsp"/>
 
-    <form id="lookupForm" method="get">
-        <p>환전 코드를 입력해주세요</p>
-        <input type="text" id="exchangeCode"/>
-    </form>
+    <main>
+        <form id="lookupForm" method="get">
+            <p>환전 코드를 입력해주세요</p>
+            <input type="text" id="exchangeCode"/>
+        </form>
 
-    <%-- jstl 데이터 타입 확인 중!! --%>
-    <c:if test="${not empty result}">
-        <c:choose>
-            <c:when test="${result.getClass().simpleName == 'ReservationInfo'}">
-                <input type="hidden" id="reservationNum" value="${result.num}">
-                신청인 : ${result.applicant}
-                국가 : ${nation}
-                금액 : ${result.price}
-                <input type="button" id="btnExchange" value="환전 완료"/>
-            </c:when>
-            <c:otherwise>
-                해당 결과가 존재하지 않습니다.
-                <a href="/admin/reservation/history">목록으로</a>
-            </c:otherwise>
-        </c:choose>
-    </c:if>
+        <%-- jstl 데이터 타입 확인 중!! --%>
+        <c:if test="${not empty result}">
+            <c:choose>
+                <c:when test="${result.getClass().simpleName == 'ReservationInfo'}">
+                    <input type="hidden" id="reservationNum" value="${result.num}">
+                    신청인 : ${result.applicant}
+                    국가 : ${nation}
+                    금액 : ${result.price}
+                    <input type="button" id="btnExchange" value="환전 완료"/>
+                </c:when>
+                <c:otherwise>
+                    해당 결과가 존재하지 않습니다.
+                    <a href="/admin/reservation/history">목록으로</a>
+                </c:otherwise>
+            </c:choose>
+        </c:if>
+    </main>
 </body>
 </html>

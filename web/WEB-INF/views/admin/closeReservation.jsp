@@ -7,9 +7,12 @@
 <html>
 <head>
     <title>환전 완료</title>
+    <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
-환전끝
-<a href="/admin/reservation/history">목록으로</a>
+    <main>
+        환전끝
+        <a href="/admin/reservation/history">목록으로</a>
+    </main>
 </body>
 </html>
