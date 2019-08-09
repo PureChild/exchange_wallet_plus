@@ -15,5 +15,6 @@ public class Sqls {
                                                                             + " FROM reservation_info AS ri "
                                                                             + " JOIN confirmed_exchange_info AS cei "
                                                                             + " ON ri.num = cei.reservation_num "
-                                                                            + " AND cei.exchange_code = :exchangeCode";
+                                                                            + " AND cei.exchange_code = :exchangeCode "
+                                                                            + " AND ri.progress = 1";
 }

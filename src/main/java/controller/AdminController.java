@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigInteger;
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/admin")
 @Controller
@@ -81,7 +82,16 @@ public class AdminController {
 
     @GetMapping("/lookup/{exchangeCode}")
     public String getLookupPage(ModelMap model, @PathVariable("exchangeCode") String exchangeCode){
-        model.put("result", reservationService.getReservationInfoByExchangeCode(exchangeCode));
+        Optional<ReservationInfo> reservationInfo = reservationService.getReservationInfoByExchangeCode(exchangeCode);
+
+        if(reservationInfo.isPresent()){
+            model.put("result", reservationInfo.get());
+
+            String nation = reservationService.convertNationCodeToName(reservationInfo.get().getNationCode());
+            model.put("nation", nation);
+        } else {
+            model.put("result", "not found");
+        }
 
         return "admin/lookup";
     }

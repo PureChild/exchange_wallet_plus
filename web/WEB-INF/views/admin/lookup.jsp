@@ -26,16 +26,16 @@
     <%-- jstl 데이터 타입 확인 중!! --%>
     <c:if test="${not empty result}">
         <c:choose>
-            <c:when test="${result.getClass().simpleName == 'String'}">
-                ${result}
-                <a href="/admin/reservation/history">목록으로</a>
-            </c:when>
-            <c:otherwise>
+            <c:when test="${result.getClass().simpleName == 'ReservationInfo'}">
                 <input type="hidden" id="reservationNum" value="${result.num}">
                 신청인 : ${result.applicant}
-                국가 : ${result.nationCode}
+                국가 : ${nation}
                 금액 : ${result.price}
                 <input type="button" id="btnExchange" value="환전 완료"/>
+            </c:when>
+            <c:otherwise>
+                해당 결과가 존재하지 않습니다.
+                <a href="/admin/reservation/history">목록으로</a>
             </c:otherwise>
         </c:choose>
     </c:if>

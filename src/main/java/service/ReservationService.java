@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @PropertySource(value = "classpath:exchange.api.properties", encoding="UTF-8")
@@ -63,14 +64,10 @@ public class ReservationService {
         daoFactory.getReservationDao().updateReservationProgress(exchangeInfo.getReservationNum());
     }
 
-    public Object getReservationInfoByExchangeCode(String exchangeCode) {
+    public Optional<ReservationInfo> getReservationInfoByExchangeCode(String exchangeCode) {
         ReservationInfo reservationInfo = daoFactory.getReservationDao().selectReservationInfoByExchangeCode(exchangeCode);
 
-        Object result = reservationInfo;
-        if(result == null){
-            result = "해당 정보가 존재하지 않습니다.";
-        }
-        return result;
+        return Optional.ofNullable(reservationInfo);
     }
 
     public void closeExchangeReservation(BigInteger reservationInfoNum) {
