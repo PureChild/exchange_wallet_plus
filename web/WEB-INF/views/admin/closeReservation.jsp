@@ -7,6 +7,8 @@
 <html>
 <head>
     <title>환전 완료</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
@@ -14,8 +16,10 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        환전끝
-        <a href="/admin/reservation/history">목록으로</a>
+        <div class="main-content">
+            <p>환전이 완료되었습니다.</p>
+            <a href="/admin/reservation/history" class="btn btn-hana">목록으로</a>
+        </div>
     </main>
 </body>
 </html>

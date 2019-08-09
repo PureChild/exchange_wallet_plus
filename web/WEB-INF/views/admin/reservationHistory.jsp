@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>신청 내역</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>

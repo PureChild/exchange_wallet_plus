@@ -68,8 +68,9 @@ main {
 }
 .page-title {
     color: #008485;
+    margin-bottom: 50px;
 }
-.login-form, .lookup-form {
+.login-form, .lookup-form, .main-content {
     width: 350px;
     text-align: center;
 }
@@ -106,4 +107,8 @@ main {
 /* 정렬 */
 .ta-center {
     text-align: center;
+}
+
+.btn-hana {
+    margin-top: 20px;
 }
