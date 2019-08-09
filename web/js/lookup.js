@@ -10,6 +10,11 @@ var lookupPage = {
                 $("#lookupForm").attr("action", "/admin/lookup/" + $(this).val());
                 $("#lookupForm").submit();
             }
-        })
+        });
+
+        $("#btnExchange").click(function(){
+            window.location.href = "/admin/close/exchange/" + $("#reservationNum").val();
+            // console.log("/close/exchange/" + $("#reservationNum").val());
+        });
     }
 }

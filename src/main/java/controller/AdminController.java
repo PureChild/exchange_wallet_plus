@@ -85,4 +85,11 @@ public class AdminController {
 
         return "admin/lookup";
     }
+
+    @GetMapping("/close/exchange/{reservationInfoNum}")
+    public String getFinishPage(@PathVariable("reservationInfoNum") BigInteger num){
+        reservationService.closeExchangeReservation(num);
+
+        return "admin/closeReservation";
+    }
 }

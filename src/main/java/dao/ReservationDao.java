@@ -58,8 +58,6 @@ public class ReservationDao {
         ReservationInfo reservationInfo = null;
         try {
             reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_CODE, param, rowMapper);
-
-            System.out.println("다오에서 " + reservationInfo);
         } catch (EmptyResultDataAccessException e) {
 
         }

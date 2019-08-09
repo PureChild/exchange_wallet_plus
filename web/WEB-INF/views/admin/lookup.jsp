@@ -31,10 +31,11 @@
                 <a href="/admin/reservation/history">목록으로</a>
             </c:when>
             <c:otherwise>
+                <input type="hidden" id="reservationNum" value="${result.num}">
                 신청인 : ${result.applicant}
                 국가 : ${result.nationCode}
                 금액 : ${result.price}
-                <input type="button" value="환전 완료"/>
+                <input type="button" id="btnExchange" value="환전 완료"/>
             </c:otherwise>
         </c:choose>
     </c:if>
