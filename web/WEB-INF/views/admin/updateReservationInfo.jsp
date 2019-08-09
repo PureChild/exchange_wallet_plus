@@ -24,7 +24,7 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <img id="nation-flag" src="/image/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
+        <img id="nation-flag" src="/image/flags/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
         <form>
             <input type="hidden" name="reservationNum" value="${ reservationInfo.num }"><br/>
             국가 : <select id="nation" name="nationCode"></select>

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
+
     <main>
         환전끝
         <a href="/admin/reservation/history">목록으로</a>

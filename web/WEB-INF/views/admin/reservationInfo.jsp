@@ -17,7 +17,7 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <img src="/image/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
+        <img src="/image/flags/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
         <form>
             국가 : ${ nation }
             금액 : ${ reservationInfo.price }

@@ -48,7 +48,7 @@ var apiNations = {
                 for(var i = 0; i < data.length; i++){
                     if(nationCode === data[i].cur_unit){
 
-                        $("#nation-flag").attr("src", "/image/" + data[i].cur_unit + ".png");
+                        $("#nation-flag").attr("src", "/image/flags" + data[i].cur_unit + ".png");
 
                         break;
                     }

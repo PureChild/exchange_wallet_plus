@@ -3,10 +3,47 @@
     body {
         display: flex;
     }
+    .logo {
+        content: url("../image/logo.png");
+        width: 250px;
+        height: 190px;
+    }
+    .menu {
+        margin-top: 70px;
+    }
+    .menu>li {
+        margin: 15px 0;
+    }
 }
 /* css for Mobile */
 @media screen and (max-width: 768px) {
     body {
         display: block;
+        min-width: 700px;
     }
+    .menu {
+        display: flex;
+        justify-content: space-around;
+    }
+    .logo {
+        content: url("../image/mobile-logo.png");
+        width: 200px;
+        height: 70px;
+    }
+}
+
+/* 메뉴 */
+.menu-bar {
+    background-color: rgba(0, 140, 140, 0.8);
+    padding: 50px;
+}
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto 0 auto;
+    font-size: 1.5em;
+}
+.menu-item {
+    text-decoration: none;
+    color: #fff;
 }
