@@ -3,28 +3,28 @@
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-8.0.15.jar" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/AED.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/AUD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/BHD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/CAD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/CHF.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/CNH.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/DKK.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/EUR.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/GBP.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/HKD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/IDR.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/JPY.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/KRW.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/KWD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/MYR.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/NOK.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/NZD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/SAR.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/SEK.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/SGD.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/THB.png" charset="x-windows-949" />
-    <file url="file://$PROJECT_DIR$/web/image/flag/USD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/AED.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/AUD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/BHD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/CAD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/CHF.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/CNH.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/DKK.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/EUR.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/GBP.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/HKD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/IDR.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/JPY.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/KRW.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/KWD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/MYR.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/NOK.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/NZD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/SAR.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/SEK.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/SGD.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/THB.png" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/web/image/flags/USD.png" charset="x-windows-949" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
