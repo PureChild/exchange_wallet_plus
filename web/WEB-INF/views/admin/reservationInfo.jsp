@@ -10,6 +10,8 @@
 <html>
 <head>
     <title>신청 정보</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
@@ -20,6 +22,18 @@
     <main>
         <form class="info-form">
             <img src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
+
+            <%-- 구글 차트 --%>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript" src="/js/chart.js"></script>
+
+            <div id="Line_Controls_Chart">
+                <!-- 라인 차트 생성할 영역 -->
+                <div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
+                <!-- 컨트롤바를 생성할 영역 -->
+                <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
+            </div>
+
             <table class="table table-sm ta-center">
                 <tr>
                     <td>국가</td>
