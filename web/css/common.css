@@ -66,6 +66,9 @@ main {
     background-position: right bottom;
     background-size: 250px;
 }
+main.none-img {
+    background-image: none;
+}
 .page-title {
     color: #008485;
     margin-bottom: 50px;
@@ -73,6 +76,9 @@ main {
 .login-form, .lookup-form, .info-form, .main-content {
     width: 350px;
     text-align: center;
+}
+.info-form.chart-form {
+    width: 500px;
 }
 
 /* 메뉴 */
@@ -101,6 +107,14 @@ main {
     width: 60%;
     display: block;
     margin: 0 auto;
+}
+.chart-form .flag {
+    width: 20%;
+}
+
+/* 차트 */
+.chart-control-area {
+    height: 150px;
 }
 
 /* 로그인, 회원가입 */

@@ -19,8 +19,9 @@
     <%-- 메뉴바 include --%>
     <jsp:include page="menu.jsp"/>
 
-    <main>
-        <form class="info-form">
+    <main class="none-img">
+        <form class="info-form chart-form">
+            <input type="hidden" id="nationCode" value="${ reservationInfo.nationCode }">
             <img src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
 
             <%-- 구글 차트 --%>
@@ -28,10 +29,11 @@
             <script type="text/javascript" src="/js/chart.js"></script>
 
             <div id="Line_Controls_Chart">
+                <p class="text-warning" id="msgBeforeDrawChart">환율 정보를 불러오는 중입니다.</p>
                 <!-- 라인 차트 생성할 영역 -->
-                <div id="lineChartArea" style="padding:0px 20px 0px 0px;"></div>
+                <div id="lineChartArea" class="chart-area"></div>
                 <!-- 컨트롤바를 생성할 영역 -->
-                <div id="controlsArea" style="padding:0px 20px 0px 0px;"></div>
+                <div id="controlsArea" class="chart-control-area"></div>
             </div>
 
             <table class="table table-sm ta-center">

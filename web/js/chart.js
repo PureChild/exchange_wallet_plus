@@ -1,42 +1,60 @@
 $(document).ready(function () {
     google.charts.load('current', {'packages':['line','controls']});
-    chartDrowFun.chartDrow(); //chartDrow() 실행
+    chartDrowFun.chartDrow($("#nationCode").val());
 });
 
 var chartDrowFun = {
-
-    chartDrow : function(){
+    chartDrow : function(nationCode){
         var chartData = '';
-
-        //날짜형식 변경하고 싶으시면 이 부분 수정하세요.
-        var chartDateformat     = 'yyyy년MM월dd일';
+        var chartDateformat = 'yyyy년MM월dd일';
         //라인차트의 라인 수
-        var chartLineCount    = 10;
+        var chartLineCount = 5;
         //컨트롤러 바 차트의 라인 수
-        var controlLineCount    = 10;
+        var controlLineCount = 5;
 
+        //date 포맷 함수
+        function dateFormat(date){
+            function pad(num) {
+                num = num + '';
+                return num.length < 2 ? "0" + num : num;
+            }
+            return date.getFullYear() + "" + pad(date.getMonth()+1) + "" + pad(date.getDate());
+        }
 
         function drawDashboard() {
-
-            var data = new google.visualization.DataTable();
+            var chartData = new google.visualization.DataTable();
             //그래프에 표시할 컬럼 추가
-            data.addColumn('datetime' , '날짜');
-            data.addColumn('number'   , '남성');
-            data.addColumn('number'   , '여성');
-            data.addColumn('number'   , '전체');
+            chartData.addColumn('datetime', '날짜');
+            chartData.addColumn('number', '매매기준율');
 
             //그래프에 표시할 데이터
             var dataRow = [];
 
-            for(var i = 0; i <= 29; i++){ //랜덤 데이터 생성
-                var total   = Math.floor(Math.random() * 300) + 1;
-                var man     = Math.floor(Math.random() * total) + 1;
-                var woman   = total - man;
+            for(var i = 30; i > 0; i--){
+                targetTime = new Date().getTime() - (i * 24 * 60 * 60 * 1000);
+                targetDate = new Date(targetTime);
+                $.ajax({
+                    type: 'get',
+                    dataType: 'json',
+                    url: 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON',
+                    data: {authkey: "TVREMCLuKhL0lEgNOEQq4cRB99gBojKq", searchdate: dateFormat(targetDate), data: "AP01"},
+                    async: false,
+                    success: function (data) {
+                        for(var i = 0; i < data.length; i++){
+                            if(nationCode === data[i].cur_unit){
+                                var exchangeRate = Number(data[i].deal_bas_r.replace(",",""));
+                                dataRow = [targetDate, exchangeRate];
+                                chartData.addRow(dataRow);
 
-                dataRow = [new Date('2017', '09', i , '10'), man, woman , total];
-                data.addRow(dataRow);
+                                break;
+                            }
+                        }
+                    },
+                    error: function (request, status, error) {
+                    }
+                });
+
             }
-
 
             var chart = new google.visualization.ChartWrapper({
                 chartType   : 'LineChart',
@@ -44,30 +62,21 @@ var chartDrowFun = {
                 options     : {
                     isStacked   : 'percent',
                     focusTarget : 'category',
-                    height          : 500,
+                    height          : 300,
                     width              : '100%',
                     legend          : { position: "top", textStyle: {fontSize: 13}},
                     pointSize        : 5,
-                    tooltip          : {textStyle : {fontSize:12}, showColorCode : true,trigger: 'both'},
-                    hAxis              : {format: chartDateformat, gridlines:{count:chartLineCount,units: {
+                    tooltip          : {textStyle : {fontSize:12}, showColorCode : true, trigger: 'both'},
+                    hAxis              : {format: chartDateformat, gridlines:{count:chartLineCount, units: {
                                 years : {format: ['yyyy년']},
                                 months: {format: ['MM월']},
                                 days  : {format: ['dd일']},
                                 hours : {format: ['HH시']}}
                         },textStyle: {fontSize:12}},
-                    vAxis              : {minValue: 100,viewWindow:{min:0},gridlines:{count:-1},textStyle:{fontSize:12}},
-                    animation        : {startup: true,duration: 1000,easing: 'in' },
-                    annotations    : {pattern: chartDateformat,
-                        textStyle: {
-                            fontSize: 15,
-                            bold: true,
-                            italic: true,
-                            color: '#871b47',
-                            auraColor: '#d799ae',
-                            opacity: 0.8,
-                            pattern: chartDateformat
-                        }
-                    }
+                    vAxis : {gridlines:{count:-1}, textStyle:{fontSize:12}},
+                    series: {0: {color: '#008485'}},
+                    backgroundColor: "transparent",
+                    animation : {startup: true, duration: 1000, easing: 'in'}
                 }
             });
 
@@ -78,7 +87,9 @@ var chartDrowFun = {
                     ui:{
                         chartType: 'LineChart',
                         chartOptions: {
-                            chartArea: {'width': '60%','height' : 80},
+                            chartArea: {'width': '60%','height' : 150},
+                            series: {0: {color: '#000'}},
+                            backgroundColor: "transparent",
                             hAxis: {'baselineColor': 'none', format: chartDateformat, textStyle: {fontSize:12},
                                 gridlines:{count:controlLineCount,units: {
                                         years : {format: ['yyyy년']},
@@ -93,15 +104,15 @@ var chartDrowFun = {
             });
 
             var date_formatter = new google.visualization.DateFormat({ pattern: chartDateformat});
-            date_formatter.format(data, 0);
+            date_formatter.format(chartData, 0);
 
             var dashboard = new google.visualization.Dashboard(document.getElementById('Line_Controls_Chart'));
-            window.addEventListener('resize', function() { dashboard.draw(data); }, false); //화면 크기에 따라 그래프 크기 변경
+            window.addEventListener('resize', function() { dashboard.draw(chartData); }, false); //화면 크기에 따라 그래프 크기 변경
             dashboard.bind([control], [chart]);
-            dashboard.draw(data);
+            dashboard.draw(chartData);
 
+            $("#msgBeforeDrawChart").hide();
         }
         google.charts.setOnLoadCallback(drawDashboard);
-
     }
 }
