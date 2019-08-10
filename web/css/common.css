@@ -90,6 +90,12 @@ main {
     color: #fff;
 }
 
+/* 테이블 */
+.colored-thead {
+    background-color: #008485;
+    color: #fff;
+}
+
 /* 국기 */
 .flag {
     width: 60%;

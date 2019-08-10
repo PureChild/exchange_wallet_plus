@@ -18,8 +18,8 @@
 
     <main>
         <div class="main-content">
-            <table>
-                <thead>
+            <table class="table ta-center">
+                <thead class="colored-thead">
                     <tr>
                         <td>No.</td>
                         <td>신청인</td>
