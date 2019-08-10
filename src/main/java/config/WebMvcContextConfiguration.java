@@ -34,6 +34,8 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
         registry.addViewController("/").setViewName("home");
         registry.addViewController("/admin/login").setViewName("admin/login");
         registry.addViewController("/admin/lookup").setViewName("admin/lookup");
+        registry.addViewController("/join").setViewName("join");
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Bean

@@ -90,10 +90,15 @@ main {
     color: #fff;
 }
 
-/* 로그인 */
-.form-input-label {
+/* 로그인, 회원가입 */
+.form-input-label, .form-join-label {
     display: inline-block;
+}
+.form-input-label {
     width: 50px;
+}
+.form-join-label {
+    width: 80px;
 }
 .form-control:focus {
     border-color: #008485;

@@ -1,6 +1,9 @@
 package dao.sqls;
 
 public class Sqls {
+    /**
+     * 환전 예약 관련
+     */
     public static final String SELECT_RESERVATION_INFOS_BEFORE_CONFIRM = "SELECT num, applicant, price, departure_date FROM reservation_info WHERE progress = 0";
     public static final String SELECT_RESERVATION_INFO_BY_NUM = "SELECT num, nation_code, price FROM reservation_info WHERE num = :num";
 
@@ -17,4 +20,10 @@ public class Sqls {
                                                                             + " ON ri.num = cei.reservation_num "
                                                                             + " AND cei.exchange_code = :exchangeCode "
                                                                             + " AND ri.progress = 1";
+
+    /**
+     * 회원가입, 로그인 관련
+     */
+    public static final String INSERT_CUSTOMER = "INSERT INTO customer(id, pw, name, account) VALUES(:userId, :userPw, :userName, :userAccount)";
+    public static final String SELECT_EXISTS_CUSTOMER = "SELECT EXISTS(SELECT * FROM customer WHERE id = :userId AND pw = :userPw)";
 }
