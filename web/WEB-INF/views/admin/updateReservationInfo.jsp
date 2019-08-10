@@ -14,6 +14,7 @@
     <c:set var="targetDate" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
     <script id="api-nation" data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>" data-nation="${ reservationInfo.nationCode }" src="/js/nation.js"></script>
 
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
@@ -21,14 +22,24 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <img id="nation-flag" src="/image/flags/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
-        <form>
+        <form class="info-form">
+            <img id="nation-flag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
             <input type="hidden" name="reservationNum" value="${ reservationInfo.num }"><br/>
-            국가 : <select id="nation" name="nationCode"></select>
-            금액 : <input type="text" name="price" value="${ reservationInfo.price }"/><br/>
+            <table class="table table-sm ta-center">
+                <tr>
+                    <td>국가</td>
+                    <td><select id="nation" class="form-control ta-center input-sm" name="nationCode"></select></td>
+                </tr>
+                <tr>
+                    <td>금액</td>
+                    <td><input type="text" class="form-control ta-center input-sm" name="price" value="${ reservationInfo.price }"/></td>
+                </tr>
+            </table>
 
-            <input type="submit" formmethod="post" formaction="/admin/update/reservation" value="수정">
-            <input type="submit" formmethod="get" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제">
+            <input type="submit" class="btn btn-sm btn-hana"
+                   formmethod="post" formaction="/admin/update/reservation" value="수정">
+            <input type="submit" class="btn btn-sm btn-hana"
+                   formmethod="get" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제">
         </form>
     </main>
 </body>

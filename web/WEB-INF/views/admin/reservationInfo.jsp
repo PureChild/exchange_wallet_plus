@@ -33,7 +33,7 @@
                     <td>환전 일자</td>
                     <td>
                         <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
-                        <input type="date" class="form-control ta-center"
+                        <input type="date" class="form-control ta-center input-sm"
                                name="exchangeDate"
                                min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"
                                max="${ reservationInfo.departureDate }">
