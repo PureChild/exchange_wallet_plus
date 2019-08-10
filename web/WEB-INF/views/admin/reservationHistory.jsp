@@ -17,26 +17,28 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <table>
-            <thead>
-                <tr>
-                    <td>No.</td>
-                    <td>신청인</td>
-                    <td>금액</td>
-                    <td>마감일자</td>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="reservation" items="${reservationList}">
-                <tr>
-                    <td>${reservation.num}</td>
-                    <td><a href="/admin/reservation/${reservation.num}">${reservation.applicant}</a></td>
-                    <td>${reservation.price}</td>
-                    <td>${reservation.departureDate}</td>
-                </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <div class="main-content">
+            <table>
+                <thead>
+                    <tr>
+                        <td>No.</td>
+                        <td>신청인</td>
+                        <td>금액</td>
+                        <td>마감일자</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="reservation" items="${reservationList}">
+                    <tr>
+                        <td>${reservation.num}</td>
+                        <td><a href="/admin/reservation/${reservation.num}">${reservation.applicant}</a></td>
+                        <td>${reservation.price}</td>
+                        <td>${reservation.departureDate}</td>
+                    </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 </html>

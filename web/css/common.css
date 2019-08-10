@@ -70,7 +70,7 @@ main {
     color: #008485;
     margin-bottom: 50px;
 }
-.login-form, .lookup-form, .main-content {
+.login-form, .lookup-form, .info-form, .main-content {
     width: 350px;
     text-align: center;
 }
@@ -88,6 +88,13 @@ main {
 .menu-item {
     text-decoration: none;
     color: #fff;
+}
+
+/* 국기 */
+.flag {
+    width: 60%;
+    display: block;
+    margin: 0 auto;
 }
 
 /* 로그인, 회원가입 */
@@ -116,4 +123,23 @@ main {
 
 .btn-hana {
     margin-top: 20px;
+}
+
+/* input[type="date"] */
+input[type="date"] {
+    background: url(/image/calendar-icon.png) 95% 50% no-repeat;
+    background-size: 20px 20px;
+}
+input[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+input[type="date"] {
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 auto;
+    width: 160px;
 }

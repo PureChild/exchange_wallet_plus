@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>신청 정보</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
@@ -17,18 +18,34 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <img src="/image/flags/${ reservationInfo.nationCode }.png" alt="nation-flag"/>
-        <form>
-            국가 : ${ nation }
-            금액 : ${ reservationInfo.price }
-            <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
-            환전 일자 : <input type="date"
-                                name="exchangeDate"
-                                min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"
-                                max="${ reservationInfo.departureDate }">
-            <input type="submit" formmethod="post" formaction="/admin/confirm/exchange/${ reservationInfo.num }" value="저장"/>
-            <input type="submit" formmethod="get" formaction="/admin/update/reservation/${ reservationInfo.num }" value="수정"/>
-            <input type="submit" formmethod="get" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제"/>
+        <form class="info-form">
+            <img src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
+            <table class="table table-sm ta-center">
+                <tr>
+                    <td>국가</td>
+                    <td>${ nation }</td>
+                </tr>
+                <tr>
+                    <td>금액</td>
+                    <td>${ reservationInfo.price }</td>
+                </tr>
+                <tr>
+                    <td>환전 일자</td>
+                    <td>
+                        <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
+                        <input type="date" class="form-control ta-center"
+                               name="exchangeDate"
+                               min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"
+                               max="${ reservationInfo.departureDate }">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" class="btn btn-sm btn-hana"
+                   formmethod="post" formaction="/admin/confirm/exchange/${ reservationInfo.num }" value="저장"/>
+            <input type="submit" class="btn btn-sm btn-hana"
+                   formmethod="get" formaction="/admin/update/reservation/${ reservationInfo.num }" value="수정"/>
+            <input type="submit" class="btn btn-sm btn-hana"
+                   formmethod="get" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제"/>
         </form>
     </main>
 </body>
