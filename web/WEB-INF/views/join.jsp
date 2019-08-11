@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
 <body>
-    <%--&lt;%&ndash; 메뉴바 include &ndash;%&gt;--%>
-    <%--<jsp:include page="menu.jsp"/>--%>
+    <%-- 메뉴바 include --%>
+    <jsp:include page="menu.jsp"/>
 
     <main>
         <form class="join-form" action="/joinConfirm" method="post">
