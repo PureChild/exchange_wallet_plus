@@ -1,34 +1,36 @@
 $(document).ready(function(){
-    apiNations.getNation();
+    apiNations.getNation($("#api-nation").data("date"));
+    apiNations.setEvent();
 
-    $("#nation").change(function(){
-        apiNations.getFlag($(this).val());
+    $('body').bind("click", "#nationList", function() {
+        apiNations.setEvent();
     });
 });
 var apiNations = {
-    target_date : $("#api-nation").data("date"),
-    getNation: function() {
-        target_date = this.target_date;
+    getNation: function(targetDate, callback) {
         $.ajax({
             type: 'get',
             dataType: 'json',
             url: 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON',
-            data: {authkey: "TVREMCLuKhL0lEgNOEQq4cRB99gBojKq", searchdate: target_date, data: "AP01"},
+            data: {authkey: "TVREMCLuKhL0lEgNOEQq4cRB99gBojKq", searchdate: targetDate, data: "AP01"},
             success: function (data) {
-                for (var i = 0; i < data.length; i++) {
-                    if(data[i].cur_nm === "유로"){
-                        data[i].cur_nm = "유럽 유로"
-                    } else if(data[i].cur_nm === "위안화"){
-                        data[i].cur_nm = "중국 위안화"
-                    }
-                    var cur_nation = data[i].cur_nm.split(" ")[0];
-                    if (cur_nation === undefined) {
-                        cur_nation = data[i].cur_nm;
-                    }
-                    if(data[i].cur_unit.substring(0,3) === $("#api-nation").data("nation")){
-                        $("#nation").html($("#nation").html() + "<option value='" + data[i].cur_unit.substring(0,3) + "' selected>" + cur_nation + "</option>");
-                    } else {
-                        $("#nation").html($("#nation").html() + "<option value='" + data[i].cur_unit.substring(0,3) + "'>" + cur_nation + "</option>");
+                if(data.length > 0){
+                    $("#nationContainer").html("<select id='nationList' class='form-control ta-center input-sm' name='nationCode'></select>");
+                    for (var i = 0; i < data.length; i++) {
+                        if(data[i].cur_nm === "유로"){
+                            data[i].cur_nm = "유럽 유로"
+                        } else if(data[i].cur_nm === "위안화"){
+                            data[i].cur_nm = "중국 위안화"
+                        }
+                        var cur_nation = data[i].cur_nm.split(" ")[0];
+                        if (cur_nation === undefined) {
+                            cur_nation = data[i].cur_nm;
+                        }
+                        if(data[i].cur_unit.substring(0,3) === $("#api-nation").data("nation")){
+                            $("#nationList").html($("#nationList").html() + "<option value='" + data[i].cur_unit.substring(0,3) + "' selected>" + cur_nation + "</option>");
+                        } else {
+                            $("#nationList").html($("#nationList").html() + "<option value='" + data[i].cur_unit.substring(0,3) + "'>" + cur_nation + "</option>");
+                        }
                     }
                 }
             },
@@ -37,25 +39,16 @@ var apiNations = {
         });
     },
 
-    getFlag: function(nationCode){
-        target_date = this.target_date;
-        $.ajax({
-            type: 'get',
-            dataType: 'json',
-            url: 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON',
-            data: { authkey: "TVREMCLuKhL0lEgNOEQq4cRB99gBojKq", searchdate: target_date, data: "AP01"},
-            success: function(data) {
-                for(var i = 0; i < data.length; i++){
-                    if(nationCode === data[i].cur_unit){
+    setEvent: function () {
+        $("#btnGetNations").unbind();
+        $("#btnGetNations").click(function(){
+            apiNations.getNation($("#businessDate").val());
+            $("#api-nation").data("date", $("#businessDate").val());
+        });
 
-                        $("#nation-flag").attr("src", "/image/flags/" + data[i].cur_unit + ".png");
-
-                        break;
-                    }
-                }
-            },
-            error: function(request,status,error) {
-            }
+        $("#nationList").unbind();
+        $("#nationList").change(function(){
+            $("#nationFlag").attr("src", "/image/flags/" + $(this).val() + ".png");
         });
     }
 };

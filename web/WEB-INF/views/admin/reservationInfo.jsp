@@ -28,8 +28,11 @@
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript" src="/js/chart.js"></script>
 
-            <div id="Line_Controls_Chart">
-                <p class="text-warning" id="msgBeforeDrawChart">환율 정보를 불러오는 중입니다.</p>
+            <div id="Line_Controls_Chart" class="chart-container">
+                <div id="msgBeforeDrawChart" class="loading-msg-container">
+                    <img src="/image/loader.gif" class="img-loader" alt="로딩이미지"/>
+                    <p class="text-warning">환율 정보를 불러오는 중입니다.</p>
+                </div>
                 <!-- 라인 차트 생성할 영역 -->
                 <div id="lineChartArea" class="chart-area"></div>
                 <!-- 컨트롤바를 생성할 영역 -->
@@ -59,9 +62,9 @@
             <input type="submit" class="btn btn-sm btn-hana"
                    formmethod="post" formaction="/admin/confirm/exchange/${ reservationInfo.num }" value="저장"/>
             <input type="submit" class="btn btn-sm btn-hana"
-                   formmethod="get" formaction="/admin/update/reservation/${ reservationInfo.num }" value="수정"/>
+                   formmethod="post" formaction="/admin/update/reservation/${ reservationInfo.num }" value="수정"/>
             <input type="submit" class="btn btn-sm btn-hana"
-                   formmethod="get" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제"/>
+                   formmethod="post" formaction="/admin/delete/reservation/${ reservationInfo.num }" value="삭제"/>
         </form>
     </main>
 </body>

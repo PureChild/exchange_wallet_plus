@@ -41,7 +41,7 @@ var chartDrowFun = {
                     async: false,
                     success: function (data) {
                         for(var i = 0; i < data.length; i++){
-                            if(nationCode === data[i].cur_unit){
+                            if(data[i].cur_unit.includes(nationCode)){
                                 var exchangeRate = Number(data[i].deal_bas_r.replace(",",""));
                                 dataRow = [targetDate, exchangeRate];
                                 chartData.addRow(dataRow);

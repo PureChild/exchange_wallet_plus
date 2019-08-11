@@ -23,12 +23,23 @@
 
     <main>
         <form class="info-form">
-            <img id="nation-flag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
+            <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
             <input type="hidden" name="reservationNum" value="${ reservationInfo.num }"><br/>
             <table class="table table-sm ta-center">
                 <tr>
                     <td>국가</td>
-                    <td><select id="nation" class="form-control ta-center input-sm" name="nationCode"></select></td>
+                    <td>
+                        <div id="nationContainer">
+                            <p class="text-warning text-sm">
+                                <fmt:formatDate type="date" value="${targetDate}" pattern="yyyy년MM월dd일"/>의 국가 목록을 불러올 수 없습니다.
+                            </p>
+                            <label>영업일자
+                                <input type="date" id="businessDate" class="form-control ta-center input-sm"
+                                        max="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"/>
+                            </label>
+                            <button type="button" id="btnGetNations" class="btn btn-sm btn-outline-hana">국가 목록 불러오기</button>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>금액</td>

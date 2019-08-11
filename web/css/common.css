@@ -116,6 +116,18 @@ main.none-img {
 .chart-control-area {
     height: 150px;
 }
+.chart-container{
+    position: relative;
+}
+.loading-msg-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -125px;
+}
 
 /* 로그인, 회원가입 */
 .form-input-label, .form-join-label {
@@ -131,7 +143,7 @@ main.none-img {
     border-color: #008485;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 140, 140, 0.6);
 }
-.input-group-text, .btn-hana, .btn-hana:hover {
+.input-group-text {
     background-color: #008485;
     color: #fff;
 }
@@ -141,8 +153,18 @@ main.none-img {
     text-align: center;
 }
 
-.btn-hana {
+/* 버튼 */
+.btn-hana, .btn-hana:hover  {
     margin-top: 20px;
+    background-color: #008485;
+    color: #fff;
+}
+.btn-outline-hana, .btn-outline-hana:hover {
+    background: none;
+    color: #008485;
+    border: 1px solid #008485;
+    margin: 0 auto;
+    display: block;
 }
 
 /* input[type="date"] */
@@ -164,5 +186,15 @@ input[type="date"] {
 
 .input-sm {
     width: 160px;
+    margin: 0 auto;
+}
+
+.text-sm {
+    font-size: 0.75em;
+}
+
+.img-loader {
+    display: block;
+    width: 30px;
     margin: 0 auto;
 }

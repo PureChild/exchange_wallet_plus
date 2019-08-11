@@ -41,7 +41,7 @@ public class AdminController {
         return "admin/reservationInfo";
     }
 
-    @GetMapping("/update/reservation/{reservationInfoNum}")
+    @PostMapping("/update/reservation/{reservationInfoNum}")
     public String getUpdateReservationInfoPage(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
 
@@ -62,7 +62,7 @@ public class AdminController {
         return "redirect:/admin/reservation/" + reservationNum;
     }
 
-    @GetMapping("/delete/reservation/{reservationInfoNum}")
+    @PostMapping("/delete/reservation/{reservationInfoNum}")
     public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         reservationService.deleteReservationInfo(num);
 
