@@ -22,7 +22,7 @@
     <%-- 메뉴바 include --%>
     <jsp:include page="menu.jsp"/>
 
-    <main>
+    <main class="none-img">
         <div class="main-content">
             <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
             <div id="nationContainer">
@@ -39,7 +39,7 @@
                 <li class="tab-item" data-content="info">환율 정보</li>
                 <li class="tab-item" data-content="issue">이슈</li>
             </ul>
-            <div>
+            <div class="tab-content-container">
                 <div id="exchangeInfoContainer">
                     <table id="exchangeInfo">
                         <tr>

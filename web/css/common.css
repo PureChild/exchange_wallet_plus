@@ -43,7 +43,7 @@ label:focus,
         min-width: 700px;
     }
     main {
-        height: 80%;
+        height: 100vh;
     }
     .menu {
         display: flex;
@@ -99,6 +99,28 @@ main.none-img {
     text-decoration: none;
     color: #fff;
     transition: margin-left 0.5s ease;
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin: 10px auto;
+    padding: 0;
+}
+.tab-item {
+    display: block;
+    width: 100px;
+    color: #008485;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tab-item.selected {
+    border-bottom: 2px solid #008485;
+}
+
+.tab-content-container {
+    height: 300px;
 }
 
 /* 테이블 */

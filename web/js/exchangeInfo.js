@@ -48,6 +48,7 @@ var exchangeInfoPage = {
                     $("#tts").html(data[0].tts);
                     $("#ttb").html(data[0].ttb);
                     $("#exchangeInfo").show();
+                    $(".tab-item:first").addClass("selected");
 
                     $("#nationFlag").attr("src", "/image/flags/" + data[0].cur_unit.substring(0,3) + ".png");
                     $("#nationFlag").show();
@@ -69,6 +70,7 @@ var exchangeInfoPage = {
 
         $("#tabMenu").unbind();
         $("#tabMenu").click(function(e){
+
             var content = $(e.target).data("content");
             if(content === "info"){
                 $("#issueContainer").hide();
@@ -77,6 +79,9 @@ var exchangeInfoPage = {
                 $("#exchangeInfoContainer").hide();
                 $("#issueContainer").show();
             }
+
+            $(".selected").removeClass("selected");
+            $($(e.target).addClass("selected"));
         });
     }
 }
