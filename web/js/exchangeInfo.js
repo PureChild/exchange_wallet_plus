@@ -69,7 +69,14 @@ var exchangeInfoPage = {
 
         $("#tabMenu").unbind();
         $("#tabMenu").click(function(e){
-            console.log(e.target);
+            var content = $(e.target).data("content");
+            if(content === "info"){
+                $("#issueContainer").hide();
+                $("#exchangeInfoContainer").show();
+            } else if(content === "issue"){
+                $("#exchangeInfoContainer").hide();
+                $("#issueContainer").show();
+            }
         });
     }
 }

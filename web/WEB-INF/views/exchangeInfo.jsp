@@ -36,8 +36,8 @@
                 <button type="button" id="btnGetNations" class="btn btn-sm btn-outline-hana">국가 목록 불러오기</button>
             </div>
             <ul id="tabMenu" class="tab-menu">
-                <li class="tab-item">환율 정보</li>
-                <li class="tab-item">이슈</li>
+                <li class="tab-item" data-content="info">환율 정보</li>
+                <li class="tab-item" data-content="issue">이슈</li>
             </ul>
             <div>
                 <div id="exchangeInfoContainer">
