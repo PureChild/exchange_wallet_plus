@@ -7,7 +7,7 @@ $(document).ready(function(){
     });
 });
 var apiNations = {
-    getNation: function(targetDate, callback) {
+    getNation: function(targetDate) {
         $.ajax({
             type: 'get',
             dataType: 'json',
@@ -42,8 +42,8 @@ var apiNations = {
     setEvent: function () {
         $("#btnGetNations").unbind();
         $("#btnGetNations").click(function(){
-            apiNations.getNation($("#businessDate").val());
-            $("#api-nation").data("date", $("#businessDate").val());
+            $("#api-nation").data("date", $("#businessDate").val().replace(/-/g, ""));
+            apiNations.getNation($("#api-nation").data("date"));
         });
 
         $("#nationList").unbind();
