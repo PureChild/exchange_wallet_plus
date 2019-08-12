@@ -56,7 +56,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="issueContainer">이슈 정보 나오는 칸</div>
+                <div id="issueContainer"></div>
             </div>
         </div>
     </main>

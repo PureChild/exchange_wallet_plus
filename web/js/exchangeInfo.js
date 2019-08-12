@@ -59,6 +59,21 @@ var exchangeInfoPage = {
         });
     },
 
+    getIssue: function(keyword){
+        $.ajax({
+            type: 'get',
+            dataType: 'json',
+            url: '/crawling/news/' + keyword,
+            success: function (data) {
+                for(var i = 0; i < data.length; i++){
+                    $("#issueContainer").html($("#issueContainer").html() + data[i].thumb + data[i].title);
+                }
+            },
+            error: function (request, status, error) {
+            }
+        });
+    },
+
     setEvent: function(){
         $("#btnGetNations").click(function(){
             this.setFirstNationInfo($("#businessDate").val());
@@ -77,11 +92,13 @@ var exchangeInfoPage = {
                 $("#exchangeInfoContainer").show();
             } else if(content === "issue"){
                 $("#exchangeInfoContainer").hide();
+
+                this.getIssue($("#nationList option:selected").text());
                 $("#issueContainer").show();
             }
 
             $(".selected").removeClass("selected");
             $($(e.target).addClass("selected"));
-        });
+        }.bind(this));
     }
 }
