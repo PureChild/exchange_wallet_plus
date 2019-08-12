@@ -3,7 +3,7 @@ $(document).ready(function(){
     exchangeInfoPage.setFirstNationInfo($("#api-nation").data("date"));
 
     exchangeInfoPage.setEvent();
-    $('body').bind("click", "#nationList", function() {
+    $('body').bind("click", function() {
         exchangeInfoPage.setEvent();
     });
 
@@ -66,5 +66,10 @@ var exchangeInfoPage = {
         $("#nationList").change(function(){
             this.getExchangeInfo($("#api-nation").data("date"));
         }.bind(this));
+
+        $("#tabMenu").unbind();
+        $("#tabMenu").click(function(e){
+            console.log(e.target);
+        });
     }
 }

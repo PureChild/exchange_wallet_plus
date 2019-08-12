@@ -2,7 +2,7 @@ $(document).ready(function(){
     apiNations.getNation($("#api-nation").data("date"));
     apiNations.setEvent();
 
-    $('body').bind("click", "#nationList", function() {
+    $('body').bind("click", function() {
         apiNations.setEvent();
     });
 });
