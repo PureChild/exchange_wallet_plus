@@ -26,24 +26,18 @@
                         <td>No.</td>
                         <td>국가</td>
                         <td>비고</td>
-                        <td>신청일자</td>
+                        <td>여행 출발 일자</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>테스트</td>
-                        <td><a href="#">테스트</a></td>
-                        <td>테스트</td>
-                        <td>테스트</td>
-                    </tr>
-                <%--<c:forEach var="reservation" items="${reservationList}">--%>
-                    <%--<tr>--%>
-                        <%--<td>${reservation.num}</td>--%>
-                        <%--<td><a href="#">${reservation.applicant}</a></td>--%>
-                        <%--<td>${reservation.price}</td>--%>
-                        <%--<td>${reservation.departureDate}</td>--%>
-                    <%--</tr>--%>
-                <%--</c:forEach>--%>
+                    <c:forEach var="application" items="${applicationList}">
+                        <tr>
+                            <td>번호부여</td>
+                            <td>${application.nationCode}</td>
+                            <td><a href="#">${application.progress}</a></td>
+                            <td>${application.departureDate}</td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
         </div>

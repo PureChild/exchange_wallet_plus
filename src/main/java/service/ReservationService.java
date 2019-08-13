@@ -26,6 +26,10 @@ public class ReservationService {
         return daoFactory.getReservationDao().selectReservationInfos();
     }
 
+    public List<ReservationInfo> getReservationInfosById(String userId) {
+        return daoFactory.getReservationDao().selectReservationInfosById(userId);
+    }
+
     public ReservationInfo getReservationInfoByNum(BigInteger reservationInfoNum) {
         return daoFactory.getReservationDao().selectReservationInfoByNum(reservationInfoNum);
     }

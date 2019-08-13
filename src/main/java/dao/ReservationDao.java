@@ -28,6 +28,12 @@ public class ReservationDao {
         return reservationInfos;
     }
 
+    public List<ReservationInfo> selectReservationInfosById(String userId) {
+        Map<String, String> param = Collections.singletonMap("userId", userId);
+        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BY_ID, param, rowMapper);
+        return reservationInfos;
+    }
+
     public ReservationInfo selectReservationInfoByNum(BigInteger reservationInfoNum) {
         Map<String, BigInteger> param = Collections.singletonMap("num", reservationInfoNum);
         ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_NUM, param, rowMapper);
