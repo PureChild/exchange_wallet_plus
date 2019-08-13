@@ -83,6 +83,9 @@ main.none-img {
 .info-form.chart-form {
     width: 500px;
 }
+.main-content.table-content {
+    width: 600px;
+}
 
 /* 메뉴 */
 .menu-bar {
@@ -187,6 +190,9 @@ main.none-img {
 /* 정렬 */
 .ta-center {
     text-align: center;
+}
+.ta-right {
+    text-align: right;
 }
 
 /* 버튼 */

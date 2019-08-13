@@ -17,7 +17,7 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <div class="main-content">
+        <div class="main-content table-content">
             <table class="table ta-center">
                 <thead class="colored-thead">
                     <tr>

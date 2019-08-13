@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-@Controller
+@RestController
 public class CrawlingController {
-    @ResponseBody
     @GetMapping("/crawling/news/{keyword}")
     public List<Map<String, String>> getCrawlingResult(@PathVariable("keyword") String keyword) throws IOException {
         List<Map<String, String>> results = new ArrayList<>();

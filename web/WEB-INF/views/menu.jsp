@@ -19,7 +19,7 @@
                 <a href="/exchange/apply" class="menu-item">환전 신청</a>
             </li>
             <li>
-                <a href="#" class="menu-item">신청 내역</a>
+                <a href="/application/history" class="menu-item">신청 내역</a>
             </li>
             <li>
                 <a href="#" class="menu-item">목표 환율 설정</a>
