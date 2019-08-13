@@ -13,7 +13,7 @@
         <img class="logo" alt="로고이미지"/>
         <ul class="menu">
             <li>
-                <a href="#" class="menu-item">환율 정보</a>
+                <a href="/exchange/info" class="menu-item">환율 정보</a>
             </li>
             <li>
                 <a href="#" class="menu-item">환전 신청</a>

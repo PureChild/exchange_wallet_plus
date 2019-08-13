@@ -21,7 +21,7 @@ public class CrawlingController {
     public List<Map<String, String>> getCrawlingResult(@PathVariable("keyword") String keyword) throws IOException {
         List<Map<String, String>> results = new ArrayList<>();
 
-        String targetUrl = "https://search.naver.com/search.naver?query=" + keyword + "&where=news";
+        String targetUrl = "https://search.naver.com/search.naver?where=news&query=환율" + keyword;
         Connection connection = Jsoup.connect(targetUrl);
         Document document = Jsoup.parse(new String(connection.execute().bodyAsBytes(),"UTF-8"));
         Elements elements = document.select(".type01 li");

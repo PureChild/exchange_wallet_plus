@@ -41,24 +41,32 @@
             </ul>
             <div class="tab-content-container">
                 <div id="exchangeInfoContainer">
-                    <table id="exchangeInfo">
+                    <table id="exchangeInfo" class="table table-sm ta-center">
                         <tr>
-                            <td>매매기준율</td>
+                            <td class="tlabel">매매기준율</td>
                             <td id="dealBaseRate"></td>
                         </tr>
                         <tr>
-                            <td>송금 보내실 때</td>
+                            <td class="tlabel">송금 보내실 때</td>
                             <td id="tts"></td>
                         </tr>
                         <tr>
-                            <td>송금 받으실 때</td>
+                            <td class="tlabel">송금 받으실 때</td>
                             <td id="ttb"></td>
                         </tr>
                     </table>
                 </div>
-                <div id="issueContainer"></div>
+                <div id="issueContainer">
+                    <img src="/image/loading.gif" class="img-loader issue-loader" alt="로딩이미지"/>
+                    <p class="text-warning">최근 이슈를 불러오는 중입니다.</p>
+                </div>
             </div>
         </div>
     </main>
 </body>
+<script type="text/template" id="issue">
+    <div class="issue">
+        {{thumb}}{{title}}
+    </div>
+</script>
 </html>

@@ -65,8 +65,10 @@ var exchangeInfoPage = {
             dataType: 'json',
             url: '/crawling/news/' + keyword,
             success: function (data) {
+                $("#issueContainer").empty();
                 for(var i = 0; i < data.length; i++){
-                    $("#issueContainer").html($("#issueContainer").html() + data[i].thumb + data[i].title);
+                    var issue = $("#issue").text().replace("{{thumb}}", data[i].thumb).replace("{{title}}",data[i].title);
+                    $("#issueContainer").html($("#issueContainer").html() + issue);
                 }
             },
             error: function (request, status, error) {
@@ -81,6 +83,9 @@ var exchangeInfoPage = {
 
         $("#nationList").change(function(){
             this.getExchangeInfo($("#api-nation").data("date"));
+
+            var keyword = $("option[value=" + $("#nationList").val() + "]").text();
+            this.getIssue(keyword);
         }.bind(this));
 
         $("#tabMenu").unbind();
@@ -93,7 +98,9 @@ var exchangeInfoPage = {
             } else if(content === "issue"){
                 $("#exchangeInfoContainer").hide();
 
-                this.getIssue($("#nationList option:selected").text());
+
+                var keyword = $("option[value=" + $("#nationList").val() + "]").text();
+                this.getIssue(keyword);
                 $("#issueContainer").show();
             }
 
