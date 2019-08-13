@@ -41,12 +41,12 @@ public class ReservationDao {
     }
 
     public void updateReservationInfo(ReservationInfo reservationInfo) {
-        Map<String, Object> param = new HashMap<>();
-        param.put("num", reservationInfo.getNum());
-        param.put("nationCode", reservationInfo.getNationCode());
-        param.put("price", reservationInfo.getPrice());
+        Map<String, Object> params = new HashMap<>();
+        params.put("num", reservationInfo.getNum());
+        params.put("nationCode", reservationInfo.getNationCode());
+        params.put("price", reservationInfo.getPrice());
 
-        jdbc.update(UPDATE_RESERVATION_INFO, param);
+        jdbc.update(UPDATE_RESERVATION_INFO, params);
     }
 
     public void deleteReservationInfo(BigInteger reservationInfoNum) {
@@ -68,5 +68,15 @@ public class ReservationDao {
 
         }
         return reservationInfo;
+    }
+
+    public void insertReservationInfo(ReservationInfo reservationInfo) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("nationCode", reservationInfo.getNationCode());
+        params.put("price", reservationInfo.getPrice());
+        params.put("departureDate", reservationInfo.getDepartureDate());
+        params.put("userId", "tester");
+
+        jdbc.update(INSERT_RESERVATION_INFO, params);
     }
 }

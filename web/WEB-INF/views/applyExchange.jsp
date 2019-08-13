@@ -23,7 +23,7 @@
     <jsp:include page="menu.jsp"/>
 
     <main>
-        <form class="info-form" action="" method="post">
+        <form class="info-form" action="/make/reservation" method="post">
             <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
             <table class="table table-sm ta-center">
                 <tr>
@@ -51,7 +51,7 @@
                     <td class="tlabel-sm">여행 출발 일자</td>
                     <td>
                         <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
-                        <input type="date" class="form-control ta-center" name="exchangeDate"
+                        <input type="date" class="form-control ta-center" name="departureDate"
                                min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"/>
                     </td>
                 </tr>

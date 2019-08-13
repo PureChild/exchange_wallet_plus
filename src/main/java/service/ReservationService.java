@@ -96,4 +96,8 @@ public class ReservationService {
 
         return progressList;
     }
+
+    public void makeReservation(ReservationInfo reservationInfo) {
+        daoFactory.getReservationDao().insertReservationInfo(reservationInfo);
+    }
 }

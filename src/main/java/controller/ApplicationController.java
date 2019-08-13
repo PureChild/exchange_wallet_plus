@@ -4,7 +4,10 @@ import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import service.ReservationService;
 
 import java.util.List;
@@ -14,7 +17,7 @@ public class ApplicationController {
     @Autowired
     ReservationService reservationService;
 
-    @RequestMapping("/application/history")
+    @GetMapping("/application/history")
     public String getApplications(ModelMap model){
         String userId = "tester";
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId);
@@ -25,5 +28,12 @@ public class ApplicationController {
         model.put("nationList", nationList);
         model.put("progressList", progressList);
         return "applicationHistory";
+    }
+
+    @PostMapping("/make/reservation")
+    public String makeReservation(@ModelAttribute("reservationInfo") ReservationInfo reservationInfo){
+        reservationService.makeReservation(reservationInfo);
+
+        return "redirect:/application/history";
     }
 }

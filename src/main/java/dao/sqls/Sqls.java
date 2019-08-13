@@ -22,6 +22,8 @@ public class Sqls {
                                                                             + " AND cei.exchange_code = :exchangeCode "
                                                                             + " AND ri.progress = 1";
 
+    public static final String INSERT_RESERVATION_INFO = "INSERT INTO reservation_info(applicant, price, departure_date, nation_code) VALUES(:userId, :price, :departureDate, :nationCode)";
+
     /**
      * 회원가입, 로그인 관련
      */
