@@ -28,4 +28,8 @@ public class DaoFactory {
     public CustomerDao getCustomerDao() {
         return new CustomerDao(dataSource);
     }
+
+    public TargetRateDao getTargetRateDao() {
+        return new TargetRateDao(dataSource);
+    }
 }

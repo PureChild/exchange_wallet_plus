@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.ConvertService;
 import service.ReservationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     ReservationService reservationService;
+    @Autowired
+    ConvertService convertService;
 
     @GetMapping("/reservation/history")
     public String getReservationInfos(ModelMap model){
@@ -34,7 +37,7 @@ public class AdminController {
     @GetMapping("/reservation/{reservationInfoNum}")
     public String getReservationInfoByNum(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
-        String nation = reservationService.convertNationCodeToName(reservationInfo.getNationCode());
+        String nation = convertService.convertNationCodeToName(reservationInfo.getNationCode());
 
         model.put("reservationInfo", reservationInfo);
         model.put("nation", nation);
@@ -87,7 +90,7 @@ public class AdminController {
         if(reservationInfo.isPresent()){
             model.put("result", reservationInfo.get());
 
-            String nation = reservationService.convertNationCodeToName(reservationInfo.get().getNationCode());
+            String nation = convertService.convertNationCodeToName(reservationInfo.get().getNationCode());
             model.put("nation", nation);
         } else {
             model.put("result", "not found");

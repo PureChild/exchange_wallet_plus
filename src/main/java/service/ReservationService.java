@@ -15,13 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@PropertySource(value = "classpath:exchange.api.properties", encoding="UTF-8")
 public class ReservationService {
     @Autowired
     private DaoFactory daoFactory;
-    @Resource
-    private Environment environment;
-
 
     public List<ReservationInfo> getReservationInfos() {
         return daoFactory.getReservationDao().selectReservationInfos();
@@ -41,10 +37,6 @@ public class ReservationService {
 
     public void deleteReservationInfo(BigInteger reservationInfoNum) {
         daoFactory.getReservationDao().deleteReservationInfo(reservationInfoNum);
-    }
-
-    public String convertNationCodeToName(String nationCode) {
-        return environment.getProperty("nation.code." + nationCode);
     }
 
     public void confirmExchangeReservation(ConfirmedExchangeInfo exchangeInfo) {
@@ -77,24 +69,6 @@ public class ReservationService {
 
     public void closeExchangeReservation(BigInteger reservationInfoNum) {
         daoFactory.getReservationDao().updateReservationProgress(reservationInfoNum);
-    }
-
-    public List<String> convertNationCodeToName(List<ReservationInfo> reservationInfoList) {
-        List<String> nationList = new ArrayList<>();
-        for(ReservationInfo reservation : reservationInfoList){
-            nationList.add(environment.getProperty("nation.code." + reservation.getNationCode()));
-        }
-
-        return nationList;
-    }
-
-    public List<String> convertProgressCodeToString(List<ReservationInfo> reservationInfoList) {
-        List<String> progressList = new ArrayList<>();
-        for(ReservationInfo reservation : reservationInfoList){
-            progressList.add(environment.getProperty("progress." + reservation.getProgress()));
-        }
-
-        return progressList;
     }
 
     public void makeReservation(ReservationInfo reservationInfo) {

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import service.ConvertService;
 import service.ReservationService;
 
 import java.util.List;
@@ -16,13 +17,15 @@ import java.util.List;
 public class ApplicationController {
     @Autowired
     ReservationService reservationService;
+    @Autowired
+    ConvertService convertService;
 
     @GetMapping("/application/history")
     public String getApplications(ModelMap model){
         String userId = "tester";
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId);
-        List<String> nationList = reservationService.convertNationCodeToName(reservationInfoList);
-        List<String> progressList = reservationService.convertProgressCodeToString(reservationInfoList);
+        List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
+        List<String> progressList = convertService.convertProgressCodeToString(reservationInfoList);
 
         model.put("applicationList", reservationInfoList);
         model.put("nationList", nationList);

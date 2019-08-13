@@ -29,4 +29,9 @@ public class Sqls {
      */
     public static final String INSERT_CUSTOMER = "INSERT INTO customer(id, pw, name, account) VALUES(:userId, :userPw, :userName, :userAccount)";
     public static final String SELECT_EXISTS_CUSTOMER = "SELECT EXISTS(SELECT * FROM customer WHERE id = :userId AND pw = :userPw)";
+
+    /**
+     * 목표 환율 설정 관련
+     */
+    public static final String SELECT_ALL_TARGET_RATES = "SELECT nation_code, id, rate FROM target_rate WHERE id = :userId";
 }
