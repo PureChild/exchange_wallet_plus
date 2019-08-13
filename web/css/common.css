@@ -131,6 +131,12 @@ main.none-img {
 .tlabel {
     width: 50%;
 }
+.tlabel-sm {
+    width: 120px;
+}
+.tcontent-apply-nation select {
+    width: 100%;
+}
 
 /* 국기 */
 .flag {

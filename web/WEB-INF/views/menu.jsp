@@ -16,7 +16,7 @@
                 <a href="/exchange/info" class="menu-item">환율 정보</a>
             </li>
             <li>
-                <a href="#" class="menu-item">환전 신청</a>
+                <a href="/exchange/apply" class="menu-item">환전 신청</a>
             </li>
             <li>
                 <a href="#" class="menu-item">신청 내역</a>
