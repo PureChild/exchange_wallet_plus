@@ -18,8 +18,12 @@ public class ApplicationController {
     public String getApplications(ModelMap model){
         String userId = "tester";
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId);
+        List<String> nationList = reservationService.convertNationCodeToName(reservationInfoList);
+        List<String> progressList = reservationService.convertProgressCodeToString(reservationInfoList);
 
         model.put("applicationList", reservationInfoList);
+        model.put("nationList", nationList);
+        model.put("progressList", progressList);
         return "applicationHistory";
     }
 }

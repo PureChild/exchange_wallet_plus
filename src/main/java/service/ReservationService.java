@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,5 +77,23 @@ public class ReservationService {
 
     public void closeExchangeReservation(BigInteger reservationInfoNum) {
         daoFactory.getReservationDao().updateReservationProgress(reservationInfoNum);
+    }
+
+    public List<String> convertNationCodeToName(List<ReservationInfo> reservationInfoList) {
+        List<String> nationList = new ArrayList<>();
+        for(ReservationInfo reservation : reservationInfoList){
+            nationList.add(environment.getProperty("nation.code." + reservation.getNationCode()));
+        }
+
+        return nationList;
+    }
+
+    public List<String> convertProgressCodeToString(List<ReservationInfo> reservationInfoList) {
+        List<String> progressList = new ArrayList<>();
+        for(ReservationInfo reservation : reservationInfoList){
+            progressList.add(environment.getProperty("progress." + reservation.getProgress()));
+        }
+
+        return progressList;
     }
 }

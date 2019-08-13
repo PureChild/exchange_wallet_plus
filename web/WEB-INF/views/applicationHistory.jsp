@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
     <title>신청 내역</title>
@@ -30,12 +31,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="application" items="${applicationList}">
+                    <c:forEach var="i" begin="1" end="${fn:length(applicationList)}">
                         <tr>
-                            <td>번호부여</td>
-                            <td>${application.nationCode}</td>
-                            <td><a href="#">${application.progress}</a></td>
-                            <td>${application.departureDate}</td>
+                            <td>${fn:length(applicationList) - i + 1}</td>
+                            <td>${nationList[i - 1]}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${applicationList[i - 1].progress == 1}">
+                                        <a href="#">${progressList[i - 1]}</a>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${progressList[i - 1]}
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>${applicationList[i - 1].departureDate}</td>
                         </tr>
                     </c:forEach>
                 </tbody>
