@@ -33,7 +33,7 @@
                 <c:forEach var="i" begin="1" end="${fn:length(targetRates)}">
                     <tr>
                         <td>${fn:length(targetRates) - i + 1}</td>
-                        <td>${nationList[i - 1]}</td>
+                        <td><a href="/exchange/rate/${targetRates[i - 1].nationCode}">${nationList[i - 1]}</a></td>
                         <td>${targetRates[i - 1].rate}</td>
                     </tr>
                 </c:forEach>

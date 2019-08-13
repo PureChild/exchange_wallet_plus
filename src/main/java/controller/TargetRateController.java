@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import service.ConvertService;
 import service.TargetRateService;
 
@@ -27,5 +28,17 @@ public class TargetRateController {
         model.put("nationList", nationList);
 
         return "targetRateList";
+    }
+
+    @GetMapping("/exchange/rate/{nationCode}")
+    public String getDetailTargetRate(ModelMap model, @PathVariable("nationCode") String nationCode){
+        String id = "tester";
+        TargetRate targetRate = targetRateService.getTargetRate(id, nationCode);
+        String nation = convertService.convertNationCodeToName(nationCode);
+
+        model.put("targetRateInfo", targetRate);
+        model.put("nation", nation);
+
+        return "detailTargetRate";
     }
 }

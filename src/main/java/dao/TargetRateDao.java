@@ -8,10 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static dao.sqls.Sqls.SELECT_ALL_TARGET_RATES;
+import static dao.sqls.Sqls.SELECT_TARGET_RATE;
 
 @Repository
 public class TargetRateDao {
@@ -26,5 +28,15 @@ public class TargetRateDao {
         Map<String, String> param = Collections.singletonMap("userId", userId);
         List<TargetRate> targetRates = jdbc.query(SELECT_ALL_TARGET_RATES, param, rowMapper);
         return targetRates;
+    }
+
+    public TargetRate selectTargetRate(String userId, String nationCode) {
+        Map<String, String> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("nationCode", nationCode);
+
+        TargetRate targetRate = jdbc.queryForObject(SELECT_TARGET_RATE, params, rowMapper);
+
+        return targetRate;
     }
 }

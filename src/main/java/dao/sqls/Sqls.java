@@ -34,4 +34,5 @@ public class Sqls {
      * 목표 환율 설정 관련
      */
     public static final String SELECT_ALL_TARGET_RATES = "SELECT nation_code, id, rate FROM target_rate WHERE id = :userId";
+    public static final String SELECT_TARGET_RATE = "SELECT id, nation_code, rate FROM target_rate WHERE id = :userId AND nation_code = :nationCode";
 }

@@ -15,4 +15,8 @@ public class TargetRateService {
     public List<TargetRate> getTargetRates(String userId) {
         return daoFactory.getTargetRateDao().selectAllTargetRates(userId);
     }
+
+    public TargetRate getTargetRate(String userId, String nationCode) {
+        return daoFactory.getTargetRateDao().selectTargetRate(userId, nationCode);
+    }
 }
