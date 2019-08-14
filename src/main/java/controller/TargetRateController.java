@@ -54,4 +54,17 @@ public class TargetRateController {
 
         return "redirect:/exchange/rates";
     }
+
+    @GetMapping("/delete/exchange/rate/{nationCode}")
+    public String deleteTargetRate(@PathVariable("nationCode") String nationCode){
+        String id = "tester";
+
+        TargetRate targetRate = new TargetRate();
+        targetRate.setId(id);
+        targetRate.setNationCode(nationCode);
+
+        targetRateService.deleteTargetRate(targetRate);
+
+        return "redirect:/exchange/rates";
+    }
 }

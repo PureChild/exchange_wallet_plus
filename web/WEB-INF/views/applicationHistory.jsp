@@ -33,7 +33,7 @@
                 <tbody>
                     <c:forEach var="i" begin="1" end="${fn:length(applicationList)}">
                         <tr>
-                            <td>${fn:length(applicationList) - i + 1}</td>
+                            <td>${i}</td>
                             <td>${nationList[i - 1]}</td>
                             <td>
                                 <c:choose>

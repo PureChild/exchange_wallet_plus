@@ -23,4 +23,8 @@ public class TargetRateService {
     public void addTargetRate(TargetRate targetRate) {
         daoFactory.getTargetRateDao().insertTargetRate(targetRate);
     }
+
+    public void deleteTargetRate(TargetRate targetRate) {
+        daoFactory.getTargetRateDao().deleteTargetRate(targetRate);
+    }
 }

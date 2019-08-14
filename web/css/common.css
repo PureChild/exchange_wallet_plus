@@ -76,7 +76,7 @@ main.none-img {
     color: #008485;
     margin-bottom: 50px;
 }
-.login-form, .lookup-form, .info-form, .main-content {
+.login-form, .join-form, .lookup-form, .info-form, .main-content {
     width: 350px;
     text-align: center;
 }
