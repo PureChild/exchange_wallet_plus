@@ -23,11 +23,16 @@ public class ConfirmedExchangeDao {
     }
 
     public void insertConfirmedReservationInfo(ConfirmedExchangeInfo exchangeInfo) {
-        Map<String, Object> param = new HashMap<>();
-        param.put("reservationNum", exchangeInfo.getReservationNum());
-        param.put("exchangeDate", exchangeInfo.getExchangeDate());
-        param.put("exchangeCode", exchangeInfo.getExchangeCode());
+        Map<String, Object> params = new HashMap<>();
+        params.put("reservationNum", exchangeInfo.getReservationNum());
+        params.put("exchangeDate", exchangeInfo.getExchangeDate());
+        params.put("exchangeCode", exchangeInfo.getExchangeCode());
 
-        jdbc.update(INSERT_CONFIRM_EXCHANGE_INFO, param);
+        jdbc.update(INSERT_CONFIRM_EXCHANGE_INFO, params);
+    }
+
+    public ConfirmedExchangeInfo selectConfirmedExchangeInfo(BigInteger reservationInfoNum) {
+        Map<String, BigInteger> param = Collections.singletonMap("reservationNum", reservationInfoNum);
+        return jdbc.queryForObject(SELECT_CONFIRMED_EXCHANGE_INFO, param, rowMapper);
     }
 }

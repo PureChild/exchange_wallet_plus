@@ -74,4 +74,12 @@ public class ReservationService {
     public void makeReservation(ReservationInfo reservationInfo) {
         daoFactory.getReservationDao().insertReservationInfo(reservationInfo);
     }
+
+    public ReservationInfo getReservationInfoByIdAndNationCode(String id, String nationCode) {
+        return daoFactory.getReservationDao().selectReservationInfoByIdAndNationCode(id, nationCode);
+    }
+
+    public ConfirmedExchangeInfo getConfirmedExchangeInfoByNum(BigInteger reservationInfoNum) {
+        return daoFactory.getConfirmedExchangeDao().selectConfirmedExchangeInfo(reservationInfoNum);
+    }
 }

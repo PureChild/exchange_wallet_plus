@@ -1,13 +1,11 @@
 package controller;
 
+import dto.ConfirmedExchangeInfo;
 import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import service.ConvertService;
 import service.ReservationService;
 
@@ -38,5 +36,19 @@ public class ApplicationController {
         reservationService.makeReservation(reservationInfo);
 
         return "redirect:/application/history";
+    }
+
+    @GetMapping("/application/result/{nationCode}")
+    public String getApplicationResult(ModelMap model, @PathVariable("nationCode") String nationCode){
+        String id = "tester";
+        ReservationInfo reservationInfo = reservationService.getReservationInfoByIdAndNationCode(id, nationCode);
+        ConfirmedExchangeInfo confirmedExchangeInfo = reservationService.getConfirmedExchangeInfoByNum(reservationInfo.getNum());
+        String nation = convertService.convertNationCodeToName(nationCode);
+
+        model.put("reservationInfo", reservationInfo);
+        model.put("confirmedExchangeInfo", confirmedExchangeInfo);
+        model.put("nation", nation);
+
+        return "applicationResult";
     }
 }

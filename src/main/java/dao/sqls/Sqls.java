@@ -22,7 +22,14 @@ public class Sqls {
                                                                             + " AND cei.exchange_code = :exchangeCode "
                                                                             + " AND ri.progress = 1";
 
+    public static final String SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE = "SELECT num, nation_code, price FROM reservation_info WHERE applicant = :userId AND nation_code = :nationCode";
+
     public static final String INSERT_RESERVATION_INFO = "INSERT INTO reservation_info(applicant, price, departure_date, nation_code) VALUES(:userId, :price, :departureDate, :nationCode)";
+
+    /**
+     * 확정 예약 조회
+     */
+    public static final String SELECT_CONFIRMED_EXCHANGE_INFO = "SELECT exchange_date, exchange_code FROM confirmed_exchange_info WHERE reservation_num = :reservationNum";
 
     /**
      * 회원가입, 로그인 관련

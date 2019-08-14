@@ -79,4 +79,13 @@ public class ReservationDao {
 
         jdbc.update(INSERT_RESERVATION_INFO, params);
     }
+
+    public ReservationInfo selectReservationInfoByIdAndNationCode(String id, String nationCode) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", id);
+        params.put("nationCode", nationCode);
+
+        ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE, params, rowMapper);
+        return reservationInfo;
+    }
 }
