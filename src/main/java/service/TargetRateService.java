@@ -19,4 +19,8 @@ public class TargetRateService {
     public TargetRate getTargetRate(String userId, String nationCode) {
         return daoFactory.getTargetRateDao().selectTargetRate(userId, nationCode);
     }
+
+    public void addTargetRate(TargetRate targetRate) {
+        daoFactory.getTargetRateDao().insertTargetRate(targetRate);
+    }
 }

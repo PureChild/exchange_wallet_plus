@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static dao.sqls.Sqls.INSERT_TARGET_RATE;
 import static dao.sqls.Sqls.SELECT_ALL_TARGET_RATES;
 import static dao.sqls.Sqls.SELECT_TARGET_RATE;
 
@@ -38,5 +39,14 @@ public class TargetRateDao {
         TargetRate targetRate = jdbc.queryForObject(SELECT_TARGET_RATE, params, rowMapper);
 
         return targetRate;
+    }
+
+    public void insertTargetRate(TargetRate targetRate) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", targetRate.getId());
+        params.put("nationCode", targetRate.getNationCode());
+        params.put("rate", targetRate.getRate());
+
+        jdbc.update(INSERT_TARGET_RATE, params);
     }
 }
