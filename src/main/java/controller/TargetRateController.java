@@ -4,15 +4,13 @@ import dto.TargetRate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.ConvertService;
 import service.TargetRateService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class TargetRateController {
@@ -45,12 +43,38 @@ public class TargetRateController {
         return "detailTargetRate";
     }
 
+    @GetMapping({"/{mode}/exchange/rate", "/{mode}/rate/nation/{nationCode}"})
+    public String getInsertTargetRatePage(ModelMap model
+                                            , @PathVariable("mode") String mode
+                                            , @PathVariable("nationCode") Optional<String> nationCode){
+        String id = "tester";
+        if(nationCode.isPresent()){
+            model.put("nationCode", nationCode.get());
+            model.put("targetRate", targetRateService.getTargetRate(id, nationCode.get()));
+        } else {
+            model.put("nationCode", "");
+        }
+
+        return "newTargetRate";
+    }
+
     @PostMapping("/insert/exchange/rate")
     public String addTargetExchangeRate(@ModelAttribute("targetRate") TargetRate targetRate){
         String id = "tester";
         targetRate.setId(id);
 
         targetRateService.addTargetRate(targetRate);
+
+        return "redirect:/exchange/rates";
+    }
+
+    @PostMapping("/update/exchange/rate")
+    public String updateTargetExchangeRate(@RequestParam("originNationCode") String originNationCode
+                                            , @ModelAttribute("targetRate") TargetRate targetRate){
+        String id = "tester";
+        targetRate.setId(id);
+
+        targetRateService.updateTargetRate(originNationCode, targetRate);
 
         return "redirect:/exchange/rates";
     }

@@ -50,8 +50,10 @@ var exchangeInfoPage = {
                     $("#exchangeInfo").show();
                     $(".tab-item:first").addClass("selected");
 
-                    $("#nationFlag").attr("src", "/image/flags/" + data[0].cur_unit.substring(0,3) + ".png");
-                    $("#nationFlag").show();
+                    if($("#nationFlag").attr("src") === "/image/flags/.png") {
+                        $("#nationFlag").attr("src", "/image/flags/" + data[0].cur_unit.substring(0, 3) + ".png");
+                        $("#nationFlag").show();
+                    }
                 }
             },
             error: function (request, status, error) {

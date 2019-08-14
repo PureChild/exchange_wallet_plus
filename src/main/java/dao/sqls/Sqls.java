@@ -39,4 +39,6 @@ public class Sqls {
     public static final String INSERT_TARGET_RATE = "INSERT INTO target_rate(id, nation_code, rate) VALUES(:userId, :nationCode, :rate)";
 
     public static final String DELETE_TARGET_RATE = "DELETE FROM target_rate WHERE id = :userId AND nation_code = :nationCode";
+
+    public static final String UPDATE_TARGET_RATE = "UPDATE target_rate SET nation_code = :nationCode, rate = :rate WHERE id = :userId AND nation_code = :originNationCode";
 }

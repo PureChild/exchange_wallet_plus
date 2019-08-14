@@ -27,4 +27,8 @@ public class TargetRateService {
     public void deleteTargetRate(TargetRate targetRate) {
         daoFactory.getTargetRateDao().deleteTargetRate(targetRate);
     }
+
+    public void updateTargetRate(String originNationCode, TargetRate targetRate) {
+        daoFactory.getTargetRateDao().updateTargetRate(originNationCode, targetRate);
+    }
 }

@@ -55,4 +55,14 @@ public class TargetRateDao {
 
         jdbc.update(DELETE_TARGET_RATE, params);
     }
+
+    public void updateTargetRate(String originNationCode, TargetRate targetRate) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", targetRate.getId());
+        params.put("nationCode", targetRate.getNationCode());
+        params.put("rate", targetRate.getRate());
+        params.put("originNationCode", originNationCode);
+
+        jdbc.update(UPDATE_TARGET_RATE, params);
+    }
 }

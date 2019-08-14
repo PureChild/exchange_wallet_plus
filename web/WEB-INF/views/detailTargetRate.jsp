@@ -49,7 +49,7 @@
                 </label>
                 <button type="button" id="btnGetRates" class="btn btn-sm btn-outline-hana">환율 정보 불러오기</button>
             </div>
-            <a href="/update/exchange/rate/${ targetRateInfo.nationCode }" class="btn btn-sm btn-hana">수정</a>
+            <a href="/update/rate/nation/${ targetRateInfo.nationCode }" class="btn btn-sm btn-hana">수정</a>
             <a href="/delete/exchange/rate/${ targetRateInfo.nationCode }" class="btn btn-sm btn-hana">삭제</a>
         </div>
     </main>

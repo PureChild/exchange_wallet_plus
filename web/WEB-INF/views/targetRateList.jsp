@@ -19,7 +19,7 @@
     <main>
         <div class="main-content table-content">
             <div class="ta-right">
-                <a href="/add/exchange/rate" class="btn btn-sm btn-hana">신규</a>
+                <a href="/insert/exchange/rate" class="btn btn-sm btn-hana">신규</a>
             </div>
             <table class="table ta-center">
                 <thead class="colored-thead">
