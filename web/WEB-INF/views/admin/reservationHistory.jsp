@@ -5,6 +5,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <% request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
@@ -23,17 +24,19 @@
                     <tr>
                         <td>No.</td>
                         <td>신청인</td>
+                        <td>국가</td>
                         <td>금액</td>
                         <td>마감일자</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="reservation" items="${reservationList}">
+                    <c:forEach var="i" begin="1" end="${fn:length(reservationList)}">
                     <tr>
-                        <td>${reservation.num}</td>
-                        <td><a href="/admin/reservation/${reservation.num}">${reservation.applicant}</a></td>
-                        <td>${reservation.price}</td>
-                        <td>${reservation.departureDate}</td>
+                        <td>${reservationList[i - 1].num}</td>
+                        <td><a href="/admin/reservation/${reservationList[i - 1].num}">${reservationList[i - 1].applicant}</a></td>
+                        <td>${nationList[i - 1]}</td>
+                        <td>${reservationList[i - 1].price}</td>
+                        <td>${reservationList[i - 1].departureDate}</td>
                     </tr>
                     </c:forEach>
                 </tbody>

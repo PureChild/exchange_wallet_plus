@@ -29,8 +29,11 @@ public class AdminController {
     @GetMapping("/reservation/history")
     public String getReservationInfos(ModelMap model){
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos();
+        List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
 
         model.put("reservationList", reservationInfoList);
+        model.put("nationList", nationList);
+
         return "admin/reservationHistory";
     }
 
