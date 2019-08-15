@@ -1,6 +1,7 @@
 $(document).ready(function(){
     exchangeInfoPage.getExchangeInfo($("#api-nation").data("date"));
     exchangeInfoPage.setFirstNationInfo($("#api-nation").data("date"));
+    $("#nationFlag").data("speech", "false");
 
     exchangeInfoPage.setEvent();
     $('body').bind("click", function() {
@@ -78,6 +79,24 @@ var exchangeInfoPage = {
         });
     },
 
+    readInfo: function(){
+        var dealBaseRate = $("#dealBaseRate").text();
+        var tts = $("#tts").text();
+        var ttb = $("#ttb").text();
+
+        var exchangeInfo = new SpeechSynthesisUtterance();
+        exchangeInfo.rate = 1.5; // 0.1 to 10
+        exchangeInfo.pitch = 1; //0 to 2
+        exchangeInfo.text = "정보()해당 국가의 현재 매매기준율은 " + dealBaseRate + "원이며"
+                        + ", 전신환(송금) 보내실 때 " + tts + "원"
+                        + ", 전신환(송금) 받으실 때 " + ttb + "원 입니다.";
+        exchangeInfo.onend = function() {
+            $("#nationFlag").data("speech", "false");
+        };
+
+        window.speechSynthesis.speak(exchangeInfo);
+    },
+
     setEvent: function(){
         $("#btnGetNations").click(function(){
             this.setFirstNationInfo($("#businessDate").val());
@@ -108,6 +127,17 @@ var exchangeInfoPage = {
 
             $(".selected").removeClass("selected");
             $($(e.target).addClass("selected"));
+        }.bind(this));
+
+        $("#nationFlag").unbind();
+        $("#nationFlag").click(function () {
+            if($("#nationFlag").data("speech") == "true"){
+                window.speechSynthesis.cancel();
+                $("#nationFlag").data("speech", "false");
+            } else if($("#nationFlag").data("speech") == "false"){
+                this.readInfo();
+                $("#nationFlag").data("speech", "true");
+            }
         }.bind(this));
     }
 }

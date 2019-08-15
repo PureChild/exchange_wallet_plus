@@ -301,6 +301,9 @@ main.none-img {
     margin: 0 auto;
     display: block;
 }
+.btn-speech {
+    cursor: pointer;
+}
 
 /* input[type="date"] */
 input[type="date"] {

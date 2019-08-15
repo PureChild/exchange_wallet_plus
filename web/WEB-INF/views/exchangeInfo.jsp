@@ -25,7 +25,7 @@
 
     <main class="none-img">
         <div class="main-content">
-            <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
+            <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag btn-speech" data-speech="false" alt="nation-flag"/>
             <div id="nationContainer">
                 <p class="text-warning text-sm">
                     <fmt:formatDate type="date" value="${targetDate}" pattern="yyyy년MM월dd일"/>의 국가 목록을 불러올 수 없습니다.
@@ -45,15 +45,15 @@
                     <table id="exchangeInfo" class="table table-sm ta-center">
                         <tr>
                             <td class="tlabel">매매기준율</td>
-                            <td id="dealBaseRate"></td>
+                            <td><p id="dealBaseRate"></p></td>
                         </tr>
                         <tr>
                             <td class="tlabel">송금 보내실 때</td>
-                            <td id="tts"></td>
+                            <td><p id="tts"></p></td>
                         </tr>
                         <tr>
                             <td class="tlabel">송금 받으실 때</td>
-                            <td id="ttb"></td>
+                            <td><p id="ttb"></p></td>
                         </tr>
                     </table>
                 </div>
