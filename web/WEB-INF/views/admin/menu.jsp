@@ -4,6 +4,7 @@
   Time: 오후 8:51
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,11 @@
             <li>
                 <a href="/admin/lookup" class="menu-item">환전 코드 조회</a>
             </li>
+            <c:if test="${loginUser eq 'admin'}">
+                <li>
+                    <a href="/admin/logout" class="menu-item btn-logout">로그아웃</a>
+                </li>
+            </c:if>
         </ul>
     </nav>
 </body>

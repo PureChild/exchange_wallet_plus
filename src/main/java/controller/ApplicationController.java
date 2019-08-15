@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.ConvertService;
 import service.ReservationService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -19,8 +20,8 @@ public class ApplicationController {
     ConvertService convertService;
 
     @GetMapping("/application/history")
-    public String getApplications(ModelMap model){
-        String userId = "tester";
+    public String getApplications(HttpSession httpSession, ModelMap model){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId);
         List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
         List<String> progressList = convertService.convertProgressCodeToString(reservationInfoList);
@@ -32,16 +33,17 @@ public class ApplicationController {
     }
 
     @PostMapping("/make/reservation")
-    public String makeReservation(@ModelAttribute("reservationInfo") ReservationInfo reservationInfo){
+    public String makeReservation(HttpSession httpSession, @ModelAttribute("reservationInfo") ReservationInfo reservationInfo){
+        reservationInfo.setApplicant(String.valueOf(httpSession.getAttribute("loginUser")));
         reservationService.makeReservation(reservationInfo);
 
         return "redirect:/application/history";
     }
 
     @GetMapping("/application/result/{nationCode}")
-    public String getApplicationResult(ModelMap model, @PathVariable("nationCode") String nationCode){
-        String id = "tester";
-        ReservationInfo reservationInfo = reservationService.getReservationInfoByIdAndNationCode(id, nationCode);
+    public String getApplicationResult(HttpSession httpSession, ModelMap model, @PathVariable("nationCode") String nationCode){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+        ReservationInfo reservationInfo = reservationService.getReservationInfoByIdAndNationCode(userId, nationCode);
         ConfirmedExchangeInfo confirmedExchangeInfo = reservationService.getConfirmedExchangeInfoByNum(reservationInfo.getNum());
         String nation = convertService.convertNationCodeToName(nationCode);
 

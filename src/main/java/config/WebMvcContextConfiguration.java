@@ -67,7 +67,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/*").excludePathPatterns("/admin/login", "/admin/loginConfirm");
-        registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/login", "/loginConfirm", "/join", "/joinConfirm", "/exchange/info", "/crawling/**", "/admin/*");
+        registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/**").excludePathPatterns("/admin/login", "/admin/loginConfirm", "/admin/logout");
+        registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/login", "/loginConfirm", "/logout", "/join", "/joinConfirm", "/exchange/info", "/crawling/**", "/admin/**");
     }
 }

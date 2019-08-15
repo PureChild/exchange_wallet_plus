@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.ConvertService;
 import service.TargetRateService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,9 +21,9 @@ public class TargetRateController {
     ConvertService convertService;
 
     @GetMapping("/exchange/rates")
-    public String getTargetRates(ModelMap model){
-        String id = "tester";
-        List<TargetRate> targetRates = targetRateService.getTargetRates(id);
+    public String getTargetRates(HttpSession httpSession, ModelMap model){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+        List<TargetRate> targetRates = targetRateService.getTargetRates(userId);
         List<String> nationList = convertService.convertNationCodeToName(targetRates);
 
         model.put("targetRates", targetRates);
@@ -32,9 +33,9 @@ public class TargetRateController {
     }
 
     @GetMapping("/exchange/rate/{nationCode}")
-    public String getDetailTargetRate(ModelMap model, @PathVariable("nationCode") String nationCode){
-        String id = "tester";
-        TargetRate targetRate = targetRateService.getTargetRate(id, nationCode);
+    public String getDetailTargetRate(HttpSession httpSession, ModelMap model, @PathVariable("nationCode") String nationCode){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+        TargetRate targetRate = targetRateService.getTargetRate(userId, nationCode);
         String nation = convertService.convertNationCodeToName(nationCode);
 
         model.put("targetRateInfo", targetRate);
@@ -44,13 +45,13 @@ public class TargetRateController {
     }
 
     @GetMapping({"/{mode}/exchange/rate", "/{mode}/rate/nation/{nationCode}"})
-    public String getInsertTargetRatePage(ModelMap model
+    public String getInsertTargetRatePage(HttpSession httpSession, ModelMap model
                                             , @PathVariable("mode") String mode
                                             , @PathVariable("nationCode") Optional<String> nationCode){
-        String id = "tester";
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
         if(nationCode.isPresent()){
             model.put("nationCode", nationCode.get());
-            model.put("targetRate", targetRateService.getTargetRate(id, nationCode.get()));
+            model.put("targetRate", targetRateService.getTargetRate(userId, nationCode.get()));
         } else {
             model.put("nationCode", "");
         }
@@ -59,9 +60,9 @@ public class TargetRateController {
     }
 
     @PostMapping("/insert/exchange/rate")
-    public String addTargetExchangeRate(@ModelAttribute("targetRate") TargetRate targetRate){
-        String id = "tester";
-        targetRate.setId(id);
+    public String addTargetExchangeRate(HttpSession httpSession, @ModelAttribute("targetRate") TargetRate targetRate){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+        targetRate.setId(userId);
 
         targetRateService.addTargetRate(targetRate);
 
@@ -69,10 +70,11 @@ public class TargetRateController {
     }
 
     @PostMapping("/update/exchange/rate")
-    public String updateTargetExchangeRate(@RequestParam("originNationCode") String originNationCode
+    public String updateTargetExchangeRate(HttpSession httpSession
+                                            , @RequestParam("originNationCode") String originNationCode
                                             , @ModelAttribute("targetRate") TargetRate targetRate){
-        String id = "tester";
-        targetRate.setId(id);
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+        targetRate.setId(userId);
 
         targetRateService.updateTargetRate(originNationCode, targetRate);
 
@@ -80,11 +82,11 @@ public class TargetRateController {
     }
 
     @GetMapping("/delete/exchange/rate/{nationCode}")
-    public String deleteTargetRate(@PathVariable("nationCode") String nationCode){
-        String id = "tester";
+    public String deleteTargetRate(HttpSession httpSession, @PathVariable("nationCode") String nationCode){
+        String userId = String.valueOf(httpSession.getAttribute("loginUser"));
 
         TargetRate targetRate = new TargetRate();
-        targetRate.setId(id);
+        targetRate.setId(userId);
         targetRate.setNationCode(nationCode);
 
         targetRateService.deleteTargetRate(targetRate);

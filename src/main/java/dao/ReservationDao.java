@@ -75,7 +75,7 @@ public class ReservationDao {
         params.put("nationCode", reservationInfo.getNationCode());
         params.put("price", reservationInfo.getPrice());
         params.put("departureDate", reservationInfo.getDepartureDate());
-        params.put("userId", "tester");
+        params.put("userId", reservationInfo.getApplicant());
 
         jdbc.update(INSERT_RESERVATION_INFO, params);
     }

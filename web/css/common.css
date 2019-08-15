@@ -73,7 +73,7 @@ label:focus,
     }
 
     /* 로그인 폼 */
-    .login-form {
+    .login-form, .join-form {
         width: 350px;
         text-align: center;
     }
@@ -128,11 +128,11 @@ label:focus,
     }
 
     /* 로그인 폼 */
-    .login-form {
+    .login-form, .join-form {
         width: 200px;
         text-align: center;
     }
-    .login-form * {
+    .login-form *, .join-form * {
         font-size: 0.85em;
     }
     .page-title {
@@ -150,6 +150,15 @@ label:focus,
     .btn-container {
         margin: auto 5%;
     }
+    .btn-logout {
+        position: absolute;
+        top: 45px;
+        right: 50px;
+        font-size: 0.9em;
+        border: 1px solid #fff;
+        border-radius: 3px;
+        padding: 2px;
+    }
 }
 /* 메인 */
 main {
@@ -166,7 +175,7 @@ main.none-img {
 .page-title {
     color: #008485;
 }
-.join-form, .lookup-form, .info-form, .main-content {
+.lookup-form, .info-form, .main-content {
     width: 350px;
     text-align: center;
 }

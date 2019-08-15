@@ -4,6 +4,7 @@ import dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,12 @@ public class LoginController {
         return returnUrl;
     }
 
+    @GetMapping("/admin/logout")
+    public String logoutAdmin(HttpSession httpSession){
+        httpSession.removeAttribute("loginUser");
+        return "redirect:/admin/login";
+    }
+
     @PostMapping("/joinConfirm")
     public String join(@ModelAttribute Customer customer){
         loginService.addCustomer(customer);
@@ -53,5 +60,11 @@ public class LoginController {
             returnUrl = "redirect:/login";
         }
         return returnUrl;
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.removeAttribute("loginUser");
+        return "redirect:/login";
     }
 }
