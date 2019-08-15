@@ -19,12 +19,13 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/admin/loginConfirm")
-    public String loginAdmin(RedirectAttributes redirectAttributes, @RequestParam String admId, @RequestParam String admPassword){
+    public String loginAdmin(HttpSession httpSession, RedirectAttributes redirectAttributes, @RequestParam String admId, @RequestParam String admPassword){
         String resultLoginCheck = loginService.checkAdminLoginInfo(admId, admPassword);
         redirectAttributes.addFlashAttribute("msg", resultLoginCheck);
 
         String returnUrl;
         if(resultLoginCheck.equals("loginOK")){
+            httpSession.setAttribute("loginUser", "admin");
             returnUrl = "redirect:/admin/reservation/history";
         } else {
             returnUrl = "redirect:/admin/login";
@@ -40,12 +41,13 @@ public class LoginController {
     }
 
     @PostMapping("/loginConfirm")
-    public String login(RedirectAttributes redirectAttributes, @ModelAttribute Customer customer){
+    public String login(HttpSession httpSession, RedirectAttributes redirectAttributes, @ModelAttribute Customer customer){
         String resultLoginCheck = loginService.checkLoginInfo(customer);
         redirectAttributes.addFlashAttribute("msg", resultLoginCheck);
 
         String returnUrl;
         if(resultLoginCheck.equals("loginOK")){
+            httpSession.setAttribute("loginUser", customer.getId());
             returnUrl = "redirect:/";
         } else {
             returnUrl = "redirect:/login";

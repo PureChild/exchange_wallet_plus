@@ -89,7 +89,7 @@ label:focus,
         min-width: 375px;
     }
     main {
-        height: 90%;
+        height: 80%;
         background-image: none;
         overflow-y: scroll;
     }
@@ -138,6 +138,9 @@ label:focus,
     .page-title {
         font-size: 25px;
         margin-bottom: 25px;
+    }
+    .text-warning {
+        font-size: 0.75em;
     }
 
     /* 버튼 */
