@@ -37,7 +37,7 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         System.out.println("call addViewControllers");
-        registry.addViewController("/").setViewName("home");
+        registry.addViewController("/").setViewName("mainPage");
         registry.addViewController("/admin/login").setViewName("admin/login");
         registry.addViewController("/admin/lookup").setViewName("admin/lookup");
         registry.addViewController("/join").setViewName("join");
@@ -68,6 +68,6 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AdminInterceptor()).addPathPatterns("/admin/**").excludePathPatterns("/admin/login", "/admin/loginConfirm", "/admin/logout");
-        registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/login", "/loginConfirm", "/logout", "/join", "/joinConfirm", "/exchange/info", "/crawling/**", "/admin/**");
+        registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/", "/login", "/loginConfirm", "/logout", "/join", "/joinConfirm", "/exchange/info", "/crawling/**", "/admin/**");
     }
 }

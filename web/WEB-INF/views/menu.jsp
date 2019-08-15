@@ -12,7 +12,7 @@
 </head>
 <body>
     <nav class="menu-bar">
-        <img class="logo" alt="로고이미지"/>
+        <a href="/"><img class="logo" alt="로고이미지"/></a>
         <ul class="menu">
             <li>
                 <a href="/exchange/info" class="menu-item">환율 정보</a>

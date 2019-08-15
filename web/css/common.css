@@ -42,6 +42,18 @@ label:focus,
         background-position: right bottom;
         background-size: 250px;
     }
+    .main-img.coin {
+        width: 70px;
+        margin-left: -35px;
+        bottom: 3px;
+        position: absolute;
+    }
+    .main-img.main-logo {
+        width: 350px;
+        margin-left: -175px;
+        bottom: -80px;
+        position: absolute;
+    }
     /* 메뉴 */
     .logo {
         content: url("../image/logo.png");
@@ -80,7 +92,6 @@ label:focus,
     .page-title {
         margin-bottom: 50px;
     }
-
 }
 /* css for Mobile */
 @media screen and (max-width: 426px) {
@@ -92,6 +103,18 @@ label:focus,
         height: 80%;
         background-image: none;
         overflow-y: scroll;
+    }
+    .main-img.coin {
+        width: 50px;
+        margin-left: -25px;
+        bottom: 20px;
+        position: absolute;
+    }
+    .main-img.main-logo {
+        width: 300px;
+        margin-left: -150px;
+        bottom: -50px;
+        position: absolute;
     }
     /* 메뉴 */
     .menu-bar {
@@ -184,6 +207,13 @@ main.none-img {
 }
 .main-content.table-content {
     width: 600px;
+}
+.main-content.main-page {
+    position: relative;
+}
+
+.main-img {
+    position: absolute;
 }
 
 /* 메뉴 */
