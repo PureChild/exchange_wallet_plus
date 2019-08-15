@@ -7,6 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>환전 코드 조회</title>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/lookup.js"></script>

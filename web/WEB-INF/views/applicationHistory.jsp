@@ -8,6 +8,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신청 내역</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
@@ -18,7 +19,7 @@
 
     <main>
         <div class="main-content table-content">
-            <div class="ta-right">
+            <div class="btn-container ta-right">
                 <a href="/exchange/apply" class="btn btn-sm btn-hana">신규</a>
             </div>
             <table class="table ta-center">

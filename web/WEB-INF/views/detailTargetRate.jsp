@@ -9,6 +9,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>목표 환율 상세</title>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/targetRate.js"></script>

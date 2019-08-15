@@ -17,17 +17,28 @@ label:focus,
 }
 
 /* css for PC */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 426px) {
     body {
         display: flex;
     }
+    main {
+        background-image: url(/image/background-img.gif);
+        background-repeat: no-repeat;
+        background-position: right bottom;
+        background-size: 250px;
+    }
+    /* 메뉴 */
     .logo {
         content: url("../image/logo.png");
         width: 250px;
         height: 190px;
     }
+    .menu-bar {
+        padding: 50px;
+    }
     .menu {
         margin: 70px auto 0 auto;
+        font-size: 1.5em;
     }
     .menu>li {
         margin: 15px 0;
@@ -35,48 +46,108 @@ label:focus,
     .menu-item:hover {
         margin-left: -15px;
     }
+
+    /* 국기 */
+    .flag {
+        width: 60%;
+    }
+
+    /* 테이블 */
+    .tcontent-apply-nation select {
+        width: 100%;
+    }
+
+    /* 로그인 폼 */
+    .login-form {
+        width: 350px;
+        text-align: center;
+    }
+    .page-title {
+        margin-bottom: 50px;
+    }
+
 }
 /* css for Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 426px) {
     body {
         display: block;
-        min-width: 700px;
+        min-width: 375px;
     }
     main {
-        height: 100vh;
+        height: 80%;
+        background-image: none;
+    }
+    /* 메뉴 */
+    .menu-bar {
+        padding: 30px;
+        max-height: 20%;
     }
     .menu {
         display: flex;
         justify-content: space-around;
         margin: 20px auto 0 auto;
+        font-size: 0.8em;
     }
     .logo {
         content: url("../image/mobile-logo.png");
+        width: 100px;
+        height: 35px;
+    }
+
+    /* 국기 */
+    .flag {
+        width: 20%;
+    }
+
+    /* 테이블 */
+    .table {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 0.75em;
+    }
+    .tcontent-apply-nation select, .form-control {
+        width: 80%;
+        margin: 0 auto;
+        font-size: 1em;
+    }
+
+    /* 로그인 폼 */
+    .login-form {
         width: 200px;
-        height: 70px;
+        text-align: center;
+    }
+    .login-form * {
+        font-size: 0.85em;
+    }
+    .page-title {
+        font-size: 25px;
+        margin-bottom: 25px;
+    }
+
+    /* 버튼 */
+    .btn {
+        font-size: 0.75em;
+    }
+    .btn-container {
+        margin: auto 5%;
     }
 }
 /* 메인 */
 main {
     width: 100%;
-    min-width: 550px;
+    /*min-width: 550px;*/
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f8f8f8;
-    background-image: url(/image/background-img.gif);
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 250px;
 }
 main.none-img {
     background-image: none;
 }
 .page-title {
     color: #008485;
-    margin-bottom: 50px;
 }
-.login-form, .join-form, .lookup-form, .info-form, .main-content {
+.join-form, .lookup-form, .info-form, .main-content {
     width: 350px;
     text-align: center;
 }
@@ -90,12 +161,10 @@ main.none-img {
 /* 메뉴 */
 .menu-bar {
     background-color: rgba(0, 140, 140, 0.8);
-    padding: 50px;
 }
 .menu {
     list-style: none;
     padding: 0;
-    font-size: 1.5em;
 }
 .menu-item, .menu-item:hover {
     display: block;
@@ -137,13 +206,9 @@ main.none-img {
 .tlabel-sm {
     width: 120px;
 }
-.tcontent-apply-nation select {
-    width: 100%;
-}
 
 /* 국기 */
 .flag {
-    width: 60%;
     display: block;
     margin: 0 auto;
 }
