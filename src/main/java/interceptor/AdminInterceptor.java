@@ -11,7 +11,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession httpSession = request.getSession();
-        Object loginUser = httpSession.getAttribute("loginUser");
+        Object loginUser = httpSession.getAttribute("admin");
 
         if(loginUser != "admin"){
             response.sendRedirect("/admin/login");

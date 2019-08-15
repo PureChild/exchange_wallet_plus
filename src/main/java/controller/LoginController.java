@@ -26,7 +26,7 @@ public class LoginController {
 
         String returnUrl;
         if(resultLoginCheck.equals("loginOK")){
-            httpSession.setAttribute("loginUser", "admin");
+            httpSession.setAttribute("admin", "admin");
             returnUrl = "redirect:/admin/reservation/history";
         } else {
             returnUrl = "redirect:/admin/login";
@@ -36,7 +36,7 @@ public class LoginController {
 
     @GetMapping("/admin/logout")
     public String logoutAdmin(HttpSession httpSession){
-        httpSession.removeAttribute("loginUser");
+        httpSession.removeAttribute("admin");
         return "redirect:/admin/login";
     }
 
