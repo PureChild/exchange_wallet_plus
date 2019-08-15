@@ -1,3 +1,18 @@
+/* base font */
+@font-face {
+    font-family: 'HanaCM';
+    src: url("/font/HanaCM.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'HanaUL';
+    src: url("/font/HanaUL.ttf") format("truetype");
+}
+.menu, .btn {
+    font-family: 'HanaUL';
+}
+.page-title {
+    font-family: 'HanaCM';
+}
 /* delete basic style */
 textarea:hover,
 input:hover,
@@ -74,8 +89,9 @@ label:focus,
         min-width: 375px;
     }
     main {
-        height: 80%;
+        height: 90%;
         background-image: none;
+        overflow-y: scroll;
     }
     /* 메뉴 */
     .menu-bar {

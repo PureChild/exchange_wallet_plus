@@ -16,7 +16,7 @@ var targetRatePage = {
                 for(var i = 0; i < data.length; i++){
                     if(data[i].cur_unit.substring(0,3) === targetNation){
                         var compareResult = "";
-                        if(data[i].deal_bas_r <= targetRate){
+                        if(Number(data[i].deal_bas_r.replace(",","")) <= Number(targetRate)){
                             compareResult = "<p class='text-warning'>현재 기준 환율(" + data[i].deal_bas_r + ")이 목표보다 낮습니다.</p>"
                         } else {
                             compareResult = "<p class='text-warning'>현재 기준 환율(" + data[i].deal_bas_r + ")이 목표 이상입니다.</p>"
