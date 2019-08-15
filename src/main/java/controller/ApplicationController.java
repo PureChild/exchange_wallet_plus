@@ -19,16 +19,20 @@ public class ApplicationController {
     @Autowired
     ConvertService convertService;
 
-    @GetMapping("/application/history")
-    public String getApplications(HttpSession httpSession, ModelMap model){
+    @GetMapping("/application/history/{pageNum}")
+    public String getApplications(HttpSession httpSession, ModelMap model, @PathVariable("pageNum") int pageNum){
         String userId = String.valueOf(httpSession.getAttribute("loginUser"));
-        List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId);
+        List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId, pageNum);
         List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
         List<String> progressList = convertService.convertProgressCodeToString(reservationInfoList);
+
+        int numberOfPages = reservationService.getNumberOfPages(userId);
 
         model.put("applicationList", reservationInfoList);
         model.put("nationList", nationList);
         model.put("progressList", progressList);
+        model.put("numberOfPages", numberOfPages);
+        model.put("nowPageNum", pageNum);
         return "applicationHistory";
     }
 
@@ -37,7 +41,7 @@ public class ApplicationController {
         reservationInfo.setApplicant(String.valueOf(httpSession.getAttribute("loginUser")));
         reservationService.makeReservation(reservationInfo);
 
-        return "redirect:/application/history";
+        return "redirect:/application/history/1";
     }
 
     @GetMapping("/application/result/{nationCode}")

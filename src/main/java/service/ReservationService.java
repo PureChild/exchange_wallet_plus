@@ -4,18 +4,15 @@ import dao.DaoFactory;
 import dto.ConfirmedExchangeInfo;
 import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ReservationService {
+    private final int DATA_PER_PAGE = 7;
     @Autowired
     private DaoFactory daoFactory;
 
@@ -23,8 +20,8 @@ public class ReservationService {
         return daoFactory.getReservationDao().selectReservationInfos();
     }
 
-    public List<ReservationInfo> getReservationInfosById(String userId) {
-        return daoFactory.getReservationDao().selectReservationInfosById(userId);
+    public List<ReservationInfo> getReservationInfosById(String userId, int pageNum) {
+        return daoFactory.getReservationDao().selectReservationInfosById(userId, pageNum, DATA_PER_PAGE);
     }
 
     public ReservationInfo getReservationInfoByNum(BigInteger reservationInfoNum) {
@@ -81,5 +78,16 @@ public class ReservationService {
 
     public ConfirmedExchangeInfo getConfirmedExchangeInfoByNum(BigInteger reservationInfoNum) {
         return daoFactory.getConfirmedExchangeDao().selectConfirmedExchangeInfo(reservationInfoNum);
+    }
+
+    public int getNumberOfPages(String userId) {
+        int totalCntOfReservations = daoFactory.getReservationDao().selectTotalCount(userId);
+
+        int numberOfPages = totalCntOfReservations / DATA_PER_PAGE;
+        if(totalCntOfReservations % DATA_PER_PAGE != 0){
+            numberOfPages++;
+        }
+
+        return numberOfPages;
     }
 }

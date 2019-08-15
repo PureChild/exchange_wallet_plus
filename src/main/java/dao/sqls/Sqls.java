@@ -2,6 +2,12 @@ package dao.sqls;
 
 public class Sqls {
     /**
+     * 페이지네이션 관련
+     */
+    public static final String LIMIT = " LIMIT :start, :dataPerPage";
+    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
+
+    /**
      * 환전 예약 관련
      */
     public static final String SELECT_RESERVATION_INFOS_BEFORE_CONFIRM = "SELECT num, nation_code, applicant, price, departure_date FROM reservation_info WHERE progress = 0";
@@ -16,11 +22,11 @@ public class Sqls {
     public static final String INSERT_CONFIRM_EXCHANGE_INFO = "INSERT INTO confirmed_exchange_info(reservation_num, exchange_date, exchange_code) "
                                                                     + "VALUES(:reservationNum, :exchangeDate, :exchangeCode) ";
     public static final String SELECT_RESERVATION_INFO_BY_CODE = "SELECT ri.num, ri.applicant, ri.nation_code, ri.price "
-                                                                            + " FROM reservation_info AS ri "
-                                                                            + " JOIN confirmed_exchange_info AS cei "
-                                                                            + " ON ri.num = cei.reservation_num "
-                                                                            + " AND cei.exchange_code = :exchangeCode "
-                                                                            + " AND ri.progress = 1";
+                                                                    + " FROM reservation_info AS ri "
+                                                                    + " JOIN confirmed_exchange_info AS cei "
+                                                                    + " ON ri.num = cei.reservation_num "
+                                                                    + " AND cei.exchange_code = :exchangeCode "
+                                                                    + " AND ri.progress = 1";
 
     public static final String SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE = "SELECT num, nation_code, price FROM reservation_info WHERE applicant = :userId AND nation_code = :nationCode";
 

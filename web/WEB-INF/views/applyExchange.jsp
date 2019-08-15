@@ -57,7 +57,7 @@
                     </td>
                 </tr>
             </table>
-            <a href="/application/history" class="btn btn-sm btn-hana">취소</a>
+            <a href="/application/history/1" class="btn btn-sm btn-hana">취소</a>
             <input type="submit" class="btn btn-sm btn-hana" value="예약"/>
         </form>
     </main>

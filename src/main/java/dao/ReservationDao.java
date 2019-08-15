@@ -28,9 +28,13 @@ public class ReservationDao {
         return reservationInfos;
     }
 
-    public List<ReservationInfo> selectReservationInfosById(String userId) {
-        Map<String, String> param = Collections.singletonMap("userId", userId);
-        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BY_ID, param, rowMapper);
+    public List<ReservationInfo> selectReservationInfosById(String userId, int pageNum, int dataPerPage) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("start", (pageNum - 1) * dataPerPage);
+        params.put("dataPerPage", dataPerPage);
+
+        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BY_ID + LIMIT, params, rowMapper);
         return reservationInfos;
     }
 
@@ -87,5 +91,10 @@ public class ReservationDao {
 
         ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE, params, rowMapper);
         return reservationInfo;
+    }
+
+    public int selectTotalCount(String userId) {
+        Map<String, String> param = Collections.singletonMap("userId", userId);
+        return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_RESERVATIONS, param, Integer.class);
     }
 }

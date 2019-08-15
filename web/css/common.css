@@ -54,6 +54,10 @@ label:focus,
         bottom: -80px;
         position: absolute;
     }
+
+    .main-content.table-content {
+        height: 465px;
+    }
     /* 메뉴 */
     .logo {
         content: url("../image/logo.png");
@@ -115,6 +119,19 @@ label:focus,
         margin-left: -150px;
         bottom: -50px;
         position: absolute;
+    }
+
+    .main-content.table-content {
+        margin-top: -50px;
+        height: 375px;
+    }
+    .pagination-container {
+        position: absolute;
+        width: 375px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        bottom: 75px;
     }
     /* 메뉴 */
     .menu-bar {
@@ -387,4 +404,19 @@ input[type="date"] {
     color: #000;
     font-weight: normal;
     text-decoration: none;
+}
+
+/* 페이지네이션 */
+.pagination-container a {
+    text-decoration: none;
+}
+.pagination-item {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #008485;
+    border-radius: 50px;
+}
+.pagination-item.selected {
+    background-color: #008485;
 }

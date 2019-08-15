@@ -13,10 +13,6 @@ public class DaoFactory {
     @Autowired
     private DataSource dataSource;
 
-    public TestDao testDao() {
-        return new TestDao(dataSource);
-    }
-
     public ReservationDao getReservationDao(){
         return new ReservationDao(dataSource);
     }
