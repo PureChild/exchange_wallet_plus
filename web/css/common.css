@@ -420,3 +420,9 @@ input[type="date"] {
 .pagination-item.selected {
     background-color: #008485;
 }
+
+/* 에러 페이지 */
+.icon-warning {
+    width: 50px;
+    margin-bottom: 25px;
+}
