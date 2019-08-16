@@ -21,6 +21,7 @@
         </c:choose>
     </title>
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/inputForm.js"></script>
     <c:set var="targetDate" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
     <script id="api-nation"
             data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>"

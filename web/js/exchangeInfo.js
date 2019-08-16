@@ -87,7 +87,7 @@ var exchangeInfoPage = {
         var exchangeInfo = new SpeechSynthesisUtterance();
         exchangeInfo.rate = 1.5; // 0.1 to 10
         exchangeInfo.pitch = 1; //0 to 2
-        exchangeInfo.text = "정보()해당 국가의 현재 매매기준율은 " + dealBaseRate + "원이며"
+        exchangeInfo.text = "해당 국가의 현재 매매기준율은 " + dealBaseRate + "원이며"
                         + ", 전신환(송금) 보내실 때 " + tts + "원"
                         + ", 전신환(송금) 받으실 때 " + ttb + "원 입니다.";
         exchangeInfo.onend = function() {
