@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import service.ConvertService;
+import service.PaginationService;
 import service.TargetRateService;
 
 import javax.servlet.http.HttpSession;
@@ -19,15 +19,22 @@ public class TargetRateController {
     TargetRateService targetRateService;
     @Autowired
     ConvertService convertService;
+    @Autowired
+    PaginationService paginationService;
 
-    @GetMapping("/exchange/rates")
-    public String getTargetRates(HttpSession httpSession, ModelMap model){
+    @GetMapping("/exchange/rates/{pageNum}")
+    public String getTargetRates(HttpSession httpSession, ModelMap model, @PathVariable("pageNum") int pageNum){
         String userId = String.valueOf(httpSession.getAttribute("loginUser"));
-        List<TargetRate> targetRates = targetRateService.getTargetRates(userId);
+
+        List<TargetRate> targetRates = targetRateService.getTargetRates(userId, pageNum);
         List<String> nationList = convertService.convertNationCodeToName(targetRates);
+
+        int numberOfPages = paginationService.getNumberOfPagesForTargetRates(userId);
 
         model.put("targetRates", targetRates);
         model.put("nationList", nationList);
+        model.put("numberOfPages", numberOfPages);
+        model.put("nowPageNum", pageNum);
 
         return "targetRateList";
     }
@@ -66,7 +73,7 @@ public class TargetRateController {
 
         targetRateService.addTargetRate(targetRate);
 
-        return "redirect:/exchange/rates";
+        return "redirect:/exchange/rates/1";
     }
 
     @PostMapping("/update/exchange/rate")
@@ -78,7 +85,7 @@ public class TargetRateController {
 
         targetRateService.updateTargetRate(originNationCode, targetRate);
 
-        return "redirect:/exchange/rates";
+        return "redirect:/exchange/rates/1";
     }
 
     @GetMapping("/delete/exchange/rate/{nationCode}")
@@ -91,6 +98,6 @@ public class TargetRateController {
 
         targetRateService.deleteTargetRate(targetRate);
 
-        return "redirect:/exchange/rates";
+        return "redirect:/exchange/rates/1";
     }
 }

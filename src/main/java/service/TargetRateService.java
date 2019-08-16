@@ -11,9 +11,12 @@ import java.util.List;
 public class TargetRateService {
     @Autowired
     private DaoFactory daoFactory;
+    @Autowired
+    PaginationService paginationService;
 
-    public List<TargetRate> getTargetRates(String userId) {
-        return daoFactory.getTargetRateDao().selectAllTargetRates(userId);
+    public List<TargetRate> getTargetRates(String userId, int pageNum) {
+        int dataPerPage = paginationService.getDataPerPage();
+        return daoFactory.getTargetRateDao().selectTargetRatesById(userId, pageNum, dataPerPage);
     }
 
     public TargetRate getTargetRate(String userId, String nationCode) {

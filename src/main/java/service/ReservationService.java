@@ -12,16 +12,18 @@ import java.util.Optional;
 
 @Service
 public class ReservationService {
-    private final int DATA_PER_PAGE = 7;
     @Autowired
     private DaoFactory daoFactory;
+    @Autowired
+    PaginationService paginationService;
 
     public List<ReservationInfo> getReservationInfos() {
         return daoFactory.getReservationDao().selectReservationInfos();
     }
 
     public List<ReservationInfo> getReservationInfosById(String userId, int pageNum) {
-        return daoFactory.getReservationDao().selectReservationInfosById(userId, pageNum, DATA_PER_PAGE);
+        int dataPerPage = paginationService.getDataPerPage();
+        return daoFactory.getReservationDao().selectReservationInfosById(userId, pageNum, dataPerPage);
     }
 
     public ReservationInfo getReservationInfoByNum(BigInteger reservationInfoNum) {
@@ -78,16 +80,5 @@ public class ReservationService {
 
     public ConfirmedExchangeInfo getConfirmedExchangeInfoByNum(BigInteger reservationInfoNum) {
         return daoFactory.getConfirmedExchangeDao().selectConfirmedExchangeInfo(reservationInfoNum);
-    }
-
-    public int getNumberOfPages(String userId) {
-        int totalCntOfReservations = daoFactory.getReservationDao().selectTotalCount(userId);
-
-        int numberOfPages = totalCntOfReservations / DATA_PER_PAGE;
-        if(totalCntOfReservations % DATA_PER_PAGE != 0){
-            numberOfPages++;
-        }
-
-        return numberOfPages;
     }
 }

@@ -24,7 +24,7 @@
                 <a href="/application/history/1" class="menu-item">신청 내역</a>
             </li>
             <li>
-                <a href="/exchange/rates" class="menu-item">목표 환율 설정</a>
+                <a href="/exchange/rates/1" class="menu-item">목표 환율 설정</a>
             </li>
             <c:if test="${loginUser ne null}">
                 <li>

@@ -128,9 +128,8 @@ label:focus,
     .pagination-container {
         position: absolute;
         width: 375px;
-        margin: 0 auto;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         bottom: 75px;
     }
     /* 메뉴 */
@@ -414,6 +413,7 @@ input[type="date"] {
     display: inline-block;
     width: 10px;
     height: 10px;
+    margin: 0 5px;
     border: 1px solid #008485;
     border-radius: 50px;
 }

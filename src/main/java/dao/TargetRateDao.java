@@ -23,9 +23,13 @@ public class TargetRateDao {
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<TargetRate> selectAllTargetRates(String userId) {
-        Map<String, String> param = Collections.singletonMap("userId", userId);
-        List<TargetRate> targetRates = jdbc.query(SELECT_ALL_TARGET_RATES, param, rowMapper);
+    public List<TargetRate> selectTargetRatesById(String userId, int pageNum, int dataPerPage) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("start", (pageNum - 1) * dataPerPage);
+        params.put("dataPerPage", dataPerPage);
+
+        List<TargetRate> targetRates = jdbc.query(SELECT_TARGET_RATES_BY_ID + LIMIT, params, rowMapper);
         return targetRates;
     }
 
@@ -64,5 +68,10 @@ public class TargetRateDao {
         params.put("originNationCode", originNationCode);
 
         jdbc.update(UPDATE_TARGET_RATE, params);
+    }
+
+    public int selectTotalCount(String userId) {
+        Map<String, String> param = Collections.singletonMap("userId", userId);
+        return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_TARGET_RATES, param, Integer.class);
     }
 }

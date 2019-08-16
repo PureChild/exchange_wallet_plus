@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import service.ConvertService;
+import service.PaginationService;
 import service.ReservationService;
 
 import javax.servlet.http.HttpSession;
@@ -18,21 +19,25 @@ public class ApplicationController {
     ReservationService reservationService;
     @Autowired
     ConvertService convertService;
+    @Autowired
+    PaginationService paginationService;
 
     @GetMapping("/application/history/{pageNum}")
     public String getApplications(HttpSession httpSession, ModelMap model, @PathVariable("pageNum") int pageNum){
         String userId = String.valueOf(httpSession.getAttribute("loginUser"));
+
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfosById(userId, pageNum);
         List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
         List<String> progressList = convertService.convertProgressCodeToString(reservationInfoList);
 
-        int numberOfPages = reservationService.getNumberOfPages(userId);
+        int numberOfPages = paginationService.getNumberOfPagesForReservationInfos(userId);
 
         model.put("applicationList", reservationInfoList);
         model.put("nationList", nationList);
         model.put("progressList", progressList);
         model.put("numberOfPages", numberOfPages);
         model.put("nowPageNum", pageNum);
+
         return "applicationHistory";
     }
 

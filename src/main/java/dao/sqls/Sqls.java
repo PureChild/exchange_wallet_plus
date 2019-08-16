@@ -6,6 +6,7 @@ public class Sqls {
      */
     public static final String LIMIT = " LIMIT :start, :dataPerPage";
     public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
+    public static final String SELECT_TOTAL_COUNT_OF_TARGET_RATES = "SELECT COUNT(*) FROM target_rate WHERE id = :userId";
 
     /**
      * 환전 예약 관련
@@ -46,7 +47,7 @@ public class Sqls {
     /**
      * 목표 환율 설정 관련
      */
-    public static final String SELECT_ALL_TARGET_RATES = "SELECT nation_code, id, rate FROM target_rate WHERE id = :userId";
+    public static final String SELECT_TARGET_RATES_BY_ID = "SELECT nation_code, id, rate FROM target_rate WHERE id = :userId";
     public static final String SELECT_TARGET_RATE = "SELECT id, nation_code, rate FROM target_rate WHERE id = :userId AND nation_code = :nationCode";
 
     public static final String INSERT_TARGET_RATE = "INSERT INTO target_rate(id, nation_code, rate) VALUES(:userId, :nationCode, :rate)";
