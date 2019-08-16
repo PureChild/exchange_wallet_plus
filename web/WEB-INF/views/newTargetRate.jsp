@@ -21,12 +21,12 @@
         </c:choose>
     </title>
     <script src="/js/jquery-3.4.1.min.js"></script>
-    <script src="/js/exchangeInfo.js"></script>
     <c:set var="targetDate" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
     <script id="api-nation"
             data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>"
             data-nation="${ nationCode }"
             src="/js/nation.js"></script>
+    <script src="/js/exchangeInfo.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
