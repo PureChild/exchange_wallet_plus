@@ -32,10 +32,7 @@
                     <td>${ reservationInfo.price }</td>
                 </tr>
                 <tr>
-                    <td rowspan="2" class="tlabel">환전코드</td>
-                    <td>${ confirmedExchangeInfo.exchangeCode }</td>
-                </tr>
-                <tr>
+                    <td class="tlabel">환전코드</td>
                     <td>
                         <input type="hidden" id="exchangeCode" value="${ confirmedExchangeInfo.exchangeCode }">
                         <div id="barcodeContainer" class="margin-center"></div>
