@@ -3,6 +3,7 @@ $(document).ready(function () {
     var targetNation = $("#targetNation").val();
     var targetRate = $("#targetRate").val();
     targetRatePage.displayCompareResult(targetDate, targetNation, targetRate);
+    targetRatePage.setEvent();
 })
 
 var targetRatePage = {
@@ -28,5 +29,16 @@ var targetRatePage = {
             error: function (request, status, error) {
             }
         });
+    },
+
+    setEvent: function(){
+        var targetDate = $("#businessDate").val();
+        var targetNation = $("#targetNation").val();
+        var targetRate = $("#targetRate").val();
+
+        $("#btnGetRates").unbind();
+        $("#btnGetRates").click(function(){
+            this.displayCompareResult(targetDate, targetNation, targetRate);
+        }.bind(this));
     }
 }

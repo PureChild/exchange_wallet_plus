@@ -14,7 +14,10 @@
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/js/inputForm.js"></script>
     <c:set var="targetDate" value="<%=new Date(new Date().getTime() - 60*60*24*1000)%>"/>
-    <script id="api-nation" data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>" data-nation="${ reservationInfo.nationCode }" src="/js/nation.js"></script>
+    <script id="api-nation"
+            data-date="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyyMMdd"/>"
+            data-nation="${ reservationInfo.nationCode }"
+            src="/js/nation.js"></script>
     <script src="/js/exchangeInfo.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
@@ -33,7 +36,8 @@
                     <td class="tcontent-apply-nation">
                         <div id="nationContainer">
                             <p class="text-warning text-sm">
-                                <fmt:formatDate type="date" value="${targetDate}" pattern="yyyy년MM월dd일"/>의 국가 목록을 불러올 수 없습니다.
+                                <fmt:formatDate type="date" value="${targetDate}" pattern="yyyy년MM월dd일"/>의 국가 목록을<br/>
+                                불러올 수 없습니다.
                             </p>
                             <label>영업일자
                                 <input type="date" id="businessDate" class="form-control ta-center"

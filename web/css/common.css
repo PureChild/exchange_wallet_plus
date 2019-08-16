@@ -281,6 +281,10 @@ main.none-img {
     width: 120px;
 }
 
+label {
+    width: 100%;
+}
+
 /* 국기 */
 .flag {
     display: block;
@@ -350,11 +354,20 @@ main.none-img {
     margin: 0 auto;
     display: block;
 }
+.btn-container .btn-outline-hana {
+    background: none;
+    color: #008485;
+    border: 1px solid #008485;
+    display: inline-block;
+}
 .btn-speech {
     cursor: pointer;
 }
+td .btn#btnGetNations {
+    width: 150px;
+}
 
-/* input[type="date"] */
+    /* input[type="date"] */
 input[type="date"] {
     background: url(/image/calendar-icon.png) 95% 50% no-repeat;
     background-size: 20px 20px;

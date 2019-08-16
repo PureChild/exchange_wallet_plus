@@ -20,7 +20,7 @@
     <main>
         <div class="main-content table-content">
             <div class="btn-container ta-right">
-                <a href="/exchange/apply" class="btn btn-sm btn-hana">신규</a>
+                <a href="/exchange/apply" class="btn btn-sm btn-outline-hana btn-hana">신규</a>
             </div>
             <table class="table ta-center">
                 <thead class="colored-thead">
