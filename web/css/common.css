@@ -333,6 +333,9 @@ main.none-img {
 .ta-right {
     text-align: right;
 }
+.margin-center {
+    margin: 0 auto;
+}
 
 /* 버튼 */
 .btn-hana, .btn-hana:hover  {

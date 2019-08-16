@@ -8,6 +8,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신청 결과</title>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-barcode.js"></script>
+    <script type="text/javascript" src="/js/application.js"></script>
+
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
 </head>
@@ -28,8 +32,14 @@
                     <td>${ reservationInfo.price }</td>
                 </tr>
                 <tr>
-                    <td class="tlabel">환전코드</td>
+                    <td rowspan="2" class="tlabel">환전코드</td>
                     <td>${ confirmedExchangeInfo.exchangeCode }</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" id="exchangeCode" value="${ confirmedExchangeInfo.exchangeCode }">
+                        <div id="barcodeContainer" class="margin-center"></div>
+                    </td>
                 </tr>
                 <tr>
                     <td class="tlabel">환전일자</td>
