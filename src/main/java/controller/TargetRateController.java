@@ -26,7 +26,7 @@ public class TargetRateController {
     public String getTargetRates(HttpSession httpSession, ModelMap model, @PathVariable("pageNum") int pageNum){
         String userId = String.valueOf(httpSession.getAttribute("loginUser"));
 
-        List<TargetRate> targetRates = targetRateService.getTargetRates(userId, pageNum);
+        List<TargetRate> targetRates = targetRateService.getTargetRatesById(userId, pageNum);
         List<String> nationList = convertService.convertNationCodeToName(targetRates);
 
         int numberOfPages = paginationService.getNumberOfPagesForTargetRates(userId);

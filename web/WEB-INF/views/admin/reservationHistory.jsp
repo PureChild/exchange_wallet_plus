@@ -42,6 +42,13 @@
                     </c:forEach>
                 </tbody>
             </table>
+            <div class="pagination-container ta-center">
+                <c:forEach var="pageNum" begin="1" end="${numberOfPages}">
+                    <a href="/admin/reservation/history/${pageNum}">
+                        <span class="pagination-item <c:if test="${nowPageNum eq pageNum}">selected</c:if>"></span>
+                    </a>
+                </c:forEach>
+            </div>
         </div>
     </main>
 </body>

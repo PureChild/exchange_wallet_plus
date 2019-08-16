@@ -23,8 +23,12 @@ public class ReservationDao {
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 
-    public List<ReservationInfo> selectReservationInfos() {
-        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BEFORE_CONFIRM, rowMapper);
+    public List<ReservationInfo> selectReservationInfos(int pageNum, int dataPerPage) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("start", (pageNum - 1) * dataPerPage);
+        params.put("dataPerPage", dataPerPage);
+
+        List<ReservationInfo> reservationInfos = jdbc.query(SELECT_RESERVATION_INFOS_BEFORE_CONFIRM + LIMIT, params, rowMapper);
         return reservationInfos;
     }
 
@@ -93,8 +97,12 @@ public class ReservationDao {
         return reservationInfo;
     }
 
-    public int selectTotalCount(String userId) {
+    public int selectTotalCountById(String userId) {
         Map<String, String> param = Collections.singletonMap("userId", userId);
-        return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_RESERVATIONS, param, Integer.class);
+        return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_RESERVATIONS_BY_ID, param, Integer.class);
+    }
+
+    public int selectTotalCount() {
+        return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_RESERVATIONS_BEFORE_CONFIRM, Collections.emptyMap(), Integer.class);
     }
 }

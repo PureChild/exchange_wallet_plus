@@ -14,7 +14,7 @@ public class TargetRateService {
     @Autowired
     PaginationService paginationService;
 
-    public List<TargetRate> getTargetRates(String userId, int pageNum) {
+    public List<TargetRate> getTargetRatesById(String userId, int pageNum) {
         int dataPerPage = paginationService.getDataPerPage();
         return daoFactory.getTargetRateDao().selectTargetRatesById(userId, pageNum, dataPerPage);
     }

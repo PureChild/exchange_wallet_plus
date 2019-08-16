@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.ConvertService;
+import service.PaginationService;
 import service.ReservationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,14 +26,20 @@ public class AdminController {
     ReservationService reservationService;
     @Autowired
     ConvertService convertService;
+    @Autowired
+    PaginationService paginationService;
 
-    @GetMapping("/reservation/history")
-    public String getReservationInfos(ModelMap model){
-        List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos();
+    @GetMapping("/reservation/history/{pageNum}")
+    public String getReservationInfos(ModelMap model, @PathVariable("pageNum") int pageNum){
+        List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos(pageNum);
         List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
+
+        int numberOfPages = paginationService.getNumberOfPagesForAdmin();
 
         model.put("reservationList", reservationInfoList);
         model.put("nationList", nationList);
+        model.put("numberOfPages", numberOfPages);
+        model.put("nowPageNum", pageNum);
 
         return "admin/reservationHistory";
     }
@@ -72,7 +79,7 @@ public class AdminController {
     public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         reservationService.deleteReservationInfo(num);
 
-        return "redirect:/admin/reservation/history";
+        return "redirect:/admin/reservation/history/1";
     }
 
     @PostMapping("/confirm/exchange/{reservationInfoNum}")
@@ -83,7 +90,7 @@ public class AdminController {
 
         reservationService.confirmExchangeReservation(exchangeInfo);
 
-        return "redirect:/admin/reservation/history";
+        return "redirect:/admin/reservation/history/1";
     }
 
     @GetMapping("/lookup/{exchangeCode}")

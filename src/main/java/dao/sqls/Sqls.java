@@ -5,7 +5,8 @@ public class Sqls {
      * 페이지네이션 관련
      */
     public static final String LIMIT = " LIMIT :start, :dataPerPage";
-    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
+    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BEFORE_CONFIRM = "SELECT COUNT(*) FROM reservation_info WHERE progress = 0";
+    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BY_ID = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
     public static final String SELECT_TOTAL_COUNT_OF_TARGET_RATES = "SELECT COUNT(*) FROM target_rate WHERE id = :userId";
 
     /**

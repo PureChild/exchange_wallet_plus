@@ -47,7 +47,7 @@
                     </c:when>
                     <c:otherwise>
                         <p class="text-warning">해당 결과가 존재하지 않습니다.</p>
-                        <a href="/admin/reservation/history" class="btn btn-hana">목록으로</a>
+                        <a href="/admin/reservation/history/1" class="btn btn-hana">목록으로</a>
                     </c:otherwise>
                 </c:choose>
             </c:if>

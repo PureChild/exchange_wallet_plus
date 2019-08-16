@@ -27,7 +27,7 @@ public class LoginController {
         String returnUrl;
         if(resultLoginCheck.equals("loginOK")){
             httpSession.setAttribute("admin", "admin");
-            returnUrl = "redirect:/admin/reservation/history";
+            returnUrl = "redirect:/admin/reservation/history/1";
         } else {
             returnUrl = "redirect:/admin/login";
         }

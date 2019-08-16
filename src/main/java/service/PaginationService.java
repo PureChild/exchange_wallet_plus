@@ -14,9 +14,9 @@ public class PaginationService {
         return DATA_PER_PAGE;
     }
 
-    private int getNumberOfPages(String userId, int totalCntOfReservations) {
-        int numberOfPages = totalCntOfReservations / DATA_PER_PAGE;
-        if(totalCntOfReservations % DATA_PER_PAGE != 0){
+    private int getNumberOfPages(int totalCnt) {
+        int numberOfPages = totalCnt / DATA_PER_PAGE;
+        if(totalCnt % DATA_PER_PAGE != 0){
             numberOfPages++;
         }
 
@@ -24,12 +24,17 @@ public class PaginationService {
     }
 
     public int getNumberOfPagesForReservationInfos(String userId){
-        int totalCntOfReservations = daoFactory.getReservationDao().selectTotalCount(userId);
-        return getNumberOfPages(userId, totalCntOfReservations);
+        int totalCntOfReservations = daoFactory.getReservationDao().selectTotalCountById(userId);
+        return getNumberOfPages(totalCntOfReservations);
     }
 
     public int getNumberOfPagesForTargetRates(String userId) {
-        int totalCntOfTargetRates = daoFactory.getTargetRateDao().selectTotalCount(userId);
-        return getNumberOfPages(userId, totalCntOfTargetRates);
+        int totalCntOfTargetRates = daoFactory.getTargetRateDao().selectTotalCountById(userId);
+        return getNumberOfPages(totalCntOfTargetRates);
+    }
+
+    public int getNumberOfPagesForAdmin() {
+        int totalCntOfReservations = daoFactory.getReservationDao().selectTotalCount();
+        return getNumberOfPages(totalCntOfReservations);
     }
 }

@@ -70,7 +70,7 @@ public class TargetRateDao {
         jdbc.update(UPDATE_TARGET_RATE, params);
     }
 
-    public int selectTotalCount(String userId) {
+    public int selectTotalCountById(String userId) {
         Map<String, String> param = Collections.singletonMap("userId", userId);
         return jdbc.queryForObject(SELECT_TOTAL_COUNT_OF_TARGET_RATES, param, Integer.class);
     }

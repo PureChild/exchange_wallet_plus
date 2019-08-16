@@ -15,7 +15,7 @@
         <img class="logo" alt="로고이미지"/>
         <ul class="menu">
             <li>
-                <a href="/admin/reservation/history" class="menu-item">신청 내역</a>
+                <a href="/admin/reservation/history/1" class="menu-item">신청 내역</a>
             </li>
             <li>
                 <a href="/admin/lookup" class="menu-item">환전 코드 조회</a>

@@ -19,7 +19,7 @@
     <main>
         <div class="main-content">
             <p>환전이 완료되었습니다.</p>
-            <a href="/admin/reservation/history" class="btn btn-hana">목록으로</a>
+            <a href="/admin/reservation/history/1" class="btn btn-hana">목록으로</a>
         </div>
     </main>
 </body>

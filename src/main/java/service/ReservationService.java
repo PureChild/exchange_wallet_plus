@@ -17,8 +17,9 @@ public class ReservationService {
     @Autowired
     PaginationService paginationService;
 
-    public List<ReservationInfo> getReservationInfos() {
-        return daoFactory.getReservationDao().selectReservationInfos();
+    public List<ReservationInfo> getReservationInfos(int pageNum) {
+        int dataPerPage = paginationService.getDataPerPage();
+        return daoFactory.getReservationDao().selectReservationInfos(pageNum, dataPerPage);
     }
 
     public List<ReservationInfo> getReservationInfosById(String userId, int pageNum) {
