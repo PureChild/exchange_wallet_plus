@@ -26,7 +26,7 @@
     <main>
         <form class="info-form">
             <img id="nationFlag" src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
-            <input type="hidden" name="reservationNum" value="${ reservationInfo.num }"><br/>
+            <input type="hidden" name="num" value="${ reservationInfo.num }"><br/>
             <table class="table table-sm ta-center">
                 <tr>
                     <td>국가</td>

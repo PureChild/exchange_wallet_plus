@@ -5,10 +5,7 @@ import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.ConvertService;
 import service.PaginationService;
 import service.ReservationService;
@@ -19,6 +16,10 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author 이승수
+ * 관리자 기능 컨트롤러 클래스
+ */
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
@@ -29,6 +30,11 @@ public class AdminController {
     @Autowired
     PaginationService paginationService;
 
+    /**
+     * @param model view에 반환할 data를 담을 ModelMap
+     * @param pageNum 페이지네이션을 위한 페이지 번호
+     * @return 신청 내역 페이지
+     */
     @GetMapping("/reservation/history/{pageNum}")
     public String getReservationInfos(ModelMap model, @PathVariable("pageNum") int pageNum){
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos(pageNum);
@@ -44,6 +50,11 @@ public class AdminController {
         return "admin/reservationHistory";
     }
 
+    /**
+     * @param model view에 반환할 data를 담을 ModelMap
+     * @param num 예약 번호
+     * @return 예약 상세 페이지
+     */
     @GetMapping("/reservation/{reservationInfoNum}")
     public String getReservationInfoByNum(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
@@ -54,6 +65,11 @@ public class AdminController {
         return "admin/reservationInfo";
     }
 
+    /**
+     * @param model view에 반환할 data를 담을 ModelMap
+     * @param num 예약 번호
+     * @return 예약 수정 페이지
+     */
     @PostMapping("/update/reservation/{reservationInfoNum}")
     public String getUpdateReservationInfoPage(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         ReservationInfo reservationInfo = reservationService.getReservationInfoByNum(num);
@@ -62,19 +78,22 @@ public class AdminController {
         return "admin/updateReservationInfo";
     }
 
+    /**
+     * @param reservationInfo
+     * @return 수정된 예약의 상세 정보 페이지
+     */
     @PostMapping("/update/reservation")
-    public String updateReservationInfo(HttpServletRequest request){
-        ReservationInfo reservationInfo = new ReservationInfo();
-        BigInteger reservationNum = new BigInteger(request.getParameter("reservationNum"));
-        reservationInfo.setNum(reservationNum);
-        reservationInfo.setNationCode(request.getParameter("nationCode"));
-        reservationInfo.setPrice(Integer.valueOf(request.getParameter("price")));
-
+    public String updateReservationInfo(@ModelAttribute ReservationInfo reservationInfo){
         reservationService.updateReservationInfo(reservationInfo);
 
-        return "redirect:/admin/reservation/" + reservationNum;
+        return "redirect:/admin/reservation/" + reservationInfo.getNum();
     }
 
+    /**
+     * @param model view에 반환할 data를 담을 ModelMap
+     * @param num 예약 번호
+     * @return 신청 내역 페이지
+     */
     @PostMapping("/delete/reservation/{reservationInfoNum}")
     public String deleteReservationInfo(ModelMap model, @PathVariable("reservationInfoNum") BigInteger num){
         reservationService.deleteReservationInfo(num);
@@ -82,10 +101,15 @@ public class AdminController {
         return "redirect:/admin/reservation/history/1";
     }
 
+    /**
+     * @param exchangeDate 환전 일자
+     * @param num 예약 번호
+     * @return 신청 내역 페이지
+     */
     @PostMapping("/confirm/exchange/{reservationInfoNum}")
-    public String setExchangeDate(HttpServletRequest request, @PathVariable("reservationInfoNum") BigInteger num){
+    public String setExchangeDate(@RequestParam("exchangeDate") Date exchangeDate, @PathVariable("reservationInfoNum") BigInteger num){
         ConfirmedExchangeInfo exchangeInfo = new ConfirmedExchangeInfo();
-        exchangeInfo.setExchangeDate(Date.valueOf(request.getParameter("exchangeDate")));
+        exchangeInfo.setExchangeDate(exchangeDate);
         exchangeInfo.setReservationNum(num);
 
         reservationService.confirmExchangeReservation(exchangeInfo);
@@ -93,6 +117,11 @@ public class AdminController {
         return "redirect:/admin/reservation/history/1";
     }
 
+    /**
+     * @param model view에 반환할 data를 담을 ModelMap
+     * @param exchangeCode 환전 코드
+     * @return 환전 코드 조회 페이지
+     */
     @GetMapping("/lookup/{exchangeCode}")
     public String getLookupPage(ModelMap model, @PathVariable("exchangeCode") String exchangeCode){
         Optional<ReservationInfo> reservationInfo = reservationService.getReservationInfoByExchangeCode(exchangeCode);
@@ -109,6 +138,10 @@ public class AdminController {
         return "admin/lookup";
     }
 
+    /**
+     * @param num 예약 번호
+     * @return 환전 완료 페이지
+     */
     @GetMapping("/close/exchange/{reservationInfoNum}")
     public String getFinishPage(@PathVariable("reservationInfoNum") BigInteger num){
         reservationService.closeExchangeReservation(num);

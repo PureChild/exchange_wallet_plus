@@ -10,29 +10,47 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
+/**
+ * @author 이승수
+ * 예외 처리 클래스
+ */
 @ControllerAdvice(annotations = Controller.class)
 public class CommonExceptionAdvice {
-    private ModelAndView showErrorPage(Exception e, HttpServletRequest request, String msg) {
+    /**
+     * @param msg 에러메세지
+     * @return 에러페이지
+     */
+    private ModelAndView showErrorPage(String msg) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("/errorPage");
-//        mav.addObject("url", request.getRequestURL());
-//        mav.addObject("exception", e);
         mav.addObject("errorMsg", msg);
         return mav;
     }
 
+    /**
+     * BindException 핸들링
+     * @return 에러페이지
+     */
     @ExceptionHandler(BindException.class)
-    public ModelAndView handleBindException(BindException exception, HttpServletRequest request) {
-        return showErrorPage(exception, request, "잘못된 요청입니다.");
+    public ModelAndView handleBindException() {
+        return showErrorPage("잘못된 요청입니다.");
     }
 
+    /**
+     * NumberFormatException 핸들링
+     * @return 에러페이지
+     */
     @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView handleNumberFormatException(NumberFormatException exception, HttpServletRequest request) {
-        return showErrorPage(exception, request, "숫자 형식이 이상합니다.");
+    public ModelAndView handleNumberFormatException() {
+        return showErrorPage("숫자 형식이 이상합니다.");
     }
 
+    /**
+     * DB관련 Exception 핸들링
+     * @return 에러페이지
+     */
     @ExceptionHandler({SQLException.class, SQLIntegrityConstraintViolationException.class})
-    public ModelAndView handleSQLException(Exception exception, HttpServletRequest request) {
+    public ModelAndView handleSQLException(Exception exception) {
         String msg;
         if(exception.getCause().toString().contains("link failure")){
             msg = "데이터베이스 연결에 실패했습니다.";
@@ -41,6 +59,6 @@ public class CommonExceptionAdvice {
         } else {
             msg = "";
         }
-        return showErrorPage(exception, request, msg);
+        return showErrorPage(msg);
     }
 }
