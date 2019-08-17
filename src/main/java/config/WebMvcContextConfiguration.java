@@ -16,6 +16,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import java.nio.charset.Charset;
 import java.util.List;
 
+/**
+ * @author 이승수
+ * 웹 설정
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "controller"})

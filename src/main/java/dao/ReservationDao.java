@@ -30,7 +30,7 @@ public class ReservationDao {
     /**
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @param dataPerPage 한 페이지에 보여질 데이터 수
-     * @return 해당 페이지만큼의 신청중 상태(progress = 0)의 예약 목록
+     * @return 해당 페이지의 신청중 상태(progress = 0)의 예약 목록
      */
     public List<ReservationInfo> selectReservationInfos(int pageNum, int dataPerPage) {
         Map<String, Object> params = new HashMap<>();
@@ -45,7 +45,7 @@ public class ReservationDao {
      * @param userId 고객 ID
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @param dataPerPage 한 페이지에 보여질 데이터 수
-     * @return 해당 고객의, 해당 페이지만큼의 예약 목록
+     * @return 해당 고객, 해당 페이지의 예약 목록
      */
     public List<ReservationInfo> selectReservationInfosById(String userId, int pageNum, int dataPerPage) {
         Map<String, Object> params = new HashMap<>();
@@ -88,6 +88,8 @@ public class ReservationDao {
     }
 
     /**
+     * progress 컬럼 업데이트(0: 예약 신청, 1: 관리자 예약 확정, 2: 사용자 환전 완료)
+     * @see dto.ReservationInfo
      * @param reservationNum 예약 번호
      */
     public void updateReservationProgress(BigInteger reservationNum) {

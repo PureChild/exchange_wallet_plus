@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 import javax.sql.DataSource;
 
+/**
+ * @author 이승수
+ * DB관련 설정
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource(value = "classpath:application.properties")
