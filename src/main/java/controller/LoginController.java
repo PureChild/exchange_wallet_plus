@@ -12,11 +12,22 @@ import service.LoginService;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author 이승수
+ * 로그인, 회원가입 컨트롤러 클래스
+ */
 @Controller
 public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * @param httpSession
+     * @param redirectAttributes 로그인 결과 메세지
+     * @param admId 관리자 ID
+     * @param admPassword 관리자 패스워드
+     * @return 로그인 성공 : 신청내역, 실패 : 로그인 페이지
+     */
     @PostMapping("/admin/loginConfirm")
     public String loginAdmin(HttpSession httpSession, RedirectAttributes redirectAttributes, @RequestParam String admId, @RequestParam String admPassword){
         String resultLoginCheck = loginService.checkAdminLoginInfo(admId, admPassword);
@@ -32,12 +43,20 @@ public class LoginController {
         return returnUrl;
     }
 
+    /**
+     * @param httpSession
+     * @return 관리자 로그인 페이지
+     */
     @GetMapping("/admin/logout")
     public String logoutAdmin(HttpSession httpSession){
         httpSession.removeAttribute("admin");
         return "redirect:/admin/login";
     }
 
+    /**
+     * @param customer 회원가입 정보
+     * @return 로그인 페이지
+     */
     @PostMapping("/joinConfirm")
     public String join(@ModelAttribute Customer customer){
         loginService.addCustomer(customer);
@@ -45,6 +64,12 @@ public class LoginController {
         return "redirect:/login";
     }
 
+    /**
+     * @param httpSession
+     * @param redirectAttributes 로그인 결과 메세지
+     * @param customer 로그인 고객 정보
+     * @return 로그인 성공 : 메인, 실패 : 로그인 페이지
+     */
     @PostMapping("/loginConfirm")
     public String login(HttpSession httpSession, RedirectAttributes redirectAttributes, @ModelAttribute Customer customer){
         String resultLoginCheck = loginService.checkLoginInfo(customer);
@@ -60,6 +85,10 @@ public class LoginController {
         return returnUrl;
     }
 
+    /**
+     * @param httpSession
+     * @return 로그인 페이지
+     */
     @GetMapping("/logout")
     public String logout(HttpSession httpSession){
         httpSession.removeAttribute("loginUser");

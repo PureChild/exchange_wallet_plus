@@ -15,8 +15,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * @author 이승수
+ * 환율 이슈 크롤링 레스트컨트롤러 클래스
+ */
 @RestController
 public class CrawlingController {
+    /**
+     * @param keyword 검색 키워드
+     * @return 기사 목록(thumb : 썸네일 이미지, title : 기사 제목)
+     * @throws IOException
+     */
     @GetMapping("/crawling/news/{keyword}")
     public List<Map<String, String>> getCrawlingResult(@PathVariable("keyword") String keyword) throws IOException {
         List<Map<String, String>> results = new ArrayList<>();
