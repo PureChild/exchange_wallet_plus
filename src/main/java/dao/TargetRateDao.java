@@ -28,6 +28,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 고객의 목표 환율 목록 조회
      * @param userId 고객 ID
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @param dataPerPage 한 페이지에 보여질 데이터 수
@@ -44,6 +45,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 고객의 목표 환율 상세 조회
      * @param userId 고객 ID
      * @param nationCode 국가 코드
      * @return 해당 고객, 해당 국가의 목표 환율 정보
@@ -59,6 +61,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 목표 환율 추가
      * @param targetRate 목표 환율 정보
      */
     public void insertTargetRate(TargetRate targetRate) {
@@ -71,6 +74,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 목표 환율 삭제
      * @param targetRate 목표 환율 정보
      */
     public void deleteTargetRate(TargetRate targetRate) {
@@ -82,6 +86,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 목표 환율 수정
      * @param originNationCode 기존 국가 코드
      * @param targetRate 목표 환율 정보
      */
@@ -96,6 +101,7 @@ public class TargetRateDao {
     }
 
     /**
+     * 목표 환율 수 조회
      * @param userId 고객 ID
      * @return 해당 고객이 설정한 목표 환율 정보 수
      */

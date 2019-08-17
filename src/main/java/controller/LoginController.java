@@ -22,6 +22,7 @@ public class LoginController {
     private LoginService loginService;
 
     /**
+     * 관리자 로그인
      * @param httpSession
      * @param redirectAttributes 로그인 결과 메세지
      * @param admId 관리자 ID
@@ -44,6 +45,7 @@ public class LoginController {
     }
 
     /**
+     * 관리자 로그아웃
      * @param httpSession
      * @return 관리자 로그인 페이지
      */
@@ -65,6 +67,7 @@ public class LoginController {
     }
 
     /**
+     * 고객 로그인
      * @param httpSession
      * @param redirectAttributes 로그인 결과 메세지
      * @param customer 로그인 고객 정보
@@ -86,6 +89,7 @@ public class LoginController {
     }
 
     /**
+     * 고객 로그아웃
      * @param httpSession
      * @return 로그인 페이지
      */

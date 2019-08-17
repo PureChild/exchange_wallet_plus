@@ -17,18 +17,34 @@ public class DaoFactory {
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * @return ReservationDao
+     * @see dao.ReservationDao
+     */
     public ReservationDao getReservationDao(){
         return new ReservationDao(dataSource);
     }
 
+    /**
+     * @return ConfirmedExchangeDao
+     * @see dao.ConfirmedExchangeDao
+     */
     public ConfirmedExchangeDao getConfirmedExchangeDao() {
         return  new ConfirmedExchangeDao(dataSource);
     }
 
+    /**
+     * @return CustomerDao
+     * @see dao.CustomerDao
+     */
     public CustomerDao getCustomerDao() {
         return new CustomerDao(dataSource);
     }
 
+    /**
+     * @return TargetRateDao
+     * @see dao.TargetRateDao
+     */
     public TargetRateDao getTargetRateDao() {
         return new TargetRateDao(dataSource);
     }

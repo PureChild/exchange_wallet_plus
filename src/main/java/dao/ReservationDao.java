@@ -28,6 +28,7 @@ public class ReservationDao {
     }
 
     /**
+     * 신청중 예약 목록 조회
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @param dataPerPage 한 페이지에 보여질 데이터 수
      * @return 해당 페이지의 신청중 상태(progress = 0)의 예약 목록
@@ -42,6 +43,7 @@ public class ReservationDao {
     }
 
     /**
+     * 고객 ID를 통한 예약 목록 조회
      * @param userId 고객 ID
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @param dataPerPage 한 페이지에 보여질 데이터 수
@@ -58,6 +60,7 @@ public class ReservationDao {
     }
 
     /**
+     * 예약 번호를 통한 예약 정보 조회
      * @param reservationInfoNum 예약 번호
      * @return 해당 예약 정보
      */
@@ -68,6 +71,7 @@ public class ReservationDao {
     }
 
     /**
+     * 예약 정보 수정
      * @param reservationInfo 예약 번호
      */
     public void updateReservationInfo(ReservationInfo reservationInfo) {
@@ -80,6 +84,7 @@ public class ReservationDao {
     }
 
     /**
+     * 예약 정보 삭제
      * @param reservationInfoNum 예약 번호
      */
     public void deleteReservationInfo(BigInteger reservationInfoNum) {
@@ -98,6 +103,7 @@ public class ReservationDao {
     }
 
     /**
+     * 환전 코드를 통한 예약 정보 조회
      * @param exchangeCode 환전 코드
      * @return 해당 예약 정보
      */
@@ -113,6 +119,7 @@ public class ReservationDao {
     }
 
     /**
+     * 예약 정보 추가
      * @param reservationInfo 예약 정보
      */
     public void insertReservationInfo(ReservationInfo reservationInfo) {
@@ -126,6 +133,7 @@ public class ReservationDao {
     }
 
     /**
+     * 고객 ID, 국가 코드를 통한 예약 정보 조회
      * @param userId 고객 ID
      * @param nationCode 국가 코드
      * @return 해당 고객, 해당 국가의 예약 정보
@@ -140,6 +148,7 @@ public class ReservationDao {
     }
 
     /**
+     * 고객의 예약 수 조회
      * @param userId 고객 ID
      * @return 해당 고객의 예약 수
      */
@@ -149,6 +158,7 @@ public class ReservationDao {
     }
 
     /**
+     * 전체 신청중인 예약 수 조회
      * @return 전체 신청중(progress = 0) 예약 수
      */
     public int selectTotalCount() {

@@ -27,6 +27,7 @@ public class TargetRateController {
     PaginationService paginationService;
 
     /**
+     * 목표 환율 목록 조회
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
      * @param pageNum 페이지네이션을 위한 페이지 번호
@@ -50,6 +51,7 @@ public class TargetRateController {
     }
 
     /**
+     * 목표 환율 상세
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
      * @param nationCode 국가 코드
@@ -68,6 +70,7 @@ public class TargetRateController {
     }
 
     /**
+     * 목표 환율 신규 페이지 요청
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
      * @param mode insert : 신규, update : 수정
@@ -92,6 +95,7 @@ public class TargetRateController {
     }
 
     /**
+     * 목표 환율 추가
      * @param httpSession
      * @param targetRate 목표 환율
      * @return 목표 환율 리스트
@@ -107,6 +111,7 @@ public class TargetRateController {
     }
 
     /**
+     * 목표 환율 수정
      * @param httpSession
      * @param originNationCode 기존 국가 코드
      * @param targetRate 목표 환율
@@ -125,6 +130,7 @@ public class TargetRateController {
     }
 
     /**
+     * 목표 환율 삭제
      * @param httpSession
      * @param nationCode 국가 코드
      * @return 목표 환율 리스트

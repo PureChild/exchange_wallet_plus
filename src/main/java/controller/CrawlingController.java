@@ -22,6 +22,7 @@ import java.util.*;
 @RestController
 public class CrawlingController {
     /**
+     * 네이버 뉴스 검색 결과를 JSON 형태로 출력
      * @param keyword 검색 키워드
      * @return 기사 목록(thumb : 썸네일 이미지, title : 기사 제목)
      * @throws IOException

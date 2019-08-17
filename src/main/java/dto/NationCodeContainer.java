@@ -6,6 +6,7 @@ package dto;
  */
 public interface NationCodeContainer {
     /**
+     * 국가 코드 반환
      * @return 국가 코드
      * @implSpec return : 국가 코드
      */

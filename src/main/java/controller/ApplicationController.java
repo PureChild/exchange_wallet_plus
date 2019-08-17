@@ -27,6 +27,7 @@ public class ApplicationController {
     PaginationService paginationService;
 
     /**
+     * 신청 내역 조회
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
      * @param pageNum 페이지네이션을 위한 페이지 번호
@@ -52,6 +53,7 @@ public class ApplicationController {
     }
 
     /**
+     * 예약 신청
      * @param httpSession
      * @param reservationInfo 예약 정보
      * @return 신청 내역 페이지
@@ -65,6 +67,7 @@ public class ApplicationController {
     }
 
     /**
+     * 확정된 환전 결과 조회
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
      * @param nationCode 국가 코드

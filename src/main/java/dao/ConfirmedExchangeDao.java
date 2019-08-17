@@ -27,6 +27,7 @@ public class ConfirmedExchangeDao {
     }
 
     /**
+     * 환전일이 확정 된 예약 정보 추가
      * @param exchangeInfo 삽입할 환율 정보
      */
     public void insertConfirmedReservationInfo(ConfirmedExchangeInfo exchangeInfo) {
@@ -39,6 +40,7 @@ public class ConfirmedExchangeDao {
     }
 
     /**
+     * 환전일이 확정된 예약 정보 조회
      * @param reservationInfoNum 예약 번호
      * @return 조회된 신청 정보
      */

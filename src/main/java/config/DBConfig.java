@@ -29,6 +29,11 @@ public class DBConfig implements TransactionManagementConfigurer {
     @Value("${spring.datasource.password}")
     private String password;
 
+    /**
+     * 데이터 소스 반환
+     * @return BasicDataSource
+     * @see org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+     */
     @Bean
     public DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();

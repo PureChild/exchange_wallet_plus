@@ -16,6 +16,7 @@ public class PaginationService {
     private DaoFactory daoFactory;
 
     /**
+     * 한 페이지에 보여질 데이터 수 조회
      * @return 한 페이지에 보여질 데이터 수
      * @see #DATA_PER_PAGE
      */
@@ -24,6 +25,7 @@ public class PaginationService {
     }
 
     /**
+     * 페이지 수 조회
      * @param totalCnt 페이지네이션을 적용할 데이터 수
      * @return 페이지 끝번호
      */
@@ -37,6 +39,7 @@ public class PaginationService {
     }
 
     /**
+     * 고객 신청내역 페이지 페이지 수 조회
      * @param userId 고객 ID
      * @return 해당 고객의 예약 정보 페이지 수
      * @see #getNumberOfPages(int)
@@ -47,6 +50,7 @@ public class PaginationService {
     }
 
     /**
+     * 고객 목표 환율 페이지 페이지 수 조회
      * @param userId 고객 ID
      * @return 해당 고객의 목표 환율 정보 페이지 수
      * @see #getNumberOfPages(int)
@@ -57,6 +61,7 @@ public class PaginationService {
     }
 
     /**
+     * 관리자 신청내역 페이지 페이지 수 조회
      * @return 관리자 신청 내역의 페이지 수
      * @see #getNumberOfPages(int)
      */

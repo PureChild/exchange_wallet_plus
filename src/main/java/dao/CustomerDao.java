@@ -26,6 +26,7 @@ public class CustomerDao {
     }
 
     /**
+     * 고객 정보 삽입
      * @param customer 삽입될 고객 정보
      */
     public void insertCustomer(Customer customer) {
@@ -39,6 +40,7 @@ public class CustomerDao {
     }
 
     /**
+     * 고객 존재 여부 조회
      * @param customer 조회할 고객 정보
      * @return 있을 경우 true, 없을 경우 false
      */

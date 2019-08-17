@@ -23,6 +23,7 @@ public class ConvertService {
     private Environment environment;
 
     /**
+     * 국가 코드 → 국가명
      * @param nationCode 국가 코드
      * @return 국가명
      */
@@ -31,6 +32,7 @@ public class ConvertService {
     }
 
     /**
+     * 국가 코드 리스트 → 국가명 리스트
      * @param nationCodeContainerList 국가 코드 리스트
      * @param <T> NationCodeContainer를 상속 받는 DTO
      *           @see dto.NationCodeContainer
@@ -46,9 +48,10 @@ public class ConvertService {
     }
 
     /**
+     * 진행 상황 코드 → 진행 상황 설명
      * @param reservationInfoList 진행 상황 코드 리스트
      *                            @see dto.ReservationInfo
-     * @return 국가명 리스트
+     * @return 진행 상황 설명 리스트
      */
     public List<String> convertProgressCodeToString(List<ReservationInfo> reservationInfoList) {
         List<String> progressList = new ArrayList<>();

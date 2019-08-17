@@ -17,6 +17,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @ControllerAdvice(annotations = Controller.class)
 public class CommonExceptionAdvice {
     /**
+     * 에러 페이지 반환
      * @param msg 에러메세지
      * @return 에러페이지
      */
@@ -28,6 +29,7 @@ public class CommonExceptionAdvice {
     }
 
     /**
+     * 잘못된 요청 핸들링
      * BindException 핸들링
      * @return 에러페이지
      */
@@ -37,6 +39,7 @@ public class CommonExceptionAdvice {
     }
 
     /**
+     * 숫자 형식이 이상할 경우 예외 페이지 반환
      * NumberFormatException 핸들링
      * @return 에러페이지
      */

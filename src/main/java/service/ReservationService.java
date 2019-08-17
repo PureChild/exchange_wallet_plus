@@ -22,6 +22,7 @@ public class ReservationService {
     PaginationService paginationService;
 
     /**
+     * 신청중 예약 정보 목록 조회
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @return 해당 페이지의 예약 목록
      */
@@ -31,6 +32,7 @@ public class ReservationService {
     }
 
     /**
+     * 고객 예약 정보 목록 조회
      * @param userId 고객 ID
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @return 해당 고객, 해당 페이지의 예약 목록
@@ -41,6 +43,7 @@ public class ReservationService {
     }
 
     /**
+     * 예약 정보 상세 조회
      * @param reservationInfoNum 예약 번호
      * @return 해당 예약 정보
      */
@@ -49,6 +52,7 @@ public class ReservationService {
     }
 
     /**
+     * 예약 정보 수정
      * @param reservationInfo 예약 번호
      */
     public void updateReservationInfo(ReservationInfo reservationInfo) {
@@ -56,6 +60,7 @@ public class ReservationService {
     }
 
     /**
+     * 예약 정보 삭제
      * @param reservationInfoNum 예약 번호
      */
     public void deleteReservationInfo(BigInteger reservationInfoNum) {
@@ -89,6 +94,7 @@ public class ReservationService {
     }
 
     /**
+     * 환전 코드 조회
      * @param exchangeCode 환전 코드
      * @return 예약 정보(nullable)
      */
@@ -108,6 +114,7 @@ public class ReservationService {
     }
 
     /**
+     * 환전 예약
      * @param reservationInfo 예약 정보
      */
     public void makeReservation(ReservationInfo reservationInfo) {
@@ -115,6 +122,7 @@ public class ReservationService {
     }
 
     /**
+     * 고객 ID, 국가 코드를 통한 예약 조회
      * @param userId 고객 ID
      * @param nationCode 국가 코드
      * @return 예약 정보
@@ -124,6 +132,7 @@ public class ReservationService {
     }
 
     /**
+     * 환전일 확정 예약 조회
      * @param reservationInfoNum 예약 번호
      * @return 확정된 예약 정보
      */

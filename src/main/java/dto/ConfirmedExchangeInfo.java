@@ -11,7 +11,10 @@ import java.sql.Date;
  */
 @Data
 public class ConfirmedExchangeInfo {
+    /** 예약 번호 */
     private BigInteger reservationNum;
+    /** 환전 일자 */
     private Date exchangeDate;
+    /** 환전 코드 */
     private String exchangeCode;
 }

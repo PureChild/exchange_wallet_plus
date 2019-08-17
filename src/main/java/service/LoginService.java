@@ -24,6 +24,7 @@ public class LoginService {
     private DaoFactory daoFactory;
 
     /**
+     * 관리자 로그인 검증
      * @param admId 관리자 ID
      * @param admPassword 관리자 비밀 번호
      * @return 로그인 성공 : loginOK, 실패 : 관리자 아이디와 비밀번호를 확인해주세요
@@ -39,6 +40,7 @@ public class LoginService {
     }
 
     /**
+     * 고객 정보 추가
      * @param customer 고객 정보
      */
     public void addCustomer(Customer customer) {
@@ -46,6 +48,7 @@ public class LoginService {
     }
 
     /**
+     * 고객 로그인 검증
      * @param customer 고객 정보
      * @return 로그인 성공 : loginOK, 실패 : 아이디와 비밀번호를 확인해주세요
      */

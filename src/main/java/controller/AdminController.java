@@ -31,6 +31,7 @@ public class AdminController {
     PaginationService paginationService;
 
     /**
+     * 신청 내역을 조회
      * @param model view에 반환할 data를 담을 ModelMap
      * @param pageNum 페이지네이션을 위한 페이지 번호
      * @return 신청 내역 페이지
@@ -51,6 +52,7 @@ public class AdminController {
     }
 
     /**
+     * 예약 번호를 통한 상세 정보 조회
      * @param model view에 반환할 data를 담을 ModelMap
      * @param num 예약 번호
      * @return 예약 상세 페이지
@@ -66,6 +68,7 @@ public class AdminController {
     }
 
     /**
+     * 예약 정보 수정 페이지 요청
      * @param model view에 반환할 data를 담을 ModelMap
      * @param num 예약 번호
      * @return 예약 수정 페이지
@@ -79,6 +82,7 @@ public class AdminController {
     }
 
     /**
+     * 예약 정보 수정
      * @param reservationInfo
      * @return 수정된 예약의 상세 정보 페이지
      */
@@ -90,6 +94,7 @@ public class AdminController {
     }
 
     /**
+     * 예약 정보 삭제
      * @param model view에 반환할 data를 담을 ModelMap
      * @param num 예약 번호
      * @return 신청 내역 페이지
@@ -102,6 +107,7 @@ public class AdminController {
     }
 
     /**
+     * 환전 일자 설정
      * @param exchangeDate 환전 일자
      * @param num 예약 번호
      * @return 신청 내역 페이지
@@ -118,6 +124,7 @@ public class AdminController {
     }
 
     /**
+     * 환전 코드 조회 페이지 요청
      * @param model view에 반환할 data를 담을 ModelMap
      * @param exchangeCode 환전 코드
      * @return 환전 코드 조회 페이지
@@ -139,6 +146,7 @@ public class AdminController {
     }
 
     /**
+     * 예약 완료 페이지 요청
      * @param num 예약 번호
      * @return 환전 완료 페이지
      */

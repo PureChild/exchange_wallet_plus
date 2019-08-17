@@ -8,7 +8,10 @@ import lombok.Data;
  */
 @Data
 public class TargetRate implements NationCodeContainer{
+    /** 국가 코드 */
     private String nationCode;
+    /** 고객 ID */
     private String id;
+    /** 목표 환율 */
     private double rate;
 }
