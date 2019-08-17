@@ -16,8 +16,8 @@ import java.util.Map;
 import static dao.sqls.Sqls.*;
 
 /**
- * @author 이승수
  * reservation_info 테이블 접근 DAO
+ * @author 이승수
  */
 public class ReservationDao {
     private NamedParameterJdbcTemplate jdbc;

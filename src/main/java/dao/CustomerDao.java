@@ -14,8 +14,8 @@ import static dao.sqls.Sqls.INSERT_CUSTOMER;
 import static dao.sqls.Sqls.SELECT_EXISTS_CUSTOMER;
 
 /**
- * @author 이승수
  * customer 테이블 접근 DAO
+ * @author 이승수
  */
 public class CustomerDao {
     private NamedParameterJdbcTemplate jdbc;

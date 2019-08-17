@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 이승수
  * 국가코드 ↔ 국가명 변환 서비스
+ * @author 이승수
  */
 @Service
 @PropertySource(value = "classpath:exchange.api.properties", encoding="UTF-8")

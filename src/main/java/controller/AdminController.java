@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author 이승수
  * 관리자 기능 컨트롤러 클래스
+ * @author 이승수
  */
 @RequestMapping("/admin")
 @Controller

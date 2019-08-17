@@ -15,8 +15,8 @@ import java.util.Map;
 import static dao.sqls.Sqls.*;
 
 /**
- * @author 이승수
  * confirmed_reservation_info 테이블 접근 DAO
+ * @author 이승수
  */
 public class ConfirmedExchangeDao {
     private NamedParameterJdbcTemplate jdbc;

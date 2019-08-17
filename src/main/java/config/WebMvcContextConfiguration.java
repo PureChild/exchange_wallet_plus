@@ -17,8 +17,8 @@ import java.nio.charset.Charset;
 import java.util.List;
 
 /**
+ * 웹 설정 클래스
  * @author 이승수
- * 웹 설정
  */
 @Configuration
 @EnableWebMvc

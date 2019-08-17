@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author 이승수
  * 목표 환율 관련 컨트롤러 클래스
+ * @author 이승수
  */
 @Controller
 public class TargetRateController {

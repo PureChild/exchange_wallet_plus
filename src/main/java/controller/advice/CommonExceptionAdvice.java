@@ -11,8 +11,8 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
- * @author 이승수
  * 예외 처리 클래스
+ * @author 이승수
  */
 @ControllerAdvice(annotations = Controller.class)
 public class CommonExceptionAdvice {

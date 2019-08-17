@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author 이승수
  * 페이지네이션 서비스
+ * @author 이승수
  */
 @Service
 public class PaginationService {

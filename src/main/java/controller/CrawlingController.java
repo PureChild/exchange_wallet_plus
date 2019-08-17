@@ -16,8 +16,8 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * @author 이승수
  * 환율 이슈 크롤링 레스트컨트롤러 클래스
+ * @author 이승수
  */
 @RestController
 public class CrawlingController {

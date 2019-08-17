@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * @author 이승수
  * 환전 신청 관련 컨트롤러 클래스
+ * @author 이승수
  */
 @Controller
 public class ApplicationController {

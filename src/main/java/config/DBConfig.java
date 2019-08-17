@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 import javax.sql.DataSource;
 
 /**
+ * DB관련 설정 클래스
  * @author 이승수
- * DB관련 설정
  */
 @Configuration
 @EnableTransactionManagement

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author 이승수
  * 목표 환율 서비스
+ * @author 이승수
  */
 @Service
 public class TargetRateService {

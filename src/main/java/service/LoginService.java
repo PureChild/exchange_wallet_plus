@@ -8,8 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 /**
- * @author 이승수
  * 로그인, 회원 가입 서비스
+ * @author 이승수
  */
 @Service
 @PropertySource(value = "classpath:application.properties")

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author 이승수
  * 관리자 페이지 접근 인터셉터
+ * @author 이승수
  */
 public class AdminInterceptor extends HandlerInterceptorAdapter{
     @Override

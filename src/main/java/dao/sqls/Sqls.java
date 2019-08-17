@@ -1,8 +1,8 @@
 package dao.sqls;
 
 /**
+ * 프로젝트 SQL 클래스
  * @author 이승수
- * SQL 클래스
  */
 public class Sqls {
     /* 페이지네이션 관련 */

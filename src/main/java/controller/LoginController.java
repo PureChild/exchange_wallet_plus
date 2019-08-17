@@ -13,8 +13,8 @@ import service.LoginService;
 import javax.servlet.http.HttpSession;
 
 /**
- * @author 이승수
  * 로그인, 회원가입 컨트롤러 클래스
+ * @author 이승수
  */
 @Controller
 public class LoginController {

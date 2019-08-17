@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 
 /**
- * @author 이승수
  * DAO 클래스 객체 반환 클래스
+ * @author 이승수
  */
 @Component
 public class DaoFactory {

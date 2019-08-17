@@ -15,8 +15,8 @@ import java.util.Map;
 import static dao.sqls.Sqls.*;
 
 /**
- * @author 이승수
  * target_rate 테이블 접근 DAO
+ * @author 이승수
  */
 @Repository
 public class TargetRateDao {
