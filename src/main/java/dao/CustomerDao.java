@@ -13,6 +13,10 @@ import java.util.Map;
 import static dao.sqls.Sqls.INSERT_CUSTOMER;
 import static dao.sqls.Sqls.SELECT_EXISTS_CUSTOMER;
 
+/**
+ * @author 이승수
+ * customer 테이블 접근 DAO
+ */
 public class CustomerDao {
     private NamedParameterJdbcTemplate jdbc;
     private RowMapper<Customer> rowMapper = BeanPropertyRowMapper.newInstance(Customer.class);
@@ -21,6 +25,9 @@ public class CustomerDao {
         this.jdbc = new NamedParameterJdbcTemplate(dataSource);
     }
 
+    /**
+     * @param customer 삽입될 고객 정보
+     */
     public void insertCustomer(Customer customer) {
         Map<String, Object> param = new HashMap<>();
         param.put("userId", customer.getId());
@@ -31,6 +38,10 @@ public class CustomerDao {
         jdbc.update(INSERT_CUSTOMER, param);
     }
 
+    /**
+     * @param customer 조회할 고객 정보
+     * @return 있을 경우 true, 없을 경우 false
+     */
     public boolean selectExistsCustomer(Customer customer) {
         Map<String, Object> param = new HashMap<>();
         param.put("userId", customer.getId());

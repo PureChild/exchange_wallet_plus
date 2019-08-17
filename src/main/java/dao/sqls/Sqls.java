@@ -1,17 +1,17 @@
 package dao.sqls;
 
+/**
+ * @author 이승수
+ * SQL 클래스
+ */
 public class Sqls {
-    /**
-     * 페이지네이션 관련
-     */
+    /* 페이지네이션 관련 */
     public static final String LIMIT = " LIMIT :start, :dataPerPage";
     public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BEFORE_CONFIRM = "SELECT COUNT(*) FROM reservation_info WHERE progress = 0";
     public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BY_ID = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
     public static final String SELECT_TOTAL_COUNT_OF_TARGET_RATES = "SELECT COUNT(*) FROM target_rate WHERE id = :userId";
 
-    /**
-     * 환전 예약 관련
-     */
+    /* 환전 예약 관련 */
     public static final String SELECT_RESERVATION_INFOS_BEFORE_CONFIRM = "SELECT num, nation_code, applicant, price, departure_date FROM reservation_info WHERE progress = 0";
     public static final String SELECT_RESERVATION_INFOS_BY_ID = "SELECT num, nation_code, progress, departure_date FROM reservation_info WHERE applicant = :userId ORDER BY num DESC";
     public static final String SELECT_RESERVATION_INFO_BY_NUM = "SELECT num, nation_code, price, departure_date FROM reservation_info WHERE num = :num";
@@ -34,20 +34,14 @@ public class Sqls {
 
     public static final String INSERT_RESERVATION_INFO = "INSERT INTO reservation_info(applicant, price, departure_date, nation_code) VALUES(:userId, :price, :departureDate, :nationCode)";
 
-    /**
-     * 확정 예약 조회
-     */
+    /* 확정 예약 조회 */
     public static final String SELECT_CONFIRMED_EXCHANGE_INFO = "SELECT exchange_date, exchange_code FROM confirmed_exchange_info WHERE reservation_num = :reservationNum";
 
-    /**
-     * 회원가입, 로그인 관련
-     */
+    /* 회원가입, 로그인 관련 */
     public static final String INSERT_CUSTOMER = "INSERT INTO customer(id, pw, name, account) VALUES(:userId, :userPw, :userName, :userAccount)";
     public static final String SELECT_EXISTS_CUSTOMER = "SELECT EXISTS(SELECT * FROM customer WHERE id = :userId AND pw = :userPw)";
 
-    /**
-     * 목표 환율 설정 관련
-     */
+    /* 목표 환율 설정 관련 */
     public static final String SELECT_TARGET_RATES_BY_ID = "SELECT nation_code, id, rate FROM target_rate WHERE id = :userId";
     public static final String SELECT_TARGET_RATE = "SELECT id, nation_code, rate FROM target_rate WHERE id = :userId AND nation_code = :nationCode";
 
