@@ -1,7 +1,5 @@
 package controller.advice;
 
-import com.mysql.cj.exceptions.CJCommunicationsException;
-import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.ConnectException;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @ControllerAdvice(annotations = Controller.class)
 public class CommonExceptionAdvice {
@@ -33,11 +31,13 @@ public class CommonExceptionAdvice {
         return showErrorPage(exception, request, "숫자 형식이 이상합니다.");
     }
 
-    @ExceptionHandler(SQLException.class)
-    public ModelAndView handleSQLException(SQLException exception, HttpServletRequest request) {
+    @ExceptionHandler({SQLException.class, SQLIntegrityConstraintViolationException.class})
+    public ModelAndView handleSQLException(Exception exception, HttpServletRequest request) {
         String msg;
-        if(exception.getCause().toString().contains("")){
+        if(exception.getCause().toString().contains("link failure")){
             msg = "데이터베이스 연결에 실패했습니다.";
+        } else if(exception.getCause().toString().contains("Duplicate")){
+            msg = "이미 존재하는 정보입니다.";
         } else {
             msg = "";
         }
