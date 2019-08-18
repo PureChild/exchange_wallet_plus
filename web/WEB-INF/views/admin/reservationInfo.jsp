@@ -4,7 +4,7 @@
   Time: 오전 11:29
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
-<%@ page import="java.util.Date" %>
+<%@ page import="java.util.Date, java.util.concurrent.ThreadLocalRandom, java.sql.Timestamp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
@@ -12,6 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신청 정보</title>
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <%-- 구글 차트 --%>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="/js/chart.js"></script>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
@@ -24,10 +27,6 @@
         <form class="info-form chart-form">
             <input type="hidden" id="nationCode" value="${ reservationInfo.nationCode }">
             <img src="/image/flags/${ reservationInfo.nationCode }.png" class="flag" alt="nation-flag"/>
-
-            <%-- 구글 차트 --%>
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript" src="/js/chart.js"></script>
 
             <div id="Line_Controls_Chart" class="chart-container">
                 <div id="msgBeforeDrawChart" class="loading-msg-container">
@@ -53,10 +52,17 @@
                     <td>환전 일자</td>
                     <td>
                         <c:set var="targetDate" value="<%=new Date(new Date().getTime())%>"/>
+                        <c:set var="targetLong" value="<%=new Date().getTime()%>"/>
+                        <fmt:formatDate var="departureDate" value="${ reservationInfo.departureDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
+                        <c:set var="departureLong" value="<%=Timestamp.valueOf((String)pageContext.getAttribute(\"departureDate\")).getTime()%>"/>
+                        <c:set var="randomDate" value="<%=new Date(ThreadLocalRandom.current().nextLong((Long)pageContext.getAttribute(\"targetLong\"), (Long)pageContext.getAttribute(\"departureLong\")))%>"/>
+                        <fmt:formatDate type="date" value="${randomDate}" pattern="yyyy년 MM월 dd일" var="recommendedDate"/>
+                        <p class="text-warning">추천 일자는 ${recommendedDate}입니다.</p>
                         <input type="date" class="form-control ta-center input-sm"
-                               name="exchangeDate"
-                               min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"
-                               max="${ reservationInfo.departureDate }">
+                                name="exchangeDate"
+                                min="<fmt:formatDate type="date" value="${targetDate}" pattern="yyyy-MM-dd"/>"
+                                max="${ reservationInfo.departureDate }"
+                                value="<fmt:formatDate type="date" value="${randomDate}" pattern="yyyy-MM-dd"/>">
                     </td>
                 </tr>
             </table>
