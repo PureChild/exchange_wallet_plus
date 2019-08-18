@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신청 결과</title>
     <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/jquery-barcode.js"></script>
     <script type="text/javascript" src="/js/application.js"></script>
 
@@ -35,7 +36,7 @@
                     <td class="tlabel">환전코드</td>
                     <td>
                         <input type="hidden" id="exchangeCode" value="${ confirmedExchangeInfo.exchangeCode }">
-                        <div id="barcodeContainer" class="margin-center"></div>
+                        <div id="barcodeContainer" class="margin-center" data-toggle="modal" data-target="#barcodeEnlargementModal"></div>
                     </td>
                 </tr>
                 <tr>
@@ -46,5 +47,23 @@
             <a href="/application/history/1" class="btn btn-sm btn-hana">목록으로</a>
         </div>
     </main>
+    <div id="barcodeEnlargementModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">바코드</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="barcodeModal" class="margin-center"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
