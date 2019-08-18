@@ -35,8 +35,8 @@ public class Sqls {
                                                                     + " ON ri.num = cei.reservation_num "
                                                                     + " AND cei.exchange_code = :exchangeCode "
                                                                     + " AND ri.progress = 1";
-    /** 고객 ID, 국가 코드를 통한 예약 정보 조회 */
-    public static final String SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE = "SELECT num, nation_code, price FROM reservation_info WHERE applicant = :userId AND nation_code = :nationCode";
+    /** 고객 ID, 예약 번호를 통한 예약 정보 조회 */
+    public static final String SELECT_RESERVATION_INFO_BY_ID_AND_NUM = "SELECT num, nation_code, price FROM reservation_info WHERE applicant = :userId AND num = :reservationNum";
     /** 예약 정보 추가 */
     public static final String INSERT_RESERVATION_INFO = "INSERT INTO reservation_info(applicant, price, departure_date, nation_code) VALUES(:userId, :price, :departureDate, :nationCode)";
     /** 환전일 확정 예약 조회 */

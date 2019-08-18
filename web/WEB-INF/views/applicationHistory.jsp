@@ -39,7 +39,7 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${applicationList[i - 1].progress == 1}">
-                                        <a href="/application/result/${applicationList[i - 1].nationCode}">${progressList[i - 1]}</a>
+                                        <a href="/application/result/${applicationList[i - 1].num}">${progressList[i - 1]}</a>
                                     </c:when>
                                     <c:otherwise>
                                         ${progressList[i - 1]}

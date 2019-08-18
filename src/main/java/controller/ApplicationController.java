@@ -70,15 +70,15 @@ public class ApplicationController {
      * 확정된 환전 결과 조회
      * @param httpSession
      * @param model view에 반환할 data를 담을 ModelMap
-     * @param nationCode 국가 코드
+     * @param reservationNum 예약 번호
      * @return 승인된 신청 결과 페이지
      */
-    @GetMapping("/application/result/{nationCode}")
-    public String getApplicationResult(HttpSession httpSession, ModelMap model, @PathVariable("nationCode") String nationCode){
+    @GetMapping("/application/result/{reservationNum}")
+    public String getApplicationResult(HttpSession httpSession, ModelMap model, @PathVariable("reservationNum") String reservationNum){
         String userId = String.valueOf(httpSession.getAttribute("loginUser"));
-        ReservationInfo reservationInfo = reservationService.getReservationInfoByIdAndNationCode(userId, nationCode);
+        ReservationInfo reservationInfo = reservationService.getReservationInfoByIdAndNum(userId, reservationNum);
         ConfirmedExchangeInfo confirmedExchangeInfo = reservationService.getConfirmedExchangeInfoByNum(reservationInfo.getNum());
-        String nation = convertService.convertNationCodeToName(nationCode);
+        String nation = convertService.convertNationCodeToName(reservationInfo.getNationCode());
 
         model.put("reservationInfo", reservationInfo);
         model.put("confirmedExchangeInfo", confirmedExchangeInfo);

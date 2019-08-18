@@ -122,13 +122,13 @@ public class ReservationService {
     }
 
     /**
-     * 고객 ID, 국가 코드를 통한 예약 조회
+     * 고객 ID, 예약 번호를 통한 예약 조회
      * @param userId 고객 ID
-     * @param nationCode 국가 코드
+     * @param reservationNum 예약 번호
      * @return 예약 정보
      */
-    public ReservationInfo getReservationInfoByIdAndNationCode(String userId, String nationCode) {
-        return daoFactory.getReservationDao().selectReservationInfoByIdAndNationCode(userId, nationCode);
+    public ReservationInfo getReservationInfoByIdAndNum(String userId, String reservationNum) {
+        return daoFactory.getReservationDao().selectReservationInfoByIdAndNum(userId, reservationNum);
     }
 
     /**

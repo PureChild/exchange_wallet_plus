@@ -133,17 +133,17 @@ public class ReservationDao {
     }
 
     /**
-     * 고객 ID, 국가 코드를 통한 예약 정보 조회
+     * 고객 ID, 예약 번호를 통한 예약 정보 조회
      * @param userId 고객 ID
-     * @param nationCode 국가 코드
+     * @param reservationNum 국가 코드
      * @return 해당 고객, 해당 국가의 예약 정보
      */
-    public ReservationInfo selectReservationInfoByIdAndNationCode(String userId, String nationCode) {
+    public ReservationInfo selectReservationInfoByIdAndNum(String userId, String reservationNum) {
         Map<String, Object> params = new HashMap<>();
         params.put("userId", userId);
-        params.put("nationCode", nationCode);
+        params.put("reservationNum", reservationNum);
 
-        ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_ID_AND_NATION_CODE, params, rowMapper);
+        ReservationInfo reservationInfo = jdbc.queryForObject(SELECT_RESERVATION_INFO_BY_ID_AND_NUM, params, rowMapper);
         return reservationInfo;
     }
 
