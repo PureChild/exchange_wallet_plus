@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Date" %><%--
   User: SeungsooLee
   Date: 2019-08-13
   Time: 오전 10:15
@@ -22,17 +22,17 @@
             <div class="btn-container ta-right">
                 <a href="/exchange/apply" class="btn btn-sm btn-outline-hana btn-hana">신규</a>
             </div>
-            <table class="table ta-center">
+            <table class="table ta-center resv-info-table">
                 <thead class="colored-thead">
                     <tr>
                         <td>No.</td>
-                        <td>국가</td>
+                        <td class="nation-column">국가</td>
                         <td>비고</td>
                         <td>여행 출발 일자</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:set var="now" value="<%=new java.util.Date()%>" />
+                    <c:set var="yesterday" value="<%=new Date(new Date().getTime() - 60*60*24*1000) %>" />
                     <c:forEach var="i" begin="1" end="${fn:length(applicationList)}">
                         <tr>
                             <td>${i}</td>
@@ -44,7 +44,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:choose>
-                                        <c:when test="${applicationList[i - 1].departureDate > now}">
+                                        <c:when test="${applicationList[i - 1].departureDate > yesterday}">
                                             <c:choose>
                                                 <c:when test="${applicationList[i - 1].progress == 1}">
                                                             <a href="/application/result/${applicationList[i - 1].num}">${progressList[i - 1]}</a>
@@ -55,7 +55,7 @@
                                             </c:choose>
                                         </c:when>
                                         <c:otherwise>
-                                            <p class="text-warning">기간 만료</p>
+                                            <span class="text-warning">기간 만료</span>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:otherwise>

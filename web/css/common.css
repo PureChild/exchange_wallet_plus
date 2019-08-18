@@ -280,7 +280,9 @@ main.none-img {
 .tlabel-sm {
     width: 120px;
 }
-
+.resv-info-table .nation-column {
+    width: 35%;
+}
 label {
     width: 100%;
 }
@@ -367,7 +369,7 @@ td .btn#btnGetNations {
     width: 150px;
 }
 
-    /* input[type="date"] */
+/* input[type="date"] */
 input[type="date"] {
     background: url(/image/calendar-icon.png) 95% 50% no-repeat;
     background-size: 20px 20px;
