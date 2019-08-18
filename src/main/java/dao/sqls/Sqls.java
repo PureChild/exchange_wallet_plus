@@ -8,13 +8,13 @@ public class Sqls {
     /** 조회될 데이터 제한(시작 인덱스, 한 페이지 데이터 수) */
     public static final String LIMIT = " LIMIT :start, :dataPerPage";
     /** progress = 0인 예약 수 조회 */
-    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BEFORE_CONFIRM = "SELECT COUNT(*) FROM reservation_info WHERE progress = 0";
+    public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BEFORE_CONFIRM = "SELECT COUNT(*) FROM reservation_info WHERE progress = 0 AND departure_date > now()";
     /** 고객 ID를 통한 예약 수 조회 */
     public static final String SELECT_TOTAL_COUNT_OF_RESERVATIONS_BY_ID = "SELECT COUNT(*) FROM reservation_info WHERE applicant = :userId";
     /** 고객 ID를 통한 목표 환율 수 조회 */
     public static final String SELECT_TOTAL_COUNT_OF_TARGET_RATES = "SELECT COUNT(*) FROM target_rate WHERE id = :userId";
     /** progress = 0인 예약 조회 */
-    public static final String SELECT_RESERVATION_INFOS_BEFORE_CONFIRM = "SELECT num, nation_code, applicant, price, departure_date FROM reservation_info WHERE progress = 0";
+    public static final String SELECT_RESERVATION_INFOS_BEFORE_CONFIRM = "SELECT num, nation_code, applicant, price, departure_date FROM reservation_info WHERE progress = 0 AND departure_date > now()";
     /** 고객 ID를 통한 예약 조회 */
     public static final String SELECT_RESERVATION_INFOS_BY_ID = "SELECT num, nation_code, progress, departure_date FROM reservation_info WHERE applicant = :userId ORDER BY num DESC";
     /** 예약 번호를 통한 예약 조회 */
