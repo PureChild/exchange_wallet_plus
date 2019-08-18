@@ -32,19 +32,34 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <c:set var="now" value="<%=new java.util.Date()%>" />
                     <c:forEach var="i" begin="1" end="${fn:length(applicationList)}">
                         <tr>
                             <td>${i}</td>
                             <td>${nationList[i - 1]}</td>
                             <td>
-                                <c:choose>
-                                    <c:when test="${applicationList[i - 1].progress == 1}">
-                                        <a href="/application/result/${applicationList[i - 1].num}">${progressList[i - 1]}</a>
-                                    </c:when>
-                                    <c:otherwise>
-                                        ${progressList[i - 1]}
-                                    </c:otherwise>
-                                </c:choose>
+                            <c:choose>
+                                <c:when test="${applicationList[i - 1].progress == 2}">
+                                    ${progressList[i - 1]}
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${applicationList[i - 1].departureDate > now}">
+                                            <c:choose>
+                                                <c:when test="${applicationList[i - 1].progress == 1}">
+                                                            <a href="/application/result/${applicationList[i - 1].num}">${progressList[i - 1]}</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    ${progressList[i - 1]}
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <p class="text-warning">기간 만료</p>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
                             </td>
                             <td>${applicationList[i - 1].departureDate}</td>
                         </tr>

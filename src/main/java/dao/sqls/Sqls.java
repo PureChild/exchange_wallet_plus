@@ -29,7 +29,7 @@ public class Sqls {
     public static final String INSERT_CONFIRM_EXCHANGE_INFO = "INSERT INTO confirmed_exchange_info(reservation_num, exchange_date, exchange_code) "
                                                                     + "VALUES(:reservationNum, :exchangeDate, :exchangeCode) ";
     /** 환전 코드를 통한 예약 정보 조회 */
-    public static final String SELECT_RESERVATION_INFO_BY_CODE = "SELECT ri.num, ri.applicant, ri.nation_code, ri.price "
+    public static final String SELECT_RESERVATION_INFO_BY_CODE = "SELECT ri.num, ri.applicant, ri.nation_code, ri.price, ri.departure_date "
                                                                     + " FROM reservation_info AS ri "
                                                                     + " JOIN confirmed_exchange_info AS cei "
                                                                     + " ON ri.num = cei.reservation_num "
