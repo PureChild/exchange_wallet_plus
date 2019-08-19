@@ -37,7 +37,9 @@
                     <tr>
                         <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
                         <td class="no-column">${i + ((nowPageNum - 1) * dataPerPage)}</td>
-                        <td class="name-column"><a href="/admin/reservation/${reservationList[i - 1].num}">${reservationList[i - 1].applicant}</a></td>
+                        <td class="name-column">
+                            <a href="/admin/reservation/${reservationList[i - 1].num}">${customerList[i - 1].name}</a>
+                        </td>
                         <td class="nation-column">${nationList[i - 1]}</td>
                         <td class="ta-right">
                             <fmt:formatNumber value="${reservationList[i - 1].price}" type="currency" />

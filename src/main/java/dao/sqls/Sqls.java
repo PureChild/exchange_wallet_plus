@@ -47,6 +47,8 @@ public class Sqls {
     public static final String INSERT_CUSTOMER = "INSERT INTO customer(id, pw, name, account) VALUES(:userId, :userPw, :userName, :userAccount)";
     /** 고객 정보 존재 여부 조회 */
     public static final String SELECT_EXISTS_CUSTOMER = "SELECT EXISTS(SELECT * FROM customer WHERE id = :userId AND pw = :userPw)";
+    /** 고객 이름 조회 */
+    public static final String SELECT_CUSTOMER_NAME = "SELECT name FROM customer WHERE id = :userId";
 
 
     /** 고객 ID를 통한 목표 환율 조회 */

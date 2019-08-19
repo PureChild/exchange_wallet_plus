@@ -1,12 +1,14 @@
 package controller;
 
 import dto.ConfirmedExchangeInfo;
+import dto.Customer;
 import dto.ReservationInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import service.ConvertService;
+import service.CustomerService;
 import service.PaginationService;
 import service.ReservationService;
 
@@ -26,6 +28,8 @@ public class AdminController {
     @Autowired
     ReservationService reservationService;
     @Autowired
+    CustomerService customerService;
+    @Autowired
     ConvertService convertService;
     @Autowired
     PaginationService paginationService;
@@ -39,12 +43,14 @@ public class AdminController {
     @GetMapping("/reservation/history/{pageNum}")
     public String getReservationInfos(ModelMap model, @PathVariable("pageNum") int pageNum){
         List<ReservationInfo> reservationInfoList = reservationService.getReservationInfos(pageNum);
+        List<Customer> customerList = customerService.getNames(reservationInfoList);
         List<String> nationList = convertService.convertNationCodeToName(reservationInfoList);
 
         int numberOfPages = paginationService.getNumberOfPagesForAdmin();
 
         model.put("reservationList", reservationInfoList);
         model.put("nationList", nationList);
+        model.put("customerList", customerList);
         model.put("numberOfPages", numberOfPages);
         model.put("nowPageNum", pageNum);
 

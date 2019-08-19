@@ -7,10 +7,12 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import static dao.sqls.Sqls.INSERT_CUSTOMER;
+import static dao.sqls.Sqls.SELECT_CUSTOMER_NAME;
 import static dao.sqls.Sqls.SELECT_EXISTS_CUSTOMER;
 
 /**
@@ -50,5 +52,15 @@ public class CustomerDao {
         param.put("userPw", customer.getPw());
 
         return jdbc.queryForObject(SELECT_EXISTS_CUSTOMER, param, Boolean.class);
+    }
+
+    /**
+     * 고객 이름 조회
+     * @param userId 고객 ID
+     * @return 고객 명
+     */
+    public String selectCustomerName(String userId) {
+        Map<String,String> param = Collections.singletonMap("userId", userId);
+        return jdbc.queryForObject(SELECT_CUSTOMER_NAME, param, String.class);
     }
 }
