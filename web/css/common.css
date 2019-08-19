@@ -181,6 +181,9 @@ label:focus,
     .text-warning {
         font-size: 0.75em;
     }
+    .progress-column .text-warning {
+        font-size: 1em;
+    }
 
     /* 버튼 */
     .btn {

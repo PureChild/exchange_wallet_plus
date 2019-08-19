@@ -28,7 +28,7 @@
                     <tr>
                         <td>No.</td>
                         <td class="nation-column">국가</td>
-                        <td>비고</td>
+                        <td class="progress-column">비고</td>
                         <td>여행 출발 일자</td>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                             <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
                             <td>${i + ((nowPageNum - 1) * dataPerPage)}</td>
                             <td>${nationList[i - 1]}</td>
-                            <td>
+                            <td class="progress-column">
                             <c:choose>
                                 <c:when test="${applicationList[i - 1].progress == 2}">
                                     ${progressList[i - 1]}

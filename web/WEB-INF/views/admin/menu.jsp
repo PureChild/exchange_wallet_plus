@@ -20,7 +20,7 @@
             <li>
                 <a href="/admin/lookup" class="menu-item">환전 코드 조회</a>
             </li>
-            <c:if test="${loginUser eq 'admin'}">
+            <c:if test="${admin eq 'admin'}">
                 <li>
                     <a href="/admin/logout" class="menu-item btn-logout">로그아웃</a>
                 </li>
