@@ -6,6 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="service.PaginationService" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,19 +23,20 @@
             <div class="btn-container ta-right">
                 <a href="/insert/exchange/rate" class="btn btn-sm btn-outline-hana btn-hana">신규</a>
             </div>
-            <table class="table ta-center">
+            <table class="table ta-center taget-rate-table">
                 <thead class="colored-thead">
                 <tr>
                     <td>No.</td>
-                    <td>국가</td>
+                    <td class="nation-column">국가</td>
                     <td>목표환율</td>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach var="i" begin="1" end="${fn:length(targetRates)}">
                     <tr>
-                        <td>${i}</td>
-                        <td><a href="/exchange/rate/${targetRates[i - 1].nationCode}">${nationList[i - 1]}</a></td>
+                        <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
+                        <td>${i + ((nowPageNum - 1) * dataPerPage)}</td>
+                        <td class="nation-column"><a href="/exchange/rate/${targetRates[i - 1].nationCode}">${nationList[i - 1]}</a></td>
                         <td>${targetRates[i - 1].rate}</td>
                     </tr>
                 </c:forEach>

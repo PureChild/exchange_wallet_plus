@@ -27,7 +27,7 @@ public class ReservationService {
      * @return 해당 페이지의 예약 목록
      */
     public List<ReservationInfo> getReservationInfos(int pageNum) {
-        int dataPerPage = paginationService.getDataPerPage();
+        int dataPerPage = paginationService.DATA_PER_PAGE;
         return daoFactory.getReservationDao().selectReservationInfos(pageNum, dataPerPage);
     }
 
@@ -38,7 +38,7 @@ public class ReservationService {
      * @return 해당 고객, 해당 페이지의 예약 목록
      */
     public List<ReservationInfo> getReservationInfosById(String userId, int pageNum) {
-        int dataPerPage = paginationService.getDataPerPage();
+        int dataPerPage = paginationService.DATA_PER_PAGE;
         return daoFactory.getReservationDao().selectReservationInfosById(userId, pageNum, dataPerPage);
     }
 

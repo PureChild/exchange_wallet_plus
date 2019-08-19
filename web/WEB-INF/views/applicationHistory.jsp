@@ -6,6 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="service.PaginationService" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +36,8 @@
                     <c:set var="yesterday" value="<%=new Date(new Date().getTime() - 60*60*24*1000) %>" />
                     <c:forEach var="i" begin="1" end="${fn:length(applicationList)}">
                         <tr>
-                            <td>${i}</td>
+                            <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
+                            <td>${i + ((nowPageNum - 1) * dataPerPage)}</td>
                             <td>${nationList[i - 1]}</td>
                             <td>
                             <c:choose>

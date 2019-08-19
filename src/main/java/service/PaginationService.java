@@ -11,18 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaginationService {
     /** 한 페이지에 보여질 데이터 수 */
-    private final int DATA_PER_PAGE = 7;
+    public static final int DATA_PER_PAGE = 7;
     @Autowired
     private DaoFactory daoFactory;
-
-    /**
-     * 한 페이지에 보여질 데이터 수 조회
-     * @return 한 페이지에 보여질 데이터 수
-     * @see #DATA_PER_PAGE
-     */
-    public int getDataPerPage() {
-        return DATA_PER_PAGE;
-    }
 
     /**
      * 페이지 수 조회

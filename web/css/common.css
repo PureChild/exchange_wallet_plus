@@ -283,6 +283,9 @@ main.none-img {
 .resv-info-table .nation-column {
     width: 35%;
 }
+.taget-rate-table .nation-column {
+    width: 50%;
+}
 label {
     width: 100%;
 }

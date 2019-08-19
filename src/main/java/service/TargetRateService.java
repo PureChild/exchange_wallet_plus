@@ -25,7 +25,7 @@ public class TargetRateService {
      * @return 해당 고객, 해당 페이지의 목표 환율 목록
      */
     public List<TargetRate> getTargetRatesById(String userId, int pageNum) {
-        int dataPerPage = paginationService.getDataPerPage();
+        int dataPerPage = paginationService.DATA_PER_PAGE;
         return daoFactory.getTargetRateDao().selectTargetRatesById(userId, pageNum, dataPerPage);
     }
 
