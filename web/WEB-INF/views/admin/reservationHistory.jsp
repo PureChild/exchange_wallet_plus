@@ -6,6 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="service.PaginationService" %>
 <% request.setCharacterEncoding("UTF-8");%>
 <html>
 <head>
@@ -20,7 +21,7 @@
 
     <main>
         <div class="main-content table-content">
-            <table class="table ta-center">
+            <table class="table ta-center admin-table">
                 <thead class="colored-thead">
                     <tr>
                         <td>No.</td>
@@ -33,11 +34,12 @@
                 <tbody>
                     <c:forEach var="i" begin="1" end="${fn:length(reservationList)}">
                     <tr>
-                        <td>${reservationList[i - 1].num}</td>
-                        <td><a href="/admin/reservation/${reservationList[i - 1].num}">${reservationList[i - 1].applicant}</a></td>
-                        <td>${nationList[i - 1]}</td>
+                        <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
+                        <td class="no-column">${i + ((nowPageNum - 1) * dataPerPage)}</td>
+                        <td class="name-column"><a href="/admin/reservation/${reservationList[i - 1].num}">${reservationList[i - 1].applicant}</a></td>
+                        <td class="nation-column">${nationList[i - 1]}</td>
                         <td>${reservationList[i - 1].price}</td>
-                        <td>${reservationList[i - 1].departureDate}</td>
+                        <td class="date-column">${reservationList[i - 1].departureDate}</td>
                     </tr>
                     </c:forEach>
                 </tbody>

@@ -289,6 +289,18 @@ main.none-img {
 .taget-rate-table .nation-column {
     width: 50%;
 }
+.admin-table .no-column{
+    width: 10%;
+}
+.admin-table .name-column{
+    width: 20%;
+}
+.admin-table .nation-column {
+    width: 30%;
+}
+.admin-table .date-column{
+    width: 25%;
+}
 label {
     width: 100%;
 }

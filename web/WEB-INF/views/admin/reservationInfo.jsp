@@ -55,7 +55,7 @@
                         <c:set var="targetLong" value="<%=new Date().getTime()%>"/>
                         <fmt:formatDate var="departureDate" value="${ reservationInfo.departureDate }" pattern="yyyy-MM-dd HH:mm:ss"/>
                         <c:set var="departureLong" value="<%=Timestamp.valueOf((String)pageContext.getAttribute(\"departureDate\")).getTime()%>"/>
-                        <c:set var="randomDate" value="<%=new Date(ThreadLocalRandom.current().nextLong((Long)pageContext.getAttribute(\"targetLong\"), (Long)pageContext.getAttribute(\"departureLong\")))%>"/>
+                        <c:set var="randomDate" value="<%=new Date(ThreadLocalRandom.current().nextLong((Long)pageContext.getAttribute(\"targetLong\"), (Long)pageContext.getAttribute(\"departureLong\") + 24*60*60*1000))%>"/>
                         <fmt:formatDate type="date" value="${randomDate}" pattern="yyyy년 MM월 dd일" var="recommendedDate"/>
                         <p class="text-warning">추천 일자는 ${recommendedDate}입니다.</p>
                         <input type="date" class="form-control ta-center input-sm"
