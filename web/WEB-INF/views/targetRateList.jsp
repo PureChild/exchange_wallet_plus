@@ -6,6 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="service.PaginationService" %>
 <html>
 <head>
@@ -37,7 +38,9 @@
                         <c:set var="dataPerPage" value="<%= PaginationService.DATA_PER_PAGE %>"/>
                         <td>${i + ((nowPageNum - 1) * dataPerPage)}</td>
                         <td class="nation-column"><a href="/exchange/rate/${targetRates[i - 1].nationCode}">${nationList[i - 1]}</a></td>
-                        <td>${targetRates[i - 1].rate}</td>
+                        <td class="ta-right">
+                            &#8361;<fmt:formatNumber value="${targetRates[i - 1].rate}" pattern="#,###.00"/>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

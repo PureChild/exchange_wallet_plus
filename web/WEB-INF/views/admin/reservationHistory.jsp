@@ -6,6 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="service.PaginationService" %>
 <% request.setCharacterEncoding("UTF-8");%>
 <html>
@@ -38,7 +39,9 @@
                         <td class="no-column">${i + ((nowPageNum - 1) * dataPerPage)}</td>
                         <td class="name-column"><a href="/admin/reservation/${reservationList[i - 1].num}">${reservationList[i - 1].applicant}</a></td>
                         <td class="nation-column">${nationList[i - 1]}</td>
-                        <td>${reservationList[i - 1].price}</td>
+                        <td class="ta-right">
+                            <fmt:formatNumber value="${reservationList[i - 1].price}" type="currency" />
+                        </td>
                         <td class="date-column">${reservationList[i - 1].departureDate}</td>
                     </tr>
                     </c:forEach>

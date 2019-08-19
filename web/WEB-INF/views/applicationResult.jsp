@@ -4,6 +4,7 @@
   Time: 오후 3:13
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +31,9 @@
                 </tr>
                 <tr>
                     <td class="tlabel">금액</td>
-                    <td>${ reservationInfo.price }</td>
+                    <td>
+                        <fmt:formatNumber value="${ reservationInfo.price }" type="currency" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="tlabel">환전코드</td>
